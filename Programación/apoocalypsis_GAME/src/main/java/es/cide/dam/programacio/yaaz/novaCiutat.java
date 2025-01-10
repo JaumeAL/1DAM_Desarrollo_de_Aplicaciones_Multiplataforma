@@ -15,10 +15,10 @@ public class novaCiutat extends ciutat {
     public novaCiutat(String nom, int tamany) {
         super(nom, tamany);
         this.artefactes = new artefacte[tamany];
-        posicionarArtefactes();
+        OrbirEnCasDEmergencia();
     }
 
-    private void posicionarArtefactes() {     //metodo para posicionar los artefactos
+    private void OrbirEnCasDEmergencia() {     //metodo para posicionar los artefactos
         boolean armaDeFocPosicionada = false; // Variable para controlar si ya se ha posicionado un arma
 
         for (int i = 0; i < artefactes.length; i++) { //bucle para recorrer el array de artefactos
@@ -39,7 +39,7 @@ public class novaCiutat extends ciutat {
         }
     }
 
-    public artefacte getArtefacte(int posicio) {
-        return artefactes[posicio];
+    public artefacte getArtefacte(int contingutArtefacte ) {
+        return artefactes[contingutArtefacte];
     }
 }

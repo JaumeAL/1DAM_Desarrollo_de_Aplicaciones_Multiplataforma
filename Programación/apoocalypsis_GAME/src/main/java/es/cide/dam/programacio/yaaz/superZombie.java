@@ -8,7 +8,7 @@ public class superZombie extends zombie {
         this.salut = 60; 
         this.atac = 10;
         this.defensa = 5;
-        this.tipo = "SuperZombie";
+        this.nom = "SuperZombie";
 
 
     }

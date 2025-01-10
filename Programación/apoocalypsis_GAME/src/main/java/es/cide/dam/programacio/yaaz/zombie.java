@@ -14,14 +14,14 @@ public class zombie {
     protected int salut;
     protected int atac;
     protected int defensa;
-    protected String tipo;
+    protected String nom;
 
     public zombie(int salud, int ataque, int defensa) {
         // Constructor donde le doy un valor inicial a las variables
         this.salut = 20;
         this.atac = 5;
         this.defensa = 5;
-        this.tipo = "Zombie";
+        this.nom = "Zombie";
     }
 
     // Metodo para mostrar la salud
