@@ -16,7 +16,7 @@ public class zombie {
     protected int defensa;
     protected String nom;
 
-    public zombie(int salud, int ataque, int defensa) {
+    public zombie() {
         // Constructor donde le doy un valor inicial a las variables
         this.salut = 20;
         this.atac = 5;
@@ -40,6 +40,10 @@ public class zombie {
     public int getDefensa() {
         //System.out.print("Defensa del zombie: ");
         return defensa;
+    }
+
+    public String getNom() {
+        return nom;
     }
 
     // Metodo para ingresar la salud

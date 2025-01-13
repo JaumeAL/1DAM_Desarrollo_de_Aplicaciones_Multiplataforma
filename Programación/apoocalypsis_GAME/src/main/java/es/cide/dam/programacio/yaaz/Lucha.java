@@ -7,11 +7,11 @@ public class Lucha {
             int atacSuperviviente = supervivivent.ataca() - zombieActual.defensat(); // Calcula el daño que inflige al zombie restando el ataque menos la defensa.
 
             if (atacSuperviviente > 0) { // Si el ataque supera la defensa del zombie, se le resta la salud correspondiente.
-                System.out.println(supervivivent.getNom() + " le quita " + atacSuperviviente + " de daño al zombie");
+                System.out.println(supervivivent.getNom() + " le quita " + atacSuperviviente + " de daño al "+zombieActual.getNom());
                 zombieActual.setSalut(zombieActual.getSalut() - atacSuperviviente);
-                System.out.println("Y el Zombie se queda con " + zombieActual.getSalut() + " de vida");
+                System.out.println("Y el "+zombieActual.getNom()+" se queda con " + zombieActual.getSalut() + " de vida");
             } else { // Si el ataque no supera la defensa, el zombie bloquea el ataque.
-                System.out.println(supervivivent.getNom() + " ha atacado pero el zombie ha parado el ataque!");
+                System.out.println(supervivivent.getNom() + " ha atacado pero el "+zombieActual.getNom()+" ha parado el ataque!");
             }
 
             // Turno del zombie.
@@ -19,11 +19,11 @@ public class Lucha {
                 int atacZombie = zombieActual.ataca() - supervivivent.defensat(); // Calcula el daño que inflige al superviviente restando el ataque menos la defensa.
 
                 if (atacZombie > 0) { // Si el ataque supera la defensa del superviviente, se le resta la salud correspondiente.
-                    System.out.println("El zombie le quita " + atacZombie + " de daño a " + supervivivent.getNom());
+                    System.out.println("El "+zombieActual.getNom()+" le quita " + atacZombie + " de daño a " + supervivivent.getNom());
                     supervivivent.setSalut(supervivivent.getSalut() - atacZombie);
                     System.out.println(supervivivent.getNom() + " se queda con " + supervivivent.getSalut() + " de vida");
                 } else { // Si el ataque no supera la defensa, el superviviente bloquea el ataque.
-                    System.out.println("El zombie ha atacado pero " + supervivivent.getNom() + " ha parado el ataque!");
+                    System.out.println("El "+ zombieActual.getNom()+ " ha atacado pero " + supervivivent.getNom() + " ha parado el ataque!");
                 }
             }
         }

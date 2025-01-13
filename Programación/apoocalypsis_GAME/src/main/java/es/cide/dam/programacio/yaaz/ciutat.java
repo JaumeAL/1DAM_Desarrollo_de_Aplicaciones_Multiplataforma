@@ -16,9 +16,9 @@ public class ciutat {
 
         for (int i = 0; i < tamany; i++) { // Creo un array de zombies
             if (rand.nextInt(10) == 0) { // 1 de cada 10 zombies será un superZombie
-                this.ruta[i] = new superZombie(60, 10, 5); // Le doy valores iniciales al superZombie
+                this.ruta[i] = new superZombie(); // Le doy valores iniciales al superZombie
             } else {
-                this.ruta[i] = new zombie(20, 5, 5); // Le doy valores iniciales a los zombies normales
+                this.ruta[i] = new zombie(); // Le doy valores iniciales a los zombies normales
             }
         }
     }
