@@ -1,5 +1,4 @@
 /* Exercici
-
 Sobre l’esquema i dades de “U5_FabricantsProductes”:
 1. Treu una llista amb el nom i el preu dels productes, ordenats de
 més cars a més barats.
@@ -7,7 +6,13 @@ més cars a més barats.
 3. Selecciona el nom dels 3 productes més barats, però ignorant el
 més barat de tots. És a dir, el 2n, 3r i 4t més barats.
 4. Retorna el nom de tots els productes que tenguin “Impresora” en el
-nom. */
+nom. 
+ 5. Treu una llista amb el número de productes per ID de fabricant.
+6. Obtén una llista amb el preu promig per cada ID de fabricant.
+7. Selecciona el nom i el preu de tots els productes, amb el preu sense
+decimals (és a dir, arrodonit a 0 decimals).
+8. Treu una llista amb el nom i el preu que tendria cada producte si
+apliquéssim una pujada general del 10%.  */
 
 CREATE TABLE fabricante (
   id NUMBER PRIMARY KEY,
@@ -48,4 +53,9 @@ SELECT NOMBRE, PRECIO FROM PRODUCTO ORDER BY PRECIO DESC;
 SELECT NOMBRE, PRECIO FROM PRODUCTO ORDER BY PRECIO DESC FETCH FIRST 3 ROWS ONLY;
 SELECT NOMBRE FROM PRODUCTO ORDER BY PRECIO ASC OFFSET 1 ROW FETCH FIRST 3 ROWS ONLY;
 SELECT NOMBRE FROM PRODUCTO WHERE UPPER(NOMBRE) LIKE UPPER('%impresora%');
+
+SELECT ID_FABRICANTE, COUNT(*) AS ID FROM PRODUCTO GROUP BY ID_FABRICANTE;
+SELECT ID_FABRICANTE, AVG(PRECIO) FROM PRODUCTO GROUP BY ID_FABRICANTE;
+SELECT NOMBRE, ROUND(PRECIO,0) FROM PRODUCTO;
+SELECT NOMBRE, PRECIO*1.1 FROM PRODUCTO;
 
