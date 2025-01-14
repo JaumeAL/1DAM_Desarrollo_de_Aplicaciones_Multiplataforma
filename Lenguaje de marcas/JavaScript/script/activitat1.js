@@ -4,6 +4,7 @@ var nota2 = parseFloat(prompt("Introduce la segunda nota: "));
 var nota3 = parseFloat(prompt("Introduce la tercera nota: "));
 
 var media = (nota1 + nota2 + nota3) / 3;
-alert("La media de las tres notas es: " + media);
-
-
+alert("La media de las tres notas es: " + media); //por alerta
+console.log("La media de las tres notas es: " + media); // por consola
+const parrafo = document.getElementById('parrafo');
+parrafo.textContent = media; // por pantalla
