@@ -39,7 +39,7 @@ public class novaCiutat extends ciutat {
         }
     }
 
-    public artefacte getArtefacte(int contingutArtefacte ) {
-        return artefactes[contingutArtefacte];
+    public artefacte getArtefacte(int valorArtefacte ) {
+        return artefactes[valorArtefacte];
     }
 }

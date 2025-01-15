@@ -10,19 +10,10 @@ import java.util.Random;
 
 public class escud extends artefacte {
     Random rand = new Random();
+
     public escud() {
-        super(1.0, 0.0, 5); // Valores de ejemplo
+        super.setValorArtefacte(rand.nextDouble(0.9, 1.6)); // Aplicar valor random automáticamente
     }
 
-    public escud(double pes, double valorArtefacte, int contingutArtefacte) {//constructor de la clase escud
-        super(pes, valorArtefacte, contingutArtefacte);
-
-    }
-    
-    @Override
-    public void valorRandomArtefacte() {
-        setValorArtefacte(0.9 + (1.5 - 0.9) * rand.nextDouble()); //valor del artefacto entre 0.9 y 1.5
-    }
-    
 
 }

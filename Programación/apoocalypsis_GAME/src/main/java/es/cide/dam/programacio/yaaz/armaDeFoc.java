@@ -8,21 +8,12 @@ package es.cide.dam.programacio.yaaz;
 
 import java.util.Random;
 
-public class armaDeFoc extends artefacte{
+public class armaDeFoc extends artefacte {
     Random rand = new Random();
 
     public armaDeFoc() {
-        super(1.0, 0.0, 5); // Valores de ejemplo
+        super.setValorArtefacte(rand.nextDouble(0.9, 1.6)); // Aplicar valor random automáticamente
     }
-    public armaDeFoc(double pes, double valorArtefacte, int contingutArtefacte){ //constructor de la clase armaDeFoc
-        super(pes, valorArtefacte, 1);
-        
-    }
-    
-    @Override
-    public void valorRandomArtefacte() {
-        setValorArtefacte(0.9 + (1.5 - 0.9) * rand.nextDouble()); //valor del artefacto entre 0.9 y 1.5
-    }
-    
+
 
 }

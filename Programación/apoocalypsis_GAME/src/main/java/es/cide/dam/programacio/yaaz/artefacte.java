@@ -9,18 +9,15 @@ package es.cide.dam.programacio.yaaz;
 public abstract class artefacte { // clase abstracta artefacto
     private double pes;
     public double valorArtefacte;
-    protected int contingutArtefacte;
 
-    public artefacte(double pes, double valorArtefacte, int contingutArtefacte) { // constructor de la clase artefacto
-        this.pes = pes;
-        this.valorArtefacte = valorArtefacte;
-        this.contingutArtefacte = contingutArtefacte;
+
+    public artefacte() { // constructor de la clase artefacto
+        this.pes = 0;
+        this.valorArtefacte = 1;
     }
 
     // Getters
-    public int getContingutArtefacte() { // metodo que devuelve el contenido del artefacto
-        return contingutArtefacte;
-    }
+
 
     public double getPes() { // metodo que devuelve el peso
         return pes;
@@ -39,6 +36,6 @@ public abstract class artefacte { // clase abstracta artefacto
         this.valorArtefacte = valorArtefacte;
     }
 
-    public abstract void valorRandomArtefacte();
+
 
 }

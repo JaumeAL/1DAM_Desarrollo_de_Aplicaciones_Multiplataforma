@@ -10,17 +10,10 @@ import java.util.Random;
 
 public class armaDAcer extends artefacte {
     Random rand = new Random();
+
     public armaDAcer() {
-        super(1.0, 0.0,5); // Valores de ejemplo
+        super.setValorArtefacte(rand.nextInt(1, 16)); // Aplicar valor random automáticamente
     }
 
-    public armaDAcer(double pes, double valorArtefacte, int contingutArtefacte) {
-        super(pes, valorArtefacte, contingutArtefacte);
-    }
-
-    @Override
-    public void valorRandomArtefacte() {
-        setValorArtefacte(1 + (15 - 1) * rand.nextDouble()); //valor del artefacto entre 1 y 15
-    }
 
 }
