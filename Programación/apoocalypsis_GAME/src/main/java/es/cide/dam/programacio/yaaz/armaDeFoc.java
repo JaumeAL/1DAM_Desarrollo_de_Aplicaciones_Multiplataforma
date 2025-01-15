@@ -12,10 +12,10 @@ public class armaDeFoc extends artefacte{
     Random rand = new Random();
 
     public armaDeFoc() {
-        super(1.0, 0.0); // Valores de ejemplo
+        super(1.0, 0.0, 5); // Valores de ejemplo
     }
-    public armaDeFoc(double pes, double valorArtefacte){ //constructor de la clase armaDeFoc
-        super(pes, valorArtefacte);
+    public armaDeFoc(double pes, double valorArtefacte, int contingutArtefacte){ //constructor de la clase armaDeFoc
+        super(pes, valorArtefacte, 1);
         
     }
     
