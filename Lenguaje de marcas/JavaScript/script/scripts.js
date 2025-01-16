@@ -3,7 +3,7 @@ alert("Has introducido: "+text);
 var continuar = confirm("¿Quieres continuar?");
 
 const parrafo = document.getElementById('parrafo');
-parrafo.textContent = 'Que mona Elena💖'; 
+parrafo.textContent = 'texto modificado desde scripts.js'; 
 
 console.log("Hola mundo desde el archivo scripts.js"); // Esto se muestra en la consola del navegador
 
