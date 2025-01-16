@@ -17,8 +17,6 @@ public abstract class artefacte { // clase abstracta artefacto
     }
 
     // Getters
-
-
     public double getPes() { // metodo que devuelve el peso
         return pes;
     }
