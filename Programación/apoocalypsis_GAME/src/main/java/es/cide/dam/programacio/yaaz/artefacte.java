@@ -12,8 +12,8 @@ public abstract class artefacte { // clase abstracta artefacto
 
 
     public artefacte() { // constructor de la clase artefacto
-        this.pes = 0;
-        this.valorArtefacte = 1;
+        this.pes = 0; // inicializamos el peso a 0
+        this.valorArtefacte = 1; // inicializamos el valor del artefacto a 1 (luego el valor se establecerá en las clases hijas)
     }
 
     // Getters
@@ -32,6 +32,10 @@ public abstract class artefacte { // clase abstracta artefacto
 
     public void setValorArtefacte(double valorArtefacte) {// metodo que establece el valor del artefacto
         this.valorArtefacte = valorArtefacte;
+    }
+
+    public String tipoArtefacto() { // metodo que devuelve el tipo de artefacto
+        return "Artefacto";
     }
 
 

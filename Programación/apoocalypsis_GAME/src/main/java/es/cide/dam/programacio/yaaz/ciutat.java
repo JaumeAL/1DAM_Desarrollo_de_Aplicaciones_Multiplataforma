@@ -8,19 +8,18 @@ package es.cide.dam.programacio.yaaz;
 
 import java.util.Random;
 
-public class ciutat {
-    private String nom;
+public class ciutat { 
+    private String nom; 
     private int tamany;
     private zombie[] ruta;
     private Random rand = new Random();
 
-    public ciutat(String nom, int tamany) {
-        // Constructor donde le doy un valor inicial a las variables
-        this.nom = nom;
+    public ciutat(String nom, int tamany) { // Constructor
+        this.nom = nom; 
         this.tamany = tamany;
-        this.ruta = new zombie[tamany];
+        this.ruta = new zombie[tamany]; // Creo un array de zombies
 
-        for (int i = 0; i < tamany; i++) { // Creo un array de zombies
+        for (int i = 0; i < tamany; i++) { // Recorro el array de zombies
             if (rand.nextInt(10) == 0) { // 1 de cada 10 zombies será un superZombie
                 this.ruta[i] = new superZombie(); // Le doy valores iniciales al superZombie
             } else {
@@ -50,7 +49,7 @@ public class ciutat {
     }
 
     // Metodo que devuelve la posición del zombie
-    public zombie posicio(int numZombies) {
+    public zombie posicio(int numZombies) { 
         return ruta[numZombies];
     }
 }

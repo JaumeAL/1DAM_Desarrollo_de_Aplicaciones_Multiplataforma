@@ -11,9 +11,13 @@ import java.util.Random;
 public class armaDAcer extends artefacte {
     Random rand = new Random();
 
-    public armaDAcer() {
+    public armaDAcer() { // Constructor
         super.setValorArtefacte(rand.nextInt(1, 16)); // Aplicar valor random automáticamente
     }
 
+    @Override 
+    public String tipoArtefacto() { // Devuelve el tipo de artefacto
+        return "Arma de Acero";
+    }
 
 }

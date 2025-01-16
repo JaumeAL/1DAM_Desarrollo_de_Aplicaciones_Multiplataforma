@@ -26,19 +26,16 @@ public class supervivient {
 
     // Metodo para mostrar la salud
     public int getSalut() {
-        //System.out.print("Vida de " + nom + ": ");
         return salut;
     }
 
     // Metodo para mostrar el ataque
     public int getAtaque() {
-        //System.out.print("Ataque de " + nom + ": ");
         return atac;
     }
 
     // Metodo para mostrar la defensa
     public int getDefensa() {
-        //System.out.print("Defensa de " + nom + ": ");
         return defensa;
     }
 
@@ -69,13 +66,11 @@ public class supervivient {
 
     // metodos atacar
     public int ataca() {
-        //System.out.print("Ataque de: ");
         return (rand.nextInt(atac + 1));
     }
 
     // metodos defenderse
     public int defensat() {
-        //System.out.print("Defensa de: ");
         return (rand.nextInt(defensa + 1));
     }
 }

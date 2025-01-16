@@ -12,10 +12,10 @@ public class novaCiutat extends ciutat {
     private artefacte[] artefactes;
     private Random rand = new Random();
 
-    public novaCiutat(String nom, int tamany) {
+    public novaCiutat(String nom, int tamany) { // Constructor
         super(nom, tamany);
         this.artefactes = new artefacte[tamany];
-        OrbirEnCasDEmergencia();
+        OrbirEnCasDEmergencia(); // Llamamos al método para posicionar los artefactos
     }
 
     private void OrbirEnCasDEmergencia() {     //metodo para posicionar los artefactos
@@ -39,7 +39,7 @@ public class novaCiutat extends ciutat {
         }
     }
 
-    public artefacte getArtefacte(int valorArtefacte ) {
+    public artefacte getArtefacte(int valorArtefacte ) { // Devuelve el artefacto en la posición indicada
         return artefactes[valorArtefacte];
     }
 }

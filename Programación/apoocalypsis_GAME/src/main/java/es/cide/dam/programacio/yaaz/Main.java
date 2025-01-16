@@ -20,9 +20,8 @@ public class Main {
         System.out.println("Introduce el nombre del superviviente: ");
         String nomSuperviviente = sc.next(); // Se lee el nombre del superviviente.
 
-        // Crear nuevaCiudad y superviviente con los datos del usuario
+        // Crear nuevaCiudad y superviviente con los datos ingresados por el usuario
         novaCiutat ciutat = new novaCiutat(nomCiutat, tamanyCiutat);
-        
         supervivient supervivivent = new supervivient(nomSuperviviente); 
 
         // Inicio del juego
@@ -33,7 +32,7 @@ public class Main {
             zombie zombieActual = ciutat.posicio(i); // Se obtiene el zombie actual a partir de la posición correspondiente de la ciudad.
             System.out.println("\n--------Combate contra el " + (i + 1) + "º zombie--------");
 
-            Lucha.luchar(supervivivent, zombieActual, ciutat, i); // Se llama al método luchar de la clase Lucha.
+            Lucha.luchar(supervivivent, zombieActual, ciutat, i); // Se llama al método luchar de la clase Lucha (que representa el combate entre el superviviente y el zombie)
         }
 
         if (supervivivent.getSalut() > 0) { // Si el superviviente sobrevive a todos los zombies, muestra un mensaje.
