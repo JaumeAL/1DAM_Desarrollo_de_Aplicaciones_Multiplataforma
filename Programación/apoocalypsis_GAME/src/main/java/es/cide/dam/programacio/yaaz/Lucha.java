@@ -1,3 +1,9 @@
+/* {
+    "name": "Jaume Albert",
+    "surnames": "Salas Pastor",
+    "age": "18"
+    }
+ */
 package es.cide.dam.programacio.yaaz;
 
 public class Lucha {

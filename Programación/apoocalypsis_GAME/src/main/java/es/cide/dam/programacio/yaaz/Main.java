@@ -1,3 +1,9 @@
+/* {
+    "name": "Jaume Albert",
+    "surnames": "Salas Pastor",
+    "age": "18"
+    }
+ */
 package es.cide.dam.programacio.yaaz; // Package común a todos los archivos de este programa.
 
 import java.util.Scanner; // Se importa la libreria Scanner.
@@ -16,6 +22,7 @@ public class Main {
 
         // Crear nuevaCiudad y superviviente con los datos del usuario
         novaCiutat ciutat = new novaCiutat(nomCiutat, tamanyCiutat);
+        
         supervivient supervivivent = new supervivient(nomSuperviviente); 
 
         // Inicio del juego
