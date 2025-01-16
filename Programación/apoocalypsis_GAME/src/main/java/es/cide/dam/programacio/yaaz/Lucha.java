@@ -35,28 +35,28 @@ public class Lucha {
         }
 
         // Después del combate, recoger el artefacto
-        artefacte artefacto = ciutat.getArtefacte(posicio);
-        if (artefacto != null) {
-            System.out.println(supervivivent.getNom() + " ha encontrado un " + artefacto.getClass().getSimpleName());
-            aplicarEfectoArtefacto(supervivivent, artefacto);
+        artefacte artefacto = ciutat.getArtefacte(posicio); // Se recoge el artefacto de la ciudad
+        if (artefacto != null) { // Si el artefacto no es nulo, se muestra el artefacto encontrado y se aplica el efecto
+            System.out.println(supervivivent.getNom() + " ha encontrado un " + artefacto.getClass().getSimpleName()); // Se muestra el artefacto encontrado.
+            aplicarEfectoArtefacto(supervivivent, artefacto); // Se aplica el efecto del artefacto al superviviente
         } else {
-            System.out.println(supervivivent.getNom() + " no ha encontrado ningún artefacto.");
+            System.out.println(supervivivent.getNom() + " no ha encontrado ningún artefacto."); // Si no se encuentra ningún artefacto, se muestra un mensaje.
         }
     }
 
-    private static void aplicarEfectoArtefacto(supervivient supervivivent, artefacte artefacto) { // Método que aplica el efecto del artefacto al superviviente.
-        if (artefacto instanceof armaDAcer) {  // Si el artefacto es un arma de acero, se suma el contenido del artefacto al ataque del superviviente.
-            supervivivent.setAtac((int)(supervivivent.getAtaque() + artefacto.getValorArtefacte())); // Se suma el ataque al valor del artefacto.
-            System.out.println("El ataque de " + supervivivent.getNom() + " ha aumentado en " + artefacto.getValorArtefacte() + " puntos.");
-        } else if (artefacto instanceof armaDeFoc) { // Si el artefacto es un arma de fuego, se multiplica el contenido del artefacto por el ataque del superviviente.
-            supervivivent.setAtac((int) (supervivivent.getAtaque() * artefacto.getValorArtefacte())); // Se multiplica el ataque por el valor del artefacto.
-            System.out.println("El ataque de " + supervivivent.getNom() + " se ha multiplicado por " + artefacto.getValorArtefacte() + ".");
-        } else if (artefacto instanceof farmaciola) { // Si el artefacto es una farmacia, se suma el contenido del artefacto a la salud del superviviente.
-            supervivivent.setSalut((int) (supervivivent.getSalut() + artefacto.getValorArtefacte())); // Se suma la salud al valor del artefacto.
-            System.out.println("La salud de " + supervivivent.getNom() + " ha aumentado en " + artefacto.getValorArtefacte() + " puntos.");
-        } else if (artefacto instanceof escud) { // Si el artefacto es un escudo, se suma el contenido del artefacto a la defensa del superviviente.
-            supervivivent.setDefensa((int)(supervivivent.getDefensa() * artefacto.getValorArtefacte())); // Se multiplica la defensa por el valor del artefacto.
-            System.out.println("La defensa de " + supervivivent.getNom() + " se ha multiplicado por " + artefacto.getValorArtefacte() + ".");
+    public static void aplicarEfectoArtefacto(supervivient supervivivent, artefacte artefacto) { // Método que aplica el efecto del artefacto al superviviente
+        if (artefacto instanceof armaDAcer) {  // Si el artefacto es un arma de acero, se suma el contenido del artefacto al ataque del superviviente
+            supervivivent.setAtac((int)(supervivivent.getAtaque() + artefacto.getValorArtefacte())); // Se suma el ataque al valor del artefacto
+            System.out.println("El ataque de " + supervivivent.getNom() + " ha aumentado en " + artefacto.getValorArtefacte() + " puntos");
+        } else if (artefacto instanceof armaDeFoc) { // Si el artefacto es un arma de fuego, se multiplica el contenido del artefacto por el ataque del superviviente
+            supervivivent.setAtac((int) (supervivivent.getAtaque() * artefacto.getValorArtefacte())); // Se multiplica el ataque por el valor del artefacto
+            System.out.println("El ataque de " + supervivivent.getNom() + " se ha multiplicado por " + artefacto.getValorArtefacte());
+        } else if (artefacto instanceof farmaciola) { // Si el artefacto es una farmacia, se suma el contenido del artefacto a la salud del superviviente
+            supervivivent.setSalut((int) (supervivivent.getSalut() + artefacto.getValorArtefacte())); // Se suma la salud al valor del artefacto
+            System.out.println("La salud de " + supervivivent.getNom() + " ha aumentado en " + artefacto.getValorArtefacte() + " puntos");
+        } else if (artefacto instanceof escud) { // Si el artefacto es un escudo, se suma el contenido del artefacto a la defensa del superviviente
+            supervivivent.setDefensa((int)(supervivivent.getDefensa() * artefacto.getValorArtefacte())); // Se multiplica la defensa por el valor del artefacto
+            System.out.println("La defensa de " + supervivivent.getNom() + " se ha multiplicado por " + artefacto.getValorArtefacte());
         }
     }
 }
