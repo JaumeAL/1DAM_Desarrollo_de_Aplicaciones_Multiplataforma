@@ -14,7 +14,6 @@ public class superZombie extends zombie {
         this.defensa = 5; //defensa del superZombie
         this.nom = "SuperZombie"; //nombre para diferenciarlo del zombie normal
 
-
     }
 
     
