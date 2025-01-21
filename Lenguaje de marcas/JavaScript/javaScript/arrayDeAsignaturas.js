@@ -8,3 +8,4 @@ console.log(todo);
 var user = prompt("Introduce una nueva asignatura de primero.")
 primero.push(user);
 console.log(primero);
+
