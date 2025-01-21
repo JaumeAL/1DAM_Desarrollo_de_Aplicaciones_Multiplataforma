@@ -26,3 +26,17 @@ var primerHijo = padre.firstChild; //primer hijo del padre
 var ultimoHijo = padre.lastChild; //último hijo del padre
 var siguiente = element.nextSibling; //siguiente hermano del elemento
 var anterior = element.previousSibling; //hermano anterior del elemento
+
+var lista = document.createElement('ul'); //crea un elemento ul
+var item1 = document.createElement('li'); //crea un elemento li
+var item2 = document.createElement('li'); //crea un elemento li
+var item3 = document.createElement('li'); //crea un elemento li
+
+item1.innerHTML = '<b>Elemento 1</b>'; //añade texto al elemento li
+lista.appendChild(item1); //añade el elemento li a la lista ul
+item2.innerHTML = '<b>Elemento 2</b>'; //añade texto al elemento li
+lista.appendChild(item2); //añade el elemento li a la lista ul
+item3.innerHTML = '<b>Elemento 3</b>'; //añade texto al elemento li
+lista.appendChild(item3); //añade el elemento li a la lista ul
+
+document.body.appendChild(lista); //añade la lista al body
