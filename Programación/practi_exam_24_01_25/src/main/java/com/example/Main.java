@@ -29,7 +29,12 @@ abstract class Animal{
     public String getTipus() {
         return tipus;
     }
-    
+
+    public void mostrarInformacio(){
+        System.out.println("Me llamo: "+nom+" y soy de tipo: "+tipus);
+    }
+    abstract void emetreSo();
+
 }
 public class Main {
     public static void main(String[] args) {
