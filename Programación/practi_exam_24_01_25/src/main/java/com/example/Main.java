@@ -46,7 +46,7 @@ class Gos extends Animal implements Terrestre{
 
     @Override
     public void caminar(){
-        System.out.println("Soyel perro: "+nom+" y estoy caminando");
+        System.out.println("Soy el perro: "+nom+" y estoy caminando");
     }
     @Override
     public void emetreSo(){
@@ -62,11 +62,27 @@ class Àguila extends Animal implements Volador{
 
     @Override
     public void volar(){
-        System.out.println("Soyel aguila: "+nom+" y estoy volando");
+        System.out.println("Soy el aguila: "+nom+" y estoy volando");
     }
     @Override
     public void emetreSo(){
-        System.out.println("Sshhher");
+        System.out.println("Sshhher!");
+    }
+}
+//SubClase Peix
+class Peix extends Animal implements Aquatic{
+
+    public Peix(String nom){
+        super(nom, "Aquatic");
+    }
+
+    @Override
+    public void nedar(){
+        System.out.println("Soy el pez: "+nom+" y estoy nadando");
+    }
+    @Override
+    public void emetreSo(){
+        System.out.println("Gluugluu!");
     }
 }
 public class Main {
