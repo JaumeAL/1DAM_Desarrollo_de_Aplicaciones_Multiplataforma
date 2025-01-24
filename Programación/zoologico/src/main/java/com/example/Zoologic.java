@@ -39,7 +39,7 @@ abstract class Animal {
 class Gos extends Animal implements Terrestre{
 
     public Gos(String nom) { //Constructor
-        super(nom, "Mamifer");
+        super(nom, "Terrestre");
     }
 
     @Override
@@ -55,7 +55,7 @@ class Gos extends Animal implements Terrestre{
 class Àguila extends Animal implements Volador{
 
     public Àguila(String nom) { //Constructor
-        super(nom, "Au");
+        super(nom, "Volador");
     }
 
     @Override
@@ -71,7 +71,7 @@ class Àguila extends Animal implements Volador{
 class Peix extends Animal implements Aquatic{
 
     public Peix(String nom) { //Constructor
-        super(nom, "Peix");
+        super(nom, "Aquatic");
     }
 
     @Override
