@@ -3,21 +3,18 @@ package com.example;
 // Interfície Cordes
 interface Cordes {
     void afinarCordes();
-
     void tocarArpegis();
 }
 
 // Interfície Percussio
 interface Percussio {
     void afinarTambor();
-
     void colpejarTambor();
 }
 
 // Interfície Vent
 interface Vent {
     void afinarVent();
-
     void ferSonar();
 }
 
@@ -94,6 +91,7 @@ public class Main {
         Tambor tambor = new Tambor("Tambor Yamaha");
         Flauta flauta = new Flauta("Flauta travesera");
         
+
         System.out.println("Bienvenido a mi orquesta");
 
         System.out.println("\n");
