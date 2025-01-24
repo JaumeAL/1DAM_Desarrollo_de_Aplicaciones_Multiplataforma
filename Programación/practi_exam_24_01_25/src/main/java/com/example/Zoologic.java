@@ -85,8 +85,12 @@ class Peix extends Animal implements Aquatic{
         System.out.println("Gluugluu!");
     }
 }
-public class Main {
-    public static void main(String[] args) {
-        System.out.println("Hello world!");
+public class Zoologic{
+    private static final int TAMANY_ZOOLOGIC = 10;
+    
+    public class Main {
+        public static void main(String[] args) {
+            System.out.println("Hello world!");
+        }
     }
 }
