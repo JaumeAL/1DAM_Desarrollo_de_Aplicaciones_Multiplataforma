@@ -6,7 +6,7 @@
  */
 package com.example;
 //Interficie Terrestre
-interface InnerMain {
+interface Terrestre {
     void caminar();
 } 
 //Interficie Terrestre
@@ -35,6 +35,23 @@ abstract class Animal{
     }
     abstract void emetreSo();
 
+}
+
+//SubClase Gos
+class Gos extends Animal implements Terrestre{
+
+    public Gos(String nom){
+        super(nom, "Terrestre");
+    }
+
+    @Override
+    public void caminar(){
+        System.out.println("Soyel perro: "+nom+" y estoy caminando");
+    }
+    @Override
+    public void emetreSo(){
+        System.out.println("Guau Guau!");
+    }
 }
 public class Main {
     public static void main(String[] args) {
