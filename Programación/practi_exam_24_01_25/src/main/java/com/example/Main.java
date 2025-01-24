@@ -53,6 +53,22 @@ class Gos extends Animal implements Terrestre{
         System.out.println("Guau Guau!");
     }
 }
+//SubClase Àguila
+class Àguila extends Animal implements Volador{
+
+    public Àguila(String nom){
+        super(nom, "Volador");
+    }
+
+    @Override
+    public void volar(){
+        System.out.println("Soyel aguila: "+nom+" y estoy volando");
+    }
+    @Override
+    public void emetreSo(){
+        System.out.println("Sshhher");
+    }
+}
 public class Main {
     public static void main(String[] args) {
         System.out.println("Hello world!");
