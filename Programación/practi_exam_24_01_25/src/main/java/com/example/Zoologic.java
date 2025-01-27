@@ -101,8 +101,6 @@ class Peix extends Animal implements Aquatic {
 
 public class Zoologic {
     private static final int TAMANY_ZOOLOGIC = 10;
-
-    public class Main {
         public static void main(String[] args) {
             Random rand = new Random();
             Animal[] animals = new Animal[TAMANY_ZOOLOGIC];
@@ -146,5 +144,4 @@ public class Zoologic {
             }
 
         }
-    }
 }
