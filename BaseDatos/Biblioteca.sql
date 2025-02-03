@@ -97,5 +97,12 @@ DELETE FROM LLIBRE_GENERE WHERE id_llibre = (SELECT ID FROM LLIBRE WHERE TITOL =
 DELETE FROM LLIBRE_GENERE WHERE id_llibre = (SELECT ID FROM LLIBRE WHERE TITOL = 'Harry Potter i el calze de foc');
 DELETE FROM LLIBRE_GENERE WHERE id_llibre = (SELECT ID FROM LLIBRE WHERE TITOL = 'Bellas durmientes');
 
---Consulta els llinatges dels autors, però separant primer i segon llinatge. Considera que estan separats pel primer espai.
-SELECT nom, SUBSTR(cognoms, 1, INSTR(cognoms, ' ')-1) AS primer, SUBSTR(cognoms, INSTR(cognoms, ' ')+1) AS segon FROM AUTOR;
+
+--• Consulta els noms dels llibres i el nom de la seva editorial.
+Select titol, nom from llibre, editorial where llibre.id_editorial = editorial.id;
+--• Repeteix la consulta anterior excloent l’editorial Planeta.
+select titol, nom from llibre, editorial where llibre.id_editorial = editorial.id and editorial.nom != 'Planeta';
+--• Consulta els noms dels llibres i el nom del seu autor.
+select titol, nom from llibre, autor, autor_llibre where llibre.id = autor_llibre.id_llibre and autor_llibre.id_autor = autor.id;
+--• Repeteix la consulta anterior, però només mostrant aquells llibres d’un any anterior a 1950.
+select titol, nom from llibre, autor, autor_llibre where llibre.id = autor_llibre.id_llibre and autor_llibre.id_autor = autor.id and llibre.an < 1950;
