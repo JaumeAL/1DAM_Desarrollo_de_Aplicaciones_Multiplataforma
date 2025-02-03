@@ -87,7 +87,7 @@ public class interfaz {
         JPanel userAccountsPanel = new JPanel(new BorderLayout());
         userAccountsPanel.setBorder(BorderFactory.createTitledBorder("User Accounts"));
         userAccountsPanel.setForeground(Color.blue);
-        userAccountsPanel.setBackground(Color.LIGHT_GRAY);
+        userAccountsPanel.setBackground(Color.magenta);
 
         // Crear una tabla con dos columnas y tres filas
         String[] columnNames = { "User", "Full Name" };
