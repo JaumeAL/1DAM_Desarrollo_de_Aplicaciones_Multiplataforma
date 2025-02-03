@@ -106,3 +106,15 @@ select titol, nom from llibre, editorial where llibre.id_editorial = editorial.i
 select titol, nom from llibre ll, autor au, autor_llibre aull where ll.id = aull.id_llibre and aull.id_autor = au.id;
 --• Repeteix la consulta anterior, però només mostrant aquells llibres d’un any anterior a 1950.
 select titol, nom from llibre ll, autor au, autor_llibre aull where ll.id = aull.id_llibre and aull.id_autor = au.id and ll.an < 1950;
+----1. Llista els llibres (títol) amb el seu gènere (nom).
+select titol, nom_genere from llibre l, llibre_genere lg where l.id = lg.id_llibre;
+--2. Llista els títols i autor (nom i llinatge) dels llibres d'autors espanyols.
+select titol, nom, cognoms from llibre l, autor a, autor_llibre al where l.id = al.id_llibre and al.id_autor = a.id and a.nacionalitat = 'ESP';
+--3. Llista els títols, el gènere (nom) i l'autor (nom i llinatges) de cada llibre. (Si un llibre té més d'un autor o gènere, el seu títol sortir repetit).
+Select titol, nom_genere, nom, cognoms from llibre l, llibre_genere lg, autor a, autor_llibre al where l.id = lg.id_llibre and l.id = al.id_llibre and al.id_autor = a.id;
+--4. Llista els llibres (títol) amb més d'un autor. (Pista: HAVING)
+select titol from llibre ll, autor_llibre al where ll.id = al.id_llibre group by titol having count(*) > 1;
+--5. Llista el nombre d'exemplars totals de l'autor "Federico García Lorca".
+select sum(exemplars) from llibre l, autor a, autor_llibre al where l.id = al.id_llibre and al.id_autor = a.id and a.nom = 'Federico' and a.cognoms = 'García Lorca';
+--6. Llista el nombre d'exemplars totals de cada autor.
+select nom, cognoms, sum(exemplars) from llibre l, autor a, autor_llibre al where l.id = al.id_llibre and al.id_autor = a.id group by nom, cognoms;
