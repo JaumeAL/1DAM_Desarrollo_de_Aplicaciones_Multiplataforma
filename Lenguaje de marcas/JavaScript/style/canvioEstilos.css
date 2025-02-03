@@ -1,0 +1,11 @@
+/* Valores por defecto del parrafo */
+body{
+    background-color: #fff;
+    font-family: Arial, sans-serif;
+}
+
+p {
+    font-size: 15px;
+    color: #000;
+    font-family: Arial, sans-serif;
+}
