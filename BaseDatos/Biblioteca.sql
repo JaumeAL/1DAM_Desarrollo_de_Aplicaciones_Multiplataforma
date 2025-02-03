@@ -103,6 +103,6 @@ Select titol, nom from llibre, editorial where llibre.id_editorial = editorial.i
 --• Repeteix la consulta anterior excloent l’editorial Planeta.
 select titol, nom from llibre, editorial where llibre.id_editorial = editorial.id and editorial.nom != 'Planeta';
 --• Consulta els noms dels llibres i el nom del seu autor.
-select titol, nom from llibre, autor, autor_llibre where llibre.id = autor_llibre.id_llibre and autor_llibre.id_autor = autor.id;
+select titol, nom from llibre ll, autor au, autor_llibre aull where ll.id = aull.id_llibre and aull.id_autor = au.id;
 --• Repeteix la consulta anterior, però només mostrant aquells llibres d’un any anterior a 1950.
-select titol, nom from llibre, autor, autor_llibre where llibre.id = autor_llibre.id_llibre and autor_llibre.id_autor = autor.id and llibre.an < 1950;
+select titol, nom from llibre ll, autor au, autor_llibre aull where ll.id = aull.id_llibre and aull.id_autor = au.id and ll.an < 1950;
