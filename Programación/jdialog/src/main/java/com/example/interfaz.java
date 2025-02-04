@@ -105,6 +105,12 @@ public class interfaz {
         // Añadir el panel de "User Accounts" al frame
         frame.add(userAccountsPanel, BorderLayout.SOUTH);
 
+        try {
+        UIManager.setLookAndFeel("Javax.swing.plaf.metal.MetalFileChooserUI");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         // Set the frame visibility to true
         frame.setVisible(true);
 

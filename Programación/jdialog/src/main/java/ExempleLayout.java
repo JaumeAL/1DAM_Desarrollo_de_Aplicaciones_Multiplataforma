@@ -110,6 +110,8 @@ public class ExempleLayout {
         finestra.add(panelBoton, BorderLayout.WEST);
         finestra.add(panelBoton1, BorderLayout.SOUTH);
 
+
+
         //Fem visible la finestra
         finestra.setVisible(true);
 

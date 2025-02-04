@@ -11,17 +11,20 @@ public class panelDeContenido {
 
         //Crear un Panel
         JPanel panel = new JPanel();
-        panel.setBackground(Color.pink);
         panel.setSize(300,200);
 
-
-
         //Agregar un boto al panel
-        JButton boton = new JButton("Haz clic");
-        panel.add(boton);
+        //JButton boton = new JButton("Haz clic");
+        //panel.add(boton);
 
         //Agregar el panel al frame
-        frame.add(panel);
+        //frame.add(panel);
+
+        try {
+            UIManager.setLookAndFeel("Javax.swing.plaf.metal.MetalFileChooserUI");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
         frame.setVisible(true);
 

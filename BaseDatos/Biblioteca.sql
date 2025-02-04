@@ -109,7 +109,7 @@ select titol, nom from llibre ll, autor au, autor_llibre aull where ll.id = aull
 ----1. Llista els llibres (títol) amb el seu gènere (nom).
 select titol, nom_genere from llibre l, llibre_genere lg where l.id = lg.id_llibre;
 --2. Llista els títols i autor (nom i llinatge) dels llibres d'autors espanyols.
-select titol, nom, cognoms from llibre l, autor a, autor_llibre al where l.id = al.id_llibre and al.id_autor = a.id and a.nacionalitat = 'ESP';
+select titol, nom, cognoms from llibre ll, autor au, autor_llibre al where ll.id = al.id_llibre and al.id_autor = au.id and a.nacionalitat = 'ESP';
 --3. Llista els títols, el gènere (nom) i l'autor (nom i llinatges) de cada llibre. (Si un llibre té més d'un autor o gènere, el seu títol sortir repetit).
 Select titol, nom_genere, nom, cognoms from llibre l, llibre_genere lg, autor a, autor_llibre al where l.id = lg.id_llibre and l.id = al.id_llibre and al.id_autor = a.id;
 --4. Llista els llibres (títol) amb més d'un autor. (Pista: HAVING)
