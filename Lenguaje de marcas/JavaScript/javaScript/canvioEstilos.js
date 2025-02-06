@@ -40,3 +40,8 @@ function afegirEstil() {
     parrafo.classList.add("verdecito");
 }
 
+//Boton quitar estilo verdecito
+function borrarEstil() {
+    let parrafo = document.getElementById("parrafo");
+    parrafo.classList.remove("verdecito");
+}
