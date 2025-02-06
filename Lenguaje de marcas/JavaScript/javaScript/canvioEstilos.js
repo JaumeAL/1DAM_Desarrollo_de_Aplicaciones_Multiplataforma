@@ -33,3 +33,10 @@ function borrarParagraf() {
     let borrar = document.getElementById("contenedor");
     borrar.removeChild(contenedor.lastChild);
 }
+
+//Boton añadir estilo verdecito definido en el css como verdecito
+function afegirEstil() {
+    let parrafo = document.getElementById("parrafo");
+    parrafo.classList.add("verdecito");
+}
+
