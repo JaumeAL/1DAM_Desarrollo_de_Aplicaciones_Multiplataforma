@@ -46,32 +46,24 @@ function borrarEstil() {
     parrafo.classList.remove("verdecito");
 }
 
+//Traducir texto
+let ESP = "Mi profesora Helena es muy guay";
+let ENG = "My teacher Helena is very cool";
 
-let textESP = "Mi profesora Helena es muy guay";
-let textENG = "My teacher Helena is very cool";
-
-document.getElementById("traducir1").addEventListener("click", function () {
-
-    var textoTraducido = document.getElementById("idioma");
-    
-    if (textoTraducido.textContent == textENG) {
-        textoTraducido.textContent = textESP;
+document.getElementById("traducir").addEventListener("click", function () {
+    var traducido = document.getElementById("idioma");
+    if (traducido.textContent == ENG) {
+        traducido.textContent = ESP;
     } else {
-        textoTraducido.textContent = textENG;
+        traducido.textContent = ENG;
     }
-    
 });
 
-document.getElementById("boton2").addEventListener("mouseover", function () {
-
-    document.getElementById("boton2").classList.add("botonMagicoMolon");
-
-
+//Boton hover
+document.getElementById("boton").addEventListener("mouseover", function () {
+    document.getElementById("boton").classList.add("hover");
 });
 
-document.getElementById("boton2").addEventListener("mouseout", function () {
-
-    document.getElementById("boton2").classList.remove("botonMagicoMolon");
-    
-
+document.getElementById("boton").addEventListener("mouseout", function () {
+    document.getElementById("boton").classList.remove("hover");
 });
