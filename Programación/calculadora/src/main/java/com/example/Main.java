@@ -30,15 +30,18 @@ public class Main {
         finestra.setSize(350, 400); //Establim la mida de la finestra
         finestra.setLocationRelativeTo(null); //Centrem la finestra a la pantalla
         finestra.setResizable(false); //Fem que la finestra no es pugui redimensionar
+        
 
         JPanel panel = new JPanel(); //Creem un JPanel per organitzar els components
         panel.setLayout(new GridLayout(4, 2)); //Establim un disseny de graella amb 3 files i 1 columna
 
         JTextField num1 = new JTextField(10); //Creem un camp de text
         panel.add(num1); // Afegim el camp de text al panell
+        num1.setHorizontalAlignment(JTextField.CENTER);
 
         JTextField num2 = new JTextField(10); //Creem un camp de text
         panel.add(num2); // Afegim el camp de text al panell
+        num2.setHorizontalAlignment(JTextField.CENTER);
 
         JButton sumar = new JButton("SUMAR"); //Creem un botó per sumar
         panel.add(sumar); // Afegim el botó al panell
@@ -58,10 +61,8 @@ public class Main {
 
         JLabel etiqueta = new JLabel("Resultado..."); //Creem una etiqueta per mostrar el resultat
         panel.add(etiqueta); // Afegim l'etiqueta al panell
-        
-    
 
-
+        //SUMAR
         sumar.addActionListener(new ActionListener() { //Afegim un gestor d'esdeveniments al botó
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -70,11 +71,10 @@ public class Main {
                     etiqueta.setText(String.valueOf(resultat)); //Mostrem el resultat a l'etiqueta
                 } catch (NumberFormatException ex) {
                     etiqueta.setText("Caracter invalido :("); //Si no s'introdueix un número mostrarà un missatge d'error
-                    etiqueta.setForeground(Color.red);
                 }
             }
         });
-
+        //RESTAR
         restar.addActionListener(new ActionListener() { //Afegim un gestor d'esdeveniments al botó
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -82,12 +82,11 @@ public class Main {
                     Double resultat = Double.parseDouble(num1.getText()) - Double.parseDouble(num2.getText()); //Restam els dos valors
                     etiqueta.setText(String.valueOf(resultat)); //Mostrem el resultat a l'etiqueta
                 } catch (NumberFormatException ex) {
-                    etiqueta.setForeground(Color.red);
                     etiqueta.setText("Caracter invalido :("); //Si no s'introdueix un número mostrarà un missatge d'errorç
                 }
             }
         });
-
+        //MULTIPLICAR
         multiplicar.addActionListener(new ActionListener() { //Afegim un gestor d'esdeveniments al botó
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -96,11 +95,10 @@ public class Main {
                     etiqueta.setText(String.valueOf(resultat)); //Mostrem el resultat a l'etiqueta
                 } catch (NumberFormatException ex) {
                     etiqueta.setText("Caracter invalido :("); //Si no s'introdueix un número mostrarà un missatge d'error
-                    etiqueta.setForeground(Color.red);
                 }
             }
         });
-
+        //DIVIDIR
         dividir.addActionListener(new ActionListener() { //Afegim un gestor d'esdeveniments al botó
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -110,11 +108,9 @@ public class Main {
                         etiqueta.setText(String.valueOf(resultat));
                     } else {
                         etiqueta.setText("No se puede dividir por 0..."); //De lo contrari mostrarà un missatge d'error
-                        etiqueta.setForeground(Color.red);
                     }
                 } catch (NumberFormatException ex) {
                     etiqueta.setText("Caracter invalido :("); //Si no s'introdueix un número mostrarà un missatge d'error
-                    etiqueta.setForeground(Color.red);
                 }
             }
         });
