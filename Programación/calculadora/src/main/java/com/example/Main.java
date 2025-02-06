@@ -70,7 +70,7 @@ public class Main {
                     Double resultat = Double.parseDouble(num1.getText()) + Double.parseDouble(num2.getText()); //Sumam els dos valors
                     etiqueta.setText(String.valueOf(resultat)); //Mostrem el resultat a l'etiqueta
                 } catch (NumberFormatException ex) {
-                    etiqueta.setText("Caracter invalido :("); //Si no s'introdueix un número mostrarà un missatge d'error
+                    etiqueta.setText("SYNTAX ERROR :("); //Si no s'introdueix un número mostrarà un missatge d'error
                 }
             }
         });
@@ -82,7 +82,7 @@ public class Main {
                     Double resultat = Double.parseDouble(num1.getText()) - Double.parseDouble(num2.getText()); //Restam els dos valors
                     etiqueta.setText(String.valueOf(resultat)); //Mostrem el resultat a l'etiqueta
                 } catch (NumberFormatException ex) {
-                    etiqueta.setText("Caracter invalido :("); //Si no s'introdueix un número mostrarà un missatge d'errorç
+                    etiqueta.setText("SYNTAX ERROR :("); //Si no s'introdueix un número mostrarà un missatge d'errorç
                 }
             }
         });
@@ -94,7 +94,7 @@ public class Main {
                     Double resultat = Double.parseDouble(num1.getText()) * Double.parseDouble(num2.getText()); //Multiplicam els dos valors
                     etiqueta.setText(String.valueOf(resultat)); //Mostrem el resultat a l'etiqueta
                 } catch (NumberFormatException ex) {
-                    etiqueta.setText("Caracter invalido :("); //Si no s'introdueix un número mostrarà un missatge d'error
+                    etiqueta.setText("SYNTAX ERROR :("); //Si no s'introdueix un número mostrarà un missatge d'error
                 }
             }
         });
@@ -110,7 +110,7 @@ public class Main {
                         etiqueta.setText("No se puede dividir por 0..."); //De lo contrari mostrarà un missatge d'error
                     }
                 } catch (NumberFormatException ex) {
-                    etiqueta.setText("Caracter invalido :("); //Si no s'introdueix un número mostrarà un missatge d'error
+                    etiqueta.setText("SYNTAX ERROR :("); //Si no s'introdueix un número mostrarà un missatge d'error
                 }
             }
         });
