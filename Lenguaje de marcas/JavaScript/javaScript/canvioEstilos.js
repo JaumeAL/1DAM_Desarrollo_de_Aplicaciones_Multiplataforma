@@ -24,7 +24,12 @@ function canviarColor() {
 function afegirParagraf() {
     var text = prompt("Introduce un texto");
     let nuevo = document.createElement("p");
-    nuevo.innerHTML = text;
-    nuevo.appendChild(text);
-    document.body.appendChild(nuevo);
+    nuevo.textContent = text;
+    document.getElementById("contenedor").appendChild(nuevo);
+}
+
+//Boton borrar texto nuevo
+function borrarParagraf() {
+    let borrar = document.getElementById("contenedor");
+    borrar.removeChild(contenedor.lastChild);
 }

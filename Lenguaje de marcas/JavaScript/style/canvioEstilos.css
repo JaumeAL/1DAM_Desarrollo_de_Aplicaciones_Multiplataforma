@@ -9,9 +9,18 @@ div{
   border-radius: 10px;
   box-shadow: 0 0 10px #000;
   text-align: center;
+  width: 60%;
+}
+.botones{
+  background-color: #fff;
+  padding: 30px 20px 20px 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #000;
+  text-align: center;
+  margin-top: -9rem;
+  width: 60%;
 
 }
-
 p {
   font-size: 15px;
   color: #000;
@@ -26,4 +35,9 @@ button {
   border: none;
   cursor: pointer;
   border-radius: 50px;
+}
+
+.verdecito{
+  color: #64eb33;
+  font-weight: bold;
 }
