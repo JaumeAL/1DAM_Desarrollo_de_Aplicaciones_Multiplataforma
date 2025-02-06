@@ -45,3 +45,33 @@ function borrarEstil() {
     let parrafo = document.getElementById("parrafo");
     parrafo.classList.remove("verdecito");
 }
+
+
+let textESP = "Mi profesora Helena es muy guay";
+let textENG = "My teacher Helena is very cool";
+
+document.getElementById("traducir1").addEventListener("click", function () {
+
+    var textoTraducido = document.getElementById("idioma");
+    
+    if (textoTraducido.textContent == textENG) {
+        textoTraducido.textContent = textESP;
+    } else {
+        textoTraducido.textContent = textENG;
+    }
+    
+});
+
+document.getElementById("boton2").addEventListener("mouseover", function () {
+
+    document.getElementById("boton2").classList.add("botonMagicoMolon");
+
+
+});
+
+document.getElementById("boton2").addEventListener("mouseout", function () {
+
+    document.getElementById("boton2").classList.remove("botonMagicoMolon");
+    
+
+});
