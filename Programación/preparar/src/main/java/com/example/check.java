@@ -32,13 +32,14 @@ public class check {
         JCheckBox checkbox = new JCheckBox("Marcar/Desmarcar"); //Creem un checkbox
         panel.add(checkbox); //Afegim el checkbox al panell
 
-        checkbox.addItemListener(new ItemListener() { //Afegim un Listener al checkbox
+    //Jdialog
+        checkbox.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
-                if (checkbox.isSelected()) { //Si el checkbox està marcat
-                    JOptionPane.showMessageDialog(null, "El checkbox està marcat", "Informació", JOptionPane.INFORMATION_MESSAGE); //Mostrem un missatge informatiu
-                } else { //Si el checkbox no està marcat
-                    JOptionPane.showMessageDialog(null, "El checkbox està desmarcat", "Informació", JOptionPane.INFORMATION_MESSAGE); //Mostrem un missatge informatiu
+                if (checkbox.isSelected()) {
+                    JOptionPane.showMessageDialog(null, "Checkbox marcado", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Checkbox desmarcado", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
                 }
             }
         });

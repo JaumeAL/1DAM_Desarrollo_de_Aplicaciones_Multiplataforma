@@ -14,7 +14,9 @@ public class Main {
         
         // Pedir datos al usuario
         System.out.println("Introduce el nombre de la ciudad: ");
-        String nomCiutat = sc.next(); // Se lee el nombre de la ciudad.
+        String nomCiutat = sc.next(); // Se lee el nombre de la ciudad.jh
+        
+
         System.out.println("Introduce el tamaño de la ciudad: ");
         int tamanyCiutat = sc.nextInt(); // Se lee el tamaño de la ciudad, que corresponde al número de zombies.
         System.out.println("Introduce el nombre del superviviente: ");
