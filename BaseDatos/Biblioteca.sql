@@ -121,8 +121,11 @@ select nom, cognoms, sum(exemplars) from llibre l, autor a, autor_llibre al wher
 
 --Amb JOIN
 --1. Llista els autors (nom i llinatges) sense llibres.
+select titol, nom from llibre inner join editorial on llibre.id_editorial = editorial.id;
 --2. Llista els llibres (títol) amb el seu gènere (nom).
+select titol, nom from llibre inner join editorial on llibre.id_editorial = editorial.id and editorial.nom != 'Planeta';
 --3. Llista els llibres (títol) sense gènere.
+select titol from llibre left join llibre_genere on llibre.id = llibre_genere.id_llibre where llibre_genere.nom_genere is null;
 --4. Llista els llibres (títol) sense autor.
 --5. Llista els títols i autor (nom i llinatge) dels llibres d'autors espanyols.
 --6. Llista els títols, el gènere (nom) i l'autor (nom i llinatges) de cada llibre. (Si un llibre té més d'un autor o gènere, el seu títol sortir repetit). Mostra només els que tenen autor conegut i gènere.
@@ -130,3 +133,8 @@ select nom, cognoms, sum(exemplars) from llibre l, autor a, autor_llibre al wher
 --7. Llista els llibres (títol) amb més d'un autor. (Pista: HAVING)
 --8. Llista el nombre d'exemplars totals de l'autor "Federico García Lorca".
 --9. Llista el nombre d'exemplars totals de cada autor.
+
+--• Llista els gèneres sense llibres.
+select nom from genere g left join llibre_genere lg on g.nom = lg.nom_genere where lg.nom_genere is null;
+--• Llista els gèneres amb llibres.
+select nom from genere g inner join llibre_genere lg on g.nom = lg.nom_genere;
