@@ -121,20 +121,22 @@ select nom, cognoms, sum(exemplars) from llibre l, autor a, autor_llibre al wher
 
 --Amb JOIN
 --1. Llista els autors (nom i llinatges) sense llibres.
-select titol, nom from llibre inner join editorial on llibre.id_editorial = editorial.id;
+select nom, cognoms from autor a left join autor_llibre al on a.id = al.id_autor where al.id_autor is null;
 --2. Llista els llibres (títol) amb el seu gènere (nom).
-select titol, nom from llibre inner join editorial on llibre.id_editorial = editorial.id and editorial.nom != 'Planeta';
+select titol, nom from llibre l left join llibre_genere lg on l.id = lg.id_llibre left join genere g on lg.nom_genere = g.nom;
 --3. Llista els llibres (títol) sense gènere.
-select titol from llibre left join llibre_genere on llibre.id = llibre_genere.id_llibre where llibre_genere.nom_genere is null;
+select titol from llibre l left join llibre_genere lg on l.id = lg.id_llibre where lg.nom_genere is null;
 --4. Llista els llibres (títol) sense autor.
+select titol from llibre l left join autor_llibre al on l.id = al.id_llibre where al.id_llibre is null;
 --5. Llista els títols i autor (nom i llinatge) dels llibres d'autors espanyols.
+select titol, nom, cognoms from llibre l inner join autor_llibre al on l.id = al.id_llibre inner join autor a on al.id_autor = a.id where a.nacionalitat = 'ESP';
 --6. Llista els títols, el gènere (nom) i l'autor (nom i llinatges) de cada llibre. (Si un llibre té més d'un autor o gènere, el seu títol sortir repetit). Mostra només els que tenen autor conegut i gènere.
+select titol, nom_genere, nom, cognoms from llibre l inner join llibre_genere lg on l.id = lg.id_llibre inner join genere g on lg.nom_genere = g.nom inner join autor_llibre al on l.id = al.id_llibre inner join autor a on al.id_autor = a.id;
 --8. Repeteix la consulta anterior, però també han de poder sortir els llibres sense gènere ni autor.
+select titol, nom_genere, nom, cognoms from llibre l left join llibre_genere lg on l.id = lg.id_llibre left join genere g on lg.nom_genere = g.nom left join autor_llibre al on l.id = al.id_llibre left join autor a on al.id_autor = a.id;
 --7. Llista els llibres (títol) amb més d'un autor. (Pista: HAVING)
+select titol from llibre l inner join autor_llibre al on l.id = al.id_llibre group by titol having count(*) > 1;
 --8. Llista el nombre d'exemplars totals de l'autor "Federico García Lorca".
+select sum(exemplars) from llibre l inner join autor_llibre al on l.id = al.id_llibre inner join autor a on al.id_autor = a.id where a.nom = 'Federico' and a.cognoms = 'García Lorca';
 --9. Llista el nombre d'exemplars totals de cada autor.
-
---• Llista els gèneres sense llibres.
-select nom from genere g left join llibre_genere lg on g.nom = lg.nom_genere where lg.nom_genere is null;
---• Llista els gèneres amb llibres.
-select nom from genere g inner join llibre_genere lg on g.nom = lg.nom_genere;
+select nom, cognoms, sum(exemplars) from llibre l inner join autor_llibre al on l.id = al.id_llibre inner join autor a on al.id_autor = a.id group by nom, cognoms;
