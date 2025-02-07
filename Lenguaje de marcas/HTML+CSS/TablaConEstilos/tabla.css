@@ -1,0 +1,26 @@
+caption, table, td, th {
+    text-align: center;
+    vertical-align: middle;
+}
+table,caption{
+    border: 1px solid darkblue;
+}
+th{
+    background-color: brown;
+    color: white;
+    text-transform: uppercase;
+}
+tr{
+    background-color: blue;
+    color: white;
+}
+tr:nth-child(2){
+    background-color: white;
+    color: blue;
+}
+td:last-child{
+    font-weight: bold;
+}
+caption::selection{
+    color: darkviolet
+}

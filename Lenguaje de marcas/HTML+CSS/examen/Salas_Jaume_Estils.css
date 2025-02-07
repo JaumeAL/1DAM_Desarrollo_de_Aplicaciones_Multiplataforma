@@ -1,0 +1,51 @@
+/* ---ESTRUCTURA--- */
+body {
+  margin: 0; /* Reseteamos marging del navegador */
+  padding: 0; /* Reseteamos padding del navegador */
+  font-family: Arial, Helvetica, sans-serif; /* Defineix el tipus de lletra a tota la pàgina */
+}
+header {
+  border: solid 1px #1d9031; /* Borde de 1px de color verdecito */
+}
+footer {
+  background-color: #1d9031; /* Le da el colorcito verdecito al fondo del footer */
+  color: white; /* Le da un color blanco al texto */
+  text-align: center; /* Centra el texto */
+  padding: 10px; /* Le da un marjen interior */
+  width: 100%; /* Siempre ocupará todo el ancho de la pantalla */
+  position: fixed; /* Su posicion es fija (Siempre se mostrará allí) */
+  bottom: 0; /* Se fija en la parte inferior de la pantalla */
+  height: 50px; /* Altura fija del footer */
+  font-size: large; /* Tamaño de letra más grande */
+}
+/* ---ESTRUCTURA--- */
+/* ---FLEXBOX--- */
+nav {
+  display: flex; /* Alinea el contenido de manera orizontal */
+  justify-content: space-between; /* Le da un espacio entre los elementos para que esten separados */
+  align-items: center; /* Centra el contenido */
+  padding: 10px 20px; /* Le da un margen interior entre lo que esta dentro del nav. 10px para arriba 20px para la derecha */
+}
+/* ---FLEXBOX--- */
+
+/* ---LINKS---*/
+a {
+  text-decoration: none; /* Le quita el estilo predefinido a los links */
+  color: #1d9031; /* Le da color verdecito a los links */
+  margin: 30px; /* Le da el espacio que tiene entro los links */
+  font-size: large; /* Tamaño de letra de los links más grande */
+}
+h1 {
+  color: #1d9031; /* Le da el colorcito verdecito */
+  font-weight: bold; /* Pone en negrita el texto */
+  width: 150px; /* Tamaño fijo para que tenga que ocupar dos lineas y que "CIDE" se muestre abajo */
+  text-align: center; /* Centra el texto */
+}
+ul {
+  display: flex; /* Pone los links en orizontal en vez de vertical */
+  list-style: none; /* Le quita el estilo predeteriminado de las listas */
+}
+.activo {
+  font-weight: bold; /* Clase para poner en negrita el enlace que queramos, en este caso "inicio" */
+}
+/* ---LINKS---*/

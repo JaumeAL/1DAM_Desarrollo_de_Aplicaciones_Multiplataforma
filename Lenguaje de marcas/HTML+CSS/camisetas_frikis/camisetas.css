@@ -1,0 +1,80 @@
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  header {
+    background-color: rgb(42, 131, 220);
+    color: white;
+  }
+  
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    padding: 10px 20px;
+  }
+  
+  .logo {
+    width: 50px;
+    height: 50px;
+  }
+  
+  ul {
+    display: flex; 
+    list-style: none; 
+    padding: 0;
+    margin: 0;
+  }
+  
+  ul li {
+    margin-right: 20px;
+  }
+  
+  ul li a {
+    text-decoration: none; 
+    color: white;
+  }
+  
+  ul li a:hover {
+    color: #61dafb; 
+  }
+  
+  input[type="text"] {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 200px;
+  }
+  
+  label[for="menu_hamburgesa"] { 
+    display: none;
+    font-size: 200%;
+    cursor: pointer;
+    color: white;
+  }
+  /* ---TABLET--- */
+  @media (max-width: 900px) {
+    ul {
+      display: none; 
+    }
+  
+    input[type="text"] {
+      margin: 0 auto; 
+    }
+  
+    label[for="menu_hamburgesa"] {
+      display: block; 
+    }
+  }
+  
+  /* ---MOVIL--- */
+  @media (max-width: 500px) {
+    ul,input[type="text"] {
+      display: none; 
+    }
+  
+
+  }
+  
