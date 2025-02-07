@@ -37,8 +37,7 @@ public class KeyListenerExample {
         JLabel labelE = new JLabel("Contador E: 0"); // Crear un JLabel con el valor inicial para 'e'
         panel.add(labelE); // Añadir el JLabel al panel
 
-        JButton resetButton = new JButton("Reiniciar Contadores"); // Crear un botón de reinicio
-        panel.add(resetButton); // Añadir el botón al panel
+
 
         KeyListener keyListener = new KeyListener() { // Añadir un Listener al JTextField
             int contadorA = 0; // Crear un contador para 'a'
@@ -73,14 +72,8 @@ public class KeyListenerExample {
 
         textField.addKeyListener(keyListener);
 
-        resetButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                textField.setText("");
-                textField.requestFocus();
-                keyListener.resetCounters();
-            }
-        });
+
+
 
         finestra.add(panel); // Añadir el panel a la ventana
         finestra.setVisible(true); // Hacer visible la ventana
