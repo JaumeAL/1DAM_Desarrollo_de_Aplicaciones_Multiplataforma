@@ -7,7 +7,7 @@ div{
   margin: 150px auto;
   padding: 30px 20px 20px 20px;
   border-radius: 10px;
-  box-shadow: 0 0 10px #000;
+  box-shadow: 0 0 30px #43b41b;
   text-align: center;
   width: 60%;
 }
@@ -15,7 +15,7 @@ div{
   background-color: #fff;
   padding: 30px 20px 20px 20px;
   border-radius: 10px;
-  box-shadow: 0 0 10px #000;
+  box-shadow: 0 0 20px #43b41b;
   text-align: center;
   margin-top: -9rem;
   width: 60%;
@@ -41,6 +41,8 @@ button {
   color: #63ec31;
   font-weight: bold;
 }
-#texto2{
-  color: rgb(16, 121, 119);
+
+.hover{
+  background-color: #63ec31;
+  color: black;
 }

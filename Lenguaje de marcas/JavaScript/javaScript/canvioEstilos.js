@@ -60,10 +60,10 @@ document.getElementById("traducir").addEventListener("click", function () {
 });
 
 //Boton hover
-document.getElementById("boton").addEventListener("mouseover", function () {
-    document.getElementById("boton").classList.add("hover");
+document.getElementById("Mouseover").addEventListener("mouseover", function () {
+    document.getElementById("Mouseover").classList.add("hover");
 });
 
-document.getElementById("boton").addEventListener("mouseout", function () {
-    document.getElementById("boton").classList.remove("hover");
+document.getElementById("Mouseover").addEventListener("mouseout", function () {
+    document.getElementById("Mouseover").classList.remove("hover");
 });
