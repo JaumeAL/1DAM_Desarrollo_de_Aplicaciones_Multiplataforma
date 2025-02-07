@@ -1,20 +1,13 @@
 package com.example;
 
-import java.awt.event.KeyEvent;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.UIManager;
-import java.awt.GridLayout;
-import java.awt.event.KeyListener;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 
 public class KeyListenerExample {
-    
+
     public static void main(String[] args) {
-        
-        //4. fes una aplicació que contengui un JTextField i un JLabel. A mesura que l'usuari vagi introduïnt texte al TextField, fes que cada pic que pitji la lletra "a" o "A" sumi un al contador que es mostrará al JLabel.  (KeyListener)
-        // Establim el LookAndFeel
+        // Establecer el LookAndFeel
         try {
             for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -26,28 +19,39 @@ public class KeyListenerExample {
             e.printStackTrace();
         }
 
-        JFrame finestra = new JFrame("Exemple Swing"); //Creem la finestra principal
-        finestra.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Configurem la finestra per tancar l'aplicació
-        finestra.setSize(350, 200); //Establim la mida de la finestra
-        finestra.setLocationRelativeTo(null); //Centrem la finestra a la pantalla
-        finestra.setResizable(false); //Fem que la finestra no es pugui redimensionar
+        JFrame finestra = new JFrame("Exemple Swing"); // Crear la ventana principal
+        finestra.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Configurar la ventana para cerrar la aplicación
+        finestra.setSize(350, 200); // Establecer el tamaño de la ventana
+        finestra.setLocationRelativeTo(null); // Centrar la ventana en la pantalla
+        finestra.setResizable(false); // Hacer que la ventana no se pueda redimensionar
 
-        JPanel panel = new JPanel(); //Creem un JPanel per organitzar els components
-        panel.setLayout(new GridLayout(4, 2)); //Establim un disseny de graella amb 3 files i 1 columna
+        JPanel panel = new JPanel(); // Crear un JPanel para organizar los componentes
+        panel.setLayout(new GridLayout(5, 1)); // Establecer un diseño de cuadrícula con 5 filas y 1 columna
 
-        JTextField textField = new JTextField(); //Creem un JTextField
-        panel.add(textField); //Afegim el JTextField al panell
+        JTextField textField = new JTextField(); // Crear un JTextField
+        panel.add(textField); // Añadir el JTextField al panel
 
-        JLabel label = new JLabel("0"); //Creem un JLabel amb el valor inicial
-        panel.add(label); //Afegim el JLabel al panell
+        JLabel labelA = new JLabel("Contador A: 0"); // Crear un JLabel con el valor inicial para 'a'
+        panel.add(labelA); // Añadir el JLabel al panel
 
-        textField.addKeyListener(new KeyListener() { //Afegim un Listener al JTextField
-            int contador = 0; //Creem un contador
+        JLabel labelE = new JLabel("Contador E: 0"); // Crear un JLabel con el valor inicial para 'e'
+        panel.add(labelE); // Añadir el JLabel al panel
+
+        JButton resetButton = new JButton("Reiniciar Contadores"); // Crear un botón de reinicio
+        panel.add(resetButton); // Añadir el botón al panel
+
+        KeyListener keyListener = new KeyListener() { // Añadir un Listener al JTextField
+            int contadorA = 0; // Crear un contador para 'a'
+            int contadorE = 0; // Crear un contador para 'e'
+
             @Override
             public void keyTyped(KeyEvent e) {
-                if (e.getKeyChar() == 'a' || e.getKeyChar() == 'A') { //Comprovem si la lletra pitjada és una "a" o "A"
-                    contador++; //Incrementem el contador
-                    label.setText(String.valueOf(contador)); //Mostrem el valor del contador al JLabel
+                if (e.getKeyChar() == 'a' || e.getKeyChar() == 'A') { // Comprobar si la letra presionada es una "a" o "A"
+                    contadorA++; // Incrementar el contador de 'a'
+                    labelA.setText("Contador A: " + contadorA); // Mostrar el valor del contador en el JLabel
+                } else if (e.getKeyChar() == 'e' || e.getKeyChar() == 'E') { // Comprobar si la letra presionada es una "e" o "E"
+                    contadorE++; // Incrementar el contador de 'e'
+                    labelE.setText("Contador E: " + contadorE); // Mostrar el valor del contador en el JLabel
                 }
             }
 
@@ -58,9 +62,27 @@ public class KeyListenerExample {
             @Override
             public void keyReleased(KeyEvent e) {
             }
+            @Override
+            public void resetCounters() {
+                contadorA = 0;
+                contadorE = 0;
+                labelA.setText("Contador A: 0");
+                labelE.setText("Contador E: 0");
+            }
+        };
+
+        textField.addKeyListener(keyListener);
+
+        resetButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                textField.setText("");
+                textField.requestFocus();
+                keyListener.resetCounters();
+            }
         });
 
-        finestra.add(panel); //Afegim el panell a la finestra
-        finestra.setVisible(true); //Fem visible la finestra
+        finestra.add(panel); // Añadir el panel a la ventana
+        finestra.setVisible(true); // Hacer visible la ventana
     }
 }
