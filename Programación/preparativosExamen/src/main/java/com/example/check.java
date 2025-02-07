@@ -50,8 +50,6 @@ public class check {
 
         finestra.setVisible(true);
 
-        
-
     }
     
 }
