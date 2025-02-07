@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <link rel="stylesheet" href="formulario.css">
+</head>
+<body>
+    </header>
+            <h1>Pagina web de videojuegos 100% segura no fake</h1>
+            <p id="Intro">Introdueix les teves dades per continuar amb el registre.</p>
+    <header>
+    
+    <main class="colorAzulito">
+
+        <form>
+            <div>
+                <label for="nombre">Nombre:</label><br/>
+                <input id="nombre" type="text" name="nombre" placeholder="Ingresa tu nombre..." required/>
+            </div>
+            <div>
+                <label for="edad">Edad:</label><br/>
+                <input id="edad" type="number" name="edad" placeholder="Ingresa tu edad..." required min="18" />
+            </div>       
+            <div>
+                <label for="email">Email:</label><br/>
+                <input id="email" type="email" name="email" placeholder="Ingresa tu email..." required />
+            </div>
+            <div>
+                <label for="password">Contraseña:</label><br/>
+                <input id="password" type="password" name="password" placeholder="Ingresa tu contraseña..." required minlength="6" maxlength="12"/>
+            </div> 
+            <div>
+                <label for="consolas">Consolas favoritas</label><br/>
+                <select id="consolas" name="consolas" multiple required>
+                    <option value="ps4">Ps4</option>
+                    <option value="ps3">Ps3</option>
+                    <option value="xbox_x">Xbox x</option>
+                    <option value="Nintendo">Nintendo</option>
+                    <option value="ps5">Ps5</option>
+                    <option value="ps1">Ps1</option>
+                    <option value="ps2">Ps2</option>
+                </select>
+            </div>
+            <div>
+                <label for="suscripcion">Marca la casilla si quieres suscribirte</label>
+                <input id="suscripcion" type="checkbox" name="suscripcion" id=""/>
+            </div>            
+            <div>
+                <label for="comentario">Comentarios</label><br/>
+                <textarea id="comentario" name="comentario" cols="50" rows="7" placeholder="Tienes algún comentario?"></textarea>
+            </div>            
+            <button type="submit" value="Enviar">Enviar</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>La meva pàgina de Videojocs. Tots els drets reservats-2024®</p>
+    </footer>
+
+</body>
+</html>
