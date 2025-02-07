@@ -31,6 +31,7 @@ public class ratoli {
 
         JLabel label = new JLabel("Passa el ratolí per damunt"); //Creem un JLabel amb un text inicial
         panel.add(label); //Afegim el JLabel al panell
+        label.setFont(new Font("Arial", Font.PLAIN, 20));
 
         label.addMouseListener(new MouseListener() { //Afegim un Listener al JLabel
             @Override

@@ -20,32 +20,35 @@ public class check {
             e.printStackTrace();
         }
 
-        JFrame finestra = new JFrame("Exemple Swing"); //Creem la finestra principal
+        JFrame finestra = new JFrame("CHECKBOX");
         finestra.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Configurem la finestra per tancar l'aplicació
-        finestra.setSize(350, 400); //Establim la mida de la finestra
+        finestra.setSize(350, 200); //Establim la mida de la finestra
         finestra.setLocationRelativeTo(null); //Centrem la finestra a la pantalla
         finestra.setResizable(false); //Fem que la finestra no es pugui redimensionar
 
-        JPanel panel = new JPanel(); //Creem un JPanel per organitzar els components
-        panel.setLayout(new GridLayout(4, 2)); //Establim un disseny de graella amb 3 files i 1 columna
+        JPanel panelPrincipal = new JPanel();
+        panelPrincipal.setLayout(new FlowLayout());
+        finestra.add(panelPrincipal);
 
-        JCheckBox checkbox = new JCheckBox("Marcar/Desmarcar"); //Creem un checkbox
-        panel.add(checkbox); //Afegim el checkbox al panell
+        JCheckBox box = new JCheckBox();
+        panelPrincipal.add(box);
 
-    //Jdialog
-        checkbox.addItemListener(new ItemListener() {
+        JLabel mensaje =new JLabel("CheckBox sin clicar");
+        panelPrincipal.add(mensaje);
+        mensaje.setFont(new Font("Arial", Font.BOLD, 20));
+
+        box.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
-                if (checkbox.isSelected()) {
-                    JOptionPane.showMessageDialog(null, "Checkbox marcado", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+                if (e.getStateChange() == ItemEvent.SELECTED) {
+                    mensaje.setText("CheckBox clicado");
                 } else {
-                    JOptionPane.showMessageDialog(null, "Checkbox desmarcado", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+                    mensaje.setText("CheckBox sin clicar");
                 }
             }
         });
 
-        finestra.add(panel); //Afegim el panell a la finestra
-        finestra.setVisible(true); //Fem visible la finestra
+        finestra.setVisible(true);
 
         
 

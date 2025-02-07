@@ -12,7 +12,7 @@ import java.awt.event.*; // Importem la llibreria per gestionar els esdeveniment
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-public class Main {
+public class slider {
     public static void main(String[] args) {
         //1. Haz una pequeña aplicación con jframe/jpanel que contenga un slider y un label. El slider tendrá valores de 0 a 100. Cuando el usuario mueva el slider haz que se imprima el valor entre 0 y 100 según el slider en el label. (adjusmentListener)
         // Establim el LookAndFeel
