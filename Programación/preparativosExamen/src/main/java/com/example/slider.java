@@ -56,7 +56,5 @@ public class slider {
         finestra.add(panel); //Afegim el panell a la finestra
         finestra.setVisible(true); //Fem visible la finestra
 
-
-
     }
 }
