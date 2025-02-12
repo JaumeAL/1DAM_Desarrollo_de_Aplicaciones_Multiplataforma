@@ -1,11 +1,10 @@
-package main.java.com.example;
+package com.example;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class IntegratedExample {
-
+public class exam {
     public static void main(String[] args) {
         // Establecer el LookAndFeel
         try {

@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class KeyListenerExample {
+public class contarLetras {
 
     public static void main(String[] args) {
         // Establecer el LookAndFeel
@@ -36,38 +36,35 @@ public class KeyListenerExample {
 
         JLabel labelE = new JLabel("Contador E: 0"); // Crear un JLabel con el valor inicial para 'e'
         panel.add(labelE); // Añadir el JLabel al panel
+        JLabel labelC = new JLabel("Contador C: 0");
+        panel.add(labelC);
+        //Boton que analiza el texto y cuenta las letras a y e
+        JButton contar = new JButton();
+        contar.setText("Contar");
+        panel.add(contar);
 
-
-
-        KeyListener keyListener = new KeyListener() { // Añadir un Listener al JTextField
-            int contadorA = 0; // Crear un contador para 'a'
-            int contadorE = 0; // Crear un contador para 'e'
-
+        contar.addActionListener(new ActionListener() {
             @Override
-            public void keyTyped(KeyEvent e) {
-                if (e.getKeyChar() == 'a' || e.getKeyChar() == 'A') { // Comprobar si la letra presionada es una "a" o "A"
-                    contadorA++; // Incrementar el contador de 'a'
-                    labelA.setText("Contador A: " + contadorA); // Mostrar el valor del contador en el JLabel
-                } else if (e.getKeyChar() == 'e' || e.getKeyChar() == 'E') { // Comprobar si la letra presionada es una "e" o "E"
-                    contadorE++; // Incrementar el contador de 'e'
-                    labelE.setText("Contador E: " + contadorE); // Mostrar el valor del contador en el JLabel
+            public void actionPerformed(ActionEvent e) {
+                String text = textField.getText(); // Obtener el texto del JTextField
+                int countA = 0; // Inicializar el contador para 'a'
+                int countE = 0; // Inicializar el contador para 'e'
+                int conutC = 0; // Inicializar el contador para 'c'
+                for (int i = 0; i < text.length(); i++) {
+                    char c = text.charAt(i); // Obtener el carácter en la posición i
+                    if (c == 'a' || c == 'A') { // Comprobar si el carácter es 'a' o 'A'
+                        countA++; // Incrementar el contador para 'a'
+                    } else if (c == 'e' || c == 'E') { // Comprobar si el carácter es 'e' o 'E'
+                        countE++; // Incrementar el contador para 'e'
+                    }else if (c =='c' || c =='C') {
+                        conutC++;
+                    }
                 }
+                labelA.setText("Contador A: " + countA); // Actualizar el texto del JLabel para 'a'
+                labelE.setText("Contador E: " + countE); // Actualizar el texto del JLabel para 'e'
+                labelC.setText("Contador C: "+ conutC);
             }
-
-            @Override
-            public void keyPressed(KeyEvent e) {
-            }
-
-            @Override
-            public void keyReleased(KeyEvent e) {
-            }
-
-        };
-
-        textField.addKeyListener(keyListener);
-
-
-
+        });
 
         finestra.add(panel); // Añadir el panel a la ventana
         finestra.setVisible(true); // Hacer visible la ventana

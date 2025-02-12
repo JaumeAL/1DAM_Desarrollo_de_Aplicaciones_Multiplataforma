@@ -8,9 +8,7 @@ package com.example;
 
 import javax.swing.*; // Importem la llibreria Swing per crear la interfície gràfica
 import java.awt.*; // Importem la llibreria per gestionar el disseny
-import java.awt.event.*; // Importem la llibreria per gestionar els esdeveniments
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
+import javax.swing.event.*; // Importem la llibreria per gestionar els events
 
 public class slider {
     public static void main(String[] args) {
