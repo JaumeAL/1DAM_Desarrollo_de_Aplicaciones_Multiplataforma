@@ -19,23 +19,25 @@ class MainFrame extends JFrame {
 
     public MainFrame() {
         setTitle("Aplicación Completa en Swing");
-        setSize(800, 600);
+        setSize(900, 600);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-
         setLayout(new BorderLayout());
-        
-        // Crear menú
+
         setJMenuBar(createMenuBar());
-        
-        // Crear panel lateral
         add(createSidebar(), BorderLayout.WEST);
-        
-        // Crear pestañas centrales
         add(createTabbedPane(), BorderLayout.CENTER);
-        
-        // Crear panel de notificaciones
         add(createNotificationPanel(), BorderLayout.SOUTH);
+        try {
+            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private JMenuBar createMenuBar() {
@@ -49,21 +51,24 @@ class MainFrame extends JFrame {
     }
 
     private JPanel createSidebar() {
-        JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(3, 1, 5, 5));
-        panel.setPreferredSize(new Dimension(150, 0));
-        
-        JButton btn3 = new JButton("Añadir usuario");//Boton que añade un usuario
+        JPanel panel = new JPanel(new GridLayout(3, 1, 5, 5));
+        panel.setPreferredSize(new Dimension(200, 0));
+        panel.setBorder(BorderFactory.createTitledBorder("Opciones"));
+
+        JButton btn3 = new JButton("Añadir usuario");
         btn3.addActionListener(e -> addUser());
-        JButton btn2 = new JButton("Buscar usuario");//Boton para buscar un usuario
+        btn3.setBackground(Color.lightGray);
+        JButton btn2 = new JButton("Buscar usuario");
         btn2.addActionListener(e -> searchUser());
-        JButton btn1 = new JButton("Borrar usuario"); // Botón para borrar un usuario
+        btn2.setBackground(Color.lightGray);
+        JButton btn1 = new JButton("Borrar usuario");
         btn1.addActionListener(e -> deleteUser());
-        
+        btn1.setBackground(Color.lightGray);
+        btn1.setForeground(Color.red);
+
         panel.add(btn3);
         panel.add(btn2);
         panel.add(btn1);
-        
         return panel;
     }
 
@@ -76,23 +81,25 @@ class MainFrame extends JFrame {
 
     private JPanel createTablePanel() {
         JPanel panel = new JPanel(new BorderLayout());
-        
-        String[] columns = {"ID", "Nombre","Apellidos", "Edad"};
-        tableModel = new DefaultTableModel(columns, 0);
+        tableModel = new DefaultTableModel(new String[]{"ID", "Nombre", "Apellidos", "Edad"}, 0);
         table = new JTable(tableModel);
-        
-        tableModel.addRow(new Object[]{1, "Jaume Albert","Salas", 18});
-        tableModel.addRow(new Object[]{2, "Miguel","Zurita", 18});
-        tableModel.addRow(new Object[]{2, "Hector","Rodrigez", 19});
-        
+        table.setFillsViewportHeight(true);
+        table.setRowHeight(25);
+        table.setSelectionBackground(Color.LIGHT_GRAY);
+        table.setSelectionForeground(Color.BLACK);
+
+        tableModel.addRow(new Object[]{1, "Jaume Albert", "Salas", 18});
+        tableModel.addRow(new Object[]{2, "Miguel", "Zurita", 18});
+        tableModel.addRow(new Object[]{3, "Hector", "Rodriguez", 19});
+
         panel.add(new JScrollPane(table), BorderLayout.CENTER);
         return panel;
     }
 
     private JPanel createFormPanel() {
-        JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(4, 2, 5, 5));
-        
+        JPanel panel = new JPanel(new GridLayout(4, 2, 10, 10));
+        panel.setBorder(BorderFactory.createTitledBorder("Nuevo Usuario"));
+
         JTextField txtName = new JTextField();
         JTextField txtSurn = new JTextField();
         JTextField txtAge = new JTextField();
@@ -110,10 +117,9 @@ class MainFrame extends JFrame {
         btnSubmit.addActionListener(e -> {
             String name = txtName.getText();
             String surn = txtSurn.getText();
-            int age;
             try {
-                age = Integer.parseInt(txtAge.getText());
-                tableModel.addRow(new Object[]{tableModel.getRowCount() + 1, name,surn, age});
+                int age = Integer.parseInt(txtAge.getText());
+                tableModel.addRow(new Object[]{tableModel.getRowCount() + 1, name, surn, age});
                 showNotification("Usuario agregado: " + name);
             } catch (NumberFormatException ex) {
                 showNotification("Edad inválida");
@@ -125,14 +131,14 @@ class MainFrame extends JFrame {
 
     private JPanel createNotificationPanel() {
         JPanel panel = new JPanel(new BorderLayout());
+        panel.setBorder(BorderFactory.createTitledBorder("Notificaciones"));
         notifications = new JTextArea(2, 40);
         notifications.setEditable(false);
         panel.add(new JScrollPane(notifications), BorderLayout.CENTER);
         return panel;
     }
 
-    //Borrar usuario y que pregunte si estas seguro
-    private void deleteUser() { 
+    private void deleteUser() {
         int selectedRow = table.getSelectedRow();
         if (selectedRow != -1) {
             int result = JOptionPane.showConfirmDialog(this, "¿Estás seguro de que quieres borrar este usuario?", "Confirmación", JOptionPane.YES_NO_OPTION);
@@ -144,15 +150,13 @@ class MainFrame extends JFrame {
         } else {
             showNotification("Selecciona un usuario para borrar");
         }
-
     }
 
-    //Buscar usuario
     private void searchUser() {
         String name = JOptionPane.showInputDialog("Introduce el nombre del usuario");
         if (name != null && !name.isEmpty()) {
             for (int i = 0; i < tableModel.getRowCount(); i++) {
-                if (name.equals(tableModel.getValueAt(i, 1))) {
+                if (name.equalsIgnoreCase((String) tableModel.getValueAt(i, 1))) {
                     table.setRowSelectionInterval(i, i);
                     showNotification("Usuario encontrado: " + name);
                     return;
@@ -162,7 +166,6 @@ class MainFrame extends JFrame {
         }
     }
 
-    //Añadir usuario
     private void addUser() {
         String name = JOptionPane.showInputDialog("Introduce el nombre del usuario");
         String surn = JOptionPane.showInputDialog("Introduce los apellidos del usuario");
@@ -176,7 +179,6 @@ class MainFrame extends JFrame {
                 showNotification("Edad inválida");
             }
         }
-
     }
 
     private void showNotification(String message) {
