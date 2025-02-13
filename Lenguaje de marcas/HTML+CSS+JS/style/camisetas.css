@@ -58,6 +58,7 @@ input[type="text"] {
 main {
   flex: 1;
   padding: 20px;
+  background-color: #deeeff;
 }
 
 footer {
@@ -115,7 +116,7 @@ footer {
 }
 
 /* ---PRODUCTOS--- */
-.bestSelers{
+.titulo{
   text-align: center;
 }
 #productos {
