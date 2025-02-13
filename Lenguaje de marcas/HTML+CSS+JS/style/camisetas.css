@@ -112,3 +112,21 @@ footer {
     font-size: small;
   }
 }
+
+/* ---PRODUCTOS--- */
+.producto {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+}
+
+.producto img {
+  width: 100px;
+  height: 100px;
+}
+
+.producto p {
+  margin-top: 10px;
+  font-size: 1rem;
+}
