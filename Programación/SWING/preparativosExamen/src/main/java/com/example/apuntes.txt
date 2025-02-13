@@ -1,0 +1,57 @@
+TIPOS DE SWING
+JButton-Botó estàndard
+JLabel-Etiqueta de text estàndard
+JTextField-Quadre de text
+JTextArea-Quadre de text multilinea
+JCheckBox-Checkbox o casilla de verificació
+JRadioButton-RadioButton o botons d’opció
+JComboBox-Llista desplegable
+JScrollBar-Barra de desplaçament
+
+TIPOS DE LAYAOUT
+FlowLayout - Posa els components al contenidor de l’esquerra a dreta. És el layout Manager per defecte als panells.
+BorderLayout - Divideix el contenidor en 5 parts (nord, sud, oest, centre, est)
+CardLayout - Permet posar grups de components diferents en moments diferents de l’execució del programa. 
+GridLayout - Posa els components en fileres i columnes.
+GridBagLayout - Posa els components en fileres i columnes, però un component pot ocupar més d’un columna. 
+BoxLayout - Posa els components en una filera o columna ajustant-se. 
+
+ActionListener
+JButton
+JTextField
+JComboBox…
+Pressionar el botó
+Fer intro
+Triar una opció….
+-------------------
+AdjustmentListener
+JScrollBar…
+Moure la barra de desplaçament
+-------------------
+FocusListener
+JButton
+JTextField
+JComboBox…
+Les accions d’aquest listener son obtenir i perdre el focus (ens posa en el component i ens marxem quan estava actiu)
+-------------------
+ItemListener
+JCheckBox…
+Seleccionar i deseleccionar l’opció
+-------------------
+KeyListener
+JTextArea
+JTextField…
+Pressionar una tecla quan el component té el focus
+-------------------
+MouseListener
+Múltiples components
+Accions com pressionar el botó del ratolí
+-------------------
+MouseMotionListener
+Múltiples components
+Accions com arrossegar (drag) o pasar per damunt un objecte
+-------------------
+WindowListener
+JFrame
+Accions relatives a la finestra com per exemple tancar-la
+-------------------
