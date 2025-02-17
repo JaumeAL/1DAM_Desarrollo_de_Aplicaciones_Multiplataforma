@@ -1,10 +1,10 @@
 document.getElementById("formulariContacte").addEventListener("submit", function(event) {
     event.preventDefault();
 
-    let nom = document.getElementById("nom").value.trim();
-    let email = document.getElementById("email").value.trim();
-    let assumpte = document.getElementById("assumpte").value.trim();
-    let missatge = document.getElementById("missatge").value.trim();
+    let nom = document.getElementById("nom");
+    let email = document.getElementById("email");
+    let assumpte = document.getElementById("assumpte");
+    let missatge = document.getElementById("missatge");
     let missatgeValidacio = document.getElementById("missatgeValidacio");
 
     let emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
