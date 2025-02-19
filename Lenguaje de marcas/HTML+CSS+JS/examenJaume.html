@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Examen jaume JavaScript</title>
+    <link rel="stylesheet" href="estilos/examenJaume.css" />
+    <script src="javaScript/examenJaume.js" defer></script>
+  </head>
+
+  <body>
+    <div>
+      <h1>Contador de clics</h1>
+      <p id="parrafo">0</p>
+      <button id="contar" onclick="Contar()">Clic +</button>
+      <button class="Reiniciar" onclick="Reiniciar()">Reiniciar</button>
+    </div>
+
+    <div class="form">
+      <h1>Añadir comentarios</h1>
+      <form id="formulariContacte">
+        <input type="text"id="comentario"name="comentario"placeholder="Escribe un comentario"/>
+
+        <button type="submit" onclick="Añadir()">Añadir comentario</button>
+        <button class="Eliminar" onclick="Eliminar()">Eliminar comentario</button>
+      </form>
+    </div>
+    <div id="contenedor">
+
+    </div>
+  </body>
+</html>

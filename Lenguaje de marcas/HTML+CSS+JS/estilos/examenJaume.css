@@ -1,0 +1,41 @@
+body {
+  background-color: #ececec;
+  font-family: Arial, sans-serif;
+}
+div{ 
+    background-color: #fff;
+    margin: 150px auto;
+    padding: 30px 20px 20px 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px #3aa314;
+    text-align: center;
+    width: 40%;
+    
+  }
+  .form{
+    margin-top: -9rem;
+    
+  }
+button {
+  background-color: #43cb11;
+  color: white;
+  padding: 14px 20px;
+  margin: 10px 5px;
+  border: none;
+  cursor: pointer;
+  border-radius: 50px;
+  font-size: 1.2rem;
+}
+.Reiniciar{
+  background-color: #e33131;
+  display: none;
+}
+input {
+  width: 80%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.Eliminar{
+  background-color: #e33131;
+}
