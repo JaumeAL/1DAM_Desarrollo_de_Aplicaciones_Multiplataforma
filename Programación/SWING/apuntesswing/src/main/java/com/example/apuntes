@@ -1,0 +1,173 @@
+# Apuntes para el Examen de Java Swing
+
+## 1. Creación de una Ventana en Java Swing
+
+import javax.swing.*;
+
+public class MiVentana {
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Mi Aplicación"); // Crear la ventana
+        frame.setSize(400, 300); // Establecer tamaño
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Cerrar al salir
+        frame.setVisible(true); // Hacer visible
+    }
+}
+
+
+## 2. Componentes Básicos
+
+### a) Etiquetas (JLabel)
+
+JLabel label = new JLabel("Texto de etiqueta");
+panel.add(label);
+
+
+### b) Campo de texto (JTextField)
+
+JTextField campoTexto = new JTextField(20);
+panel.add(campoTexto);
+
+
+### c) Botón (JButton)
+
+JButton boton = new JButton("Pulsar");
+panel.add(boton);
+
+
+## 3. Eventos en Java Swing
+
+### a) Evento de botón
+
+boton.addActionListener(e -> {
+    System.out.println("Botón presionado");
+});
+
+
+### b) Evento de campo de texto
+
+campoTexto.addActionListener(e -> {
+    System.out.println("Texto ingresado: " + campoTexto.getText());
+});
+
+
+## 4. Disposición de Componentes (Layouts)
+
+### a) FlowLayout (Alineación en fila)
+
+panel.setLayout(new FlowLayout());
+
+
+### b) BorderLayout (División en 5 regiones)
+
+panel.setLayout(new BorderLayout());
+panel.add(boton, BorderLayout.SOUTH);
+
+
+### c) GridBagLayout (Mayor control sobre posiciones)
+
+panel.setLayout(new GridBagLayout());
+GridBagConstraints gbc = new GridBagConstraints();
+gbc.gridx = 0;
+gbc.gridy = 0;
+panel.add(label, gbc);
+
+
+## 5. Grupo de Botones (JRadioButton)
+
+JRadioButton opcion1 = new JRadioButton("Opción 1");
+JRadioButton opcion2 = new JRadioButton("Opción 2");
+ButtonGroup grupo = new ButtonGroup();
+grupo.add(opcion1);
+grupo.add(opcion2);
+panel.add(opcion1);
+panel.add(opcion2);
+
+
+## 6. Listas y ComboBox
+
+### a) Lista (JList)
+
+String[] elementos = {"Elemento 1", "Elemento 2"};
+JList<String> lista = new JList<>(elementos);
+panel.add(new JScrollPane(lista));
+
+
+### b) ComboBox (JComboBox)
+
+String[] opciones = {"Opción A", "Opción B"};
+JComboBox<String> comboBox = new JComboBox<>(opciones);
+panel.add(comboBox);
+
+
+## 7. Área de Texto con Scroll (JTextArea)
+
+JTextArea areaTexto = new JTextArea(5, 20);
+JScrollPane scroll = new JScrollPane(areaTexto);
+panel.add(scroll);
+
+
+## 8. CheckBox (JCheckBox)
+
+JCheckBox checkBox = new JCheckBox("Activar");
+panel.add(checkBox);
+
+
+## 9. Slider (JSlider)
+
+JSlider slider = new JSlider(0, 100, 50);
+panel.add(slider);
+
+
+## 10. Mostrar un Mensaje con JOptionPane
+
+JOptionPane.showMessageDialog(null, "Mensaje de prueba");
+
+
+## 11. Contar Vocales en un Texto
+
+String texto = "Ejemplo de texto".toLowerCase();
+long count = texto.chars().filter(c -> c == 'e').count();
+System.out.println("Número de 'e': " + count);
+
+
+## 12. Formulario Completo
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class Formulario {
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Formulario");
+        frame.setSize(400, 300);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        JPanel panel = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+
+        JLabel label = new JLabel("Nombre:");
+        JTextField campo = new JTextField(15);
+        JButton boton = new JButton("Enviar");
+        JLabel resultado = new JLabel("");
+
+        gbc.gridx = 0; gbc.gridy = 0;
+        panel.add(label, gbc);
+        gbc.gridx = 1;
+        panel.add(campo, gbc);
+        gbc.gridx = 0; gbc.gridy = 1;
+        gbc.gridwidth = 2;
+        panel.add(boton, gbc);
+        gbc.gridy = 2;
+        panel.add(resultado, gbc);
+
+        boton.addActionListener(e -> {
+            resultado.setText("Nombre ingresado: " + campo.getText());
+        });
+
+        frame.add(panel);
+        frame.setVisible(true);
+    }
+}
+
+
+Con estos apuntes, tienes lo esencial para el examen. ¡Mucho éxito! 🚀
+
