@@ -136,17 +136,20 @@ public class FichaVideojuegos {
         mostrarFichaButton.addActionListener(e -> {
             String titulo = tituloField.getText();
             String descripcion = descripcionField.getText();
-            String plataforma = pcButton.isSelected() ? "PC" : ps4Button.isSelected() ? "PS4" : xboxButton.isSelected() ? "Xbox" : "Switch";
+            String plataforma = pcButton.isSelected() ? "PC" : ps4Button.isSelected() ? "PS4" : xboxButton.isSelected() ? "Xbox" : switchButton.isSelected() ? "Switch" : "No seleccionada";
             String genero = (String) generoBox.getSelectedItem();
             String modos = (multiCheck.isSelected() ? "Multijugador, " : "") +
                            (coopCheck.isSelected() ? "Cooperativo, " : "") +
                            (singleCheck.isSelected() ? "Un jugador" : "");
+            if (modos.endsWith(", ")) {
+                modos = modos.substring(0, modos.length() - 2);
+            }
             String fecha = new SimpleDateFormat("dd/MM/yyyy").format((Date) fechaSpinner.getValue());
             String precio = precioField.getText();
             String requisitos = pcButton.isSelected() ? requisitosField.getText() : "No aplica";
             JOptionPane.showMessageDialog(frame, "Videojuego: " + titulo + "\nDescripción: " + descripcion + "\nPlataforma: " + plataforma + "\nGénero: " + genero + "\nModos: " + modos + "\nFecha: " + fecha + "\nPrecio: " + precio + "€\nRequisitos: " + requisitos);
         });
-        
+
         frame.add(panel);
         frame.setVisible(true);
     }
