@@ -63,9 +63,15 @@ public class añadirTareas {
             }
         });
 
-        // Evento borrar
+        // Evento borrar ultima tarea ingresada
         borrar.addActionListener((e) -> {
-            //Borrar tarea
+            String text = etiqueta.getText();
+            if (text.contains("<br>")) {
+                text = text.substring(0, text.lastIndexOf("<br>"));
+                etiqueta.setText(text);
+            } else {
+                etiqueta.setText("Tareas");
+            }
         });
 
         frame.add(panel); // Agregar el panel a la ventana
