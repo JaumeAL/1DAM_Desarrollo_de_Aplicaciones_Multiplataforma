@@ -67,7 +67,7 @@ public class Contador {
     // Evento restar hasta 0
     restar.addActionListener((e) -> {
       int contador1 = Integer.parseInt(etiqueta.getText()); // Obtener el valor actual de la etiqueta
-      contador1--; // Incrementar el contador
+      contador1--; // Disminuir el contador
       etiqueta.setText(String.valueOf(contador1)); // Actualizar la etiqueta con el nuevo valor
       sumar.setEnabled(true);
       if (contador1 == 0) {
