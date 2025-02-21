@@ -170,7 +170,7 @@ left join projecte p on p.dni_responsable = i.dni
 where codi is null;
 --5.Obtén els ingressos obtinguts (imports base) per cada proveidor, de les seves factures, però només si ha ingressat 100 euros o més. Una columna ha de mostrar el nom del proveïdor i l'altre el total d'ingressos. 
 Select nom, sum(import_base)
-from proveidor p
+from proveidor p    
 join factura f on p.nif = f.nif_proveidor
 join LINIA_FACTURA lf on f.id = lf.id_factura
 group by nom
