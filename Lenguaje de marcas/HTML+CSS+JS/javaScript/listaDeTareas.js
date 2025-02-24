@@ -44,3 +44,23 @@ function eliminarCompletadas() {
         }
     }
 }
+//BOTONES PARA FILTRAR TODAS LAS TAREAS
+function filtrarTodas() {
+    var lista = document.getElementById("lista");
+    var tareas = lista.children;
+    for (var i = 0; i < tareas.length; i++) {
+        tareas[i].style.display = "block";
+    }
+}
+//BOTON PARA FILTRAR TAREAS COMPLETADAS
+function filtrarCompletadas() {
+    var lista = document.getElementById("lista");
+    var tareas = lista.children;
+    for (var i = 0; i < tareas.length; i++) {
+        if (!tareas[i].children[0].checked) {
+            tareas[i].style.display = "none";
+        } else {
+            tareas[i].style.display = "block";
+        }
+    }
+}

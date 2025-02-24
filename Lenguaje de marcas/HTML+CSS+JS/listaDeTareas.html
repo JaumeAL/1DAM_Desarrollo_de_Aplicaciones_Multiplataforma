@@ -19,9 +19,8 @@ Filtrar tasques: Creeu botons per filtrar les tasques mostrades: totes, actives 
         <input type="text" id="tarea" placeholder="Escribir tarea...">
         <button onclick="agregar()" id="agregar">Agregar</button>
         
-        <button class="blue" id="todas" >Todas</button>
-        <button class="blue" id="activas">Activas</button>
-        <button class="blue" id="completadas">Completadas</button>
+        <button onclick="filtrarTodas()" class="blue" id="todas" >ver Todas</button>
+        <button onclick="filtrarCompletadas()" class="blue" id="completadas">Completadas</button>
         <button class="blue" id="sinCompletar">Sin Completar</button>
 
         <button onclick="eliminarCompletadas()" class="red" id="eliminarCompletadas">Eliminar completadas</button>
