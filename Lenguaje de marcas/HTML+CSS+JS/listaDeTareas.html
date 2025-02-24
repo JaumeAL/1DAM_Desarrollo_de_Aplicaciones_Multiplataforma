@@ -1,0 +1,29 @@
+<!-- (To-Do List) -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de tareas</title>
+    <link rel="stylesheet" href="estilos/listaDeTareas.css">
+    <link rel="icon" type="image/png" href="img/js.png">
+    <script src="javaScript/listaDeTareas.js" defer ></script>
+</head>
+<body>
+    <div>
+        <h1>Lista de tareas</h1>
+        <input type="text" id="tarea" placeholder="Escribir tarea...">
+        <button onclick="agregar()" id="agregar">Agregar</button>
+        
+        <button class="blue" id="todas" >Todas</button>
+        <button class="blue" id="activas">Activas</button>
+        <button class="blue" id="completadas">Completadas</button>
+        <button class="blue" id="sinCompletar">Sin Completar</button>
+
+        <button class="red" id="eliminar">Eliminar</button>
+        <button class="red" id="eliminarCompletadas">Eliminar completadas</button>
+        <ul id="lista"></ul>
+
+    </div>
+</body>
+</html>
