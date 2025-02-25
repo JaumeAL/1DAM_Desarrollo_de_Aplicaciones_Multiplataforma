@@ -45,3 +45,14 @@ button:hover {
 ul {
   list-style: none;
 }
+
+.texto-tarea {
+  display: inline-block;
+  width: 70%;
+  text-align: left;
+}
+
+.boton-completar,
+.boton-eliminar {
+  margin-left: 5px;
+}

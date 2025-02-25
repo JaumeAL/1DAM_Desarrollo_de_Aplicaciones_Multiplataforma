@@ -4,41 +4,49 @@ function agregar() {
     var lista = document.getElementById("lista");
     var nuevaTarea = document.createElement("li");
 
-    nuevaTarea.textContent = tarea;
-    lista.appendChild(nuevaTarea);
+    var textoTarea = document.createElement("span");
+    textoTarea.className = "texto-tarea";
+    textoTarea.textContent = tarea;
+    nuevaTarea.appendChild(textoTarea);
 
-    var check = document.createElement("input");
-    check.type = "checkbox";
-    nuevaTarea.appendChild(check);
-    check.onclick = function() {
-        if (check.checked) {
-            nuevaTarea.style.textDecoration = "line-through";
-            nuevaTarea.style.color = "gray";
-        } else {
+    var botonCompletar = document.createElement("button");
+    botonCompletar.className = "boton-completar";
+    botonCompletar.textContent = "✓";
+    nuevaTarea.appendChild(botonCompletar);
+    botonCompletar.onclick = function() {
+        if (nuevaTarea.style.textDecoration === "line-through") {
             nuevaTarea.style.textDecoration = "none";
             nuevaTarea.style.color = "black";
+        } else {
+            nuevaTarea.style.textDecoration = "line-through";
+            nuevaTarea.style.color = "gray";
         }
     }
-    var boton = document.createElement("button");
-    boton.style.backgroundColor = "#e33131";
-    boton.textContent = "X";
-    nuevaTarea.appendChild(boton);
-    boton.onclick = function() {
+
+    var botonEliminar = document.createElement("button");
+    botonEliminar.className = "boton-eliminar";
+    botonEliminar.style.backgroundColor = "#e33131";
+    botonEliminar.textContent = "X";
+    nuevaTarea.appendChild(botonEliminar);
+    botonEliminar.onclick = function() {
         lista.removeChild(nuevaTarea);
     }
-    
+
+    lista.appendChild(nuevaTarea);
 }
+
 //ELIMINAR TAREAS COMPLETADAS
 function eliminarCompletadas() {
     var lista = document.getElementById("lista");
     var tareas = lista.children;
     for (var i = 0; i < tareas.length; i++) {
-        if (tareas[i].children[0].checked) {
+        if (tareas[i].style.textDecoration === "line-through") {
             lista.removeChild(tareas[i]);
             i--;
         }
     }
 }
+
 //ILTRAR TODAS LAS TAREAS
 function filtrarTodas() {
     var lista = document.getElementById("lista");
@@ -47,24 +55,26 @@ function filtrarTodas() {
         tareas[i].style.display = "block";
     }
 }
+
 //FILTRAR TAREAS COMPLETADAS
 function filtrarCompletadas() {
     var lista = document.getElementById("lista");
     var tareas = lista.children;
     for (var i = 0; i < tareas.length; i++) {
-        if (!tareas[i].children[0].checked) {
+        if (tareas[i].style.textDecoration !== "line-through") {
             tareas[i].style.display = "none";
         } else {
             tareas[i].style.display = "block";
         }
     }
 }
-//FINLTRAR TAREAS SIN COMPLETAR
+
+//FILTRAR TAREAS SIN COMPLETAR
 function filtrarSinCompletar() {
     var lista = document.getElementById("lista");
     var tareas = lista.children;
     for (var i = 0; i < tareas.length; i++) {
-        if (tareas[i].children[0].checked) {
+        if (tareas[i].style.textDecoration === "line-through") {
             tareas[i].style.display = "none";
         } else {
             tareas[i].style.display = "block";
