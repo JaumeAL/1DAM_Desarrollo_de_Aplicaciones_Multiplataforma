@@ -17,9 +17,15 @@ function agregar() {
         if (nuevaTarea.style.textDecoration === "line-through") {
             nuevaTarea.style.textDecoration = "none";
             nuevaTarea.style.color = "black";
+            botonCompletar.style.backgroundColor = "#34a80a";
+            botonEliminar.style.backgroundColor = "#e33131";
+            
         } else {
             nuevaTarea.style.textDecoration = "line-through";
             nuevaTarea.style.color = "gray";
+            botonCompletar.style.backgroundColor = "gray";
+            botonEliminar.style.backgroundColor = "gray";
+
         }
     }
 
