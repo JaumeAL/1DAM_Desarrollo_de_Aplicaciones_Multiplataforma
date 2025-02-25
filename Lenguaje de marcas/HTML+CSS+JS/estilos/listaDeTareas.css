@@ -1,5 +1,5 @@
 body {
-  background-color: #ececec;
+  background-color: #aabcc5;
   font-family: Arial, sans-serif;
 }
 div {
@@ -12,7 +12,7 @@ div {
   width: 40%;
 }
 button {
-  background-color: #43cb11;
+  background-color: #34a80a;
   color: white;
   padding: 14px 20px;
   margin: 10px 5px;
@@ -27,20 +27,20 @@ input {
   border-radius: 50px;
 }
 button:hover {
-  background-color: #3aa314;
+  background-color: #2f890e;
 }
-.red{
-    background-color: #e33131;
+.rojo {
+  background-color: #e33131;
 }
-.red:hover{
-    background-color: #a31f1f;
+.rojo:hover {
+  background-color: #a31f1f;
 }
-.blue{
-    background-color: #318ce3;
+.azul {
+  background-color: #318ce3;
 }
-.blue:hover{
-    background-color: #1f6fa3;
+.azul:hover {
+  background-color: #1f6fa3;
 }
-ul{
-    list-style: none;
+ul {
+  list-style: none;
 }
