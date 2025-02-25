@@ -1,8 +1,3 @@
-<!-- (To-Do List) 
- Afegir tasques: Els usuaris han de poder introduir tasques mitjançant un camp de text i un botó per afegir-les a la llista. Cada tasca afegida ha d'aparèixer a la llista de tasques.
-Marcar tasques com a completades: Cada tasca a la llista hauria de tenir un checkbox o algun altre mecanisme per marcar-la com a completada. Quan una tasca està marcada com a completada, ha de mostrar-se de manera diferent (p. ex., ratllada o amb un color diferent).
-Eliminar tasques: Ha d'haver-hi una opció per eliminar tasques individuals de la llista. També una funció per eliminar totes les tasques completades amb un sol clic.
-Filtrar tasques: Creeu botons per filtrar les tasques mostrades: totes, actives (no completades), o completades.-->
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -16,16 +11,16 @@ Filtrar tasques: Creeu botons per filtrar les tasques mostrades: totes, actives 
 <body>
     <div>
         <h1>Lista de tareas</h1>
-        <input type="text" id="tarea" placeholder="Escribir tarea...">
+        <input type="text" id="inputTarea" placeholder="Escribir tarea...">
         <button onclick="agregar()" id="agregar">Agregar</button>
         
-        <button onclick="filtrarTodas()" class="azul" id="todas" >ver Todas</button>
+        <button onclick="filtrarTodas()" class="azul" id="todas" >Ver Todas</button>
         <button onclick="filtrarCompletadas()" class="azul" id="completadas">Completadas</button>
         <button onclick="filtrarSinCompletar()" class="azul" id="sinCompletar">Sin Completar</button>
 
         <button onclick="eliminarCompletadas()" class="rojo" id="eliminarCompletadas">Eliminar completadas</button>
         <ul id="lista"></ul>
-
+        
     </div>
 </body>
 </html>

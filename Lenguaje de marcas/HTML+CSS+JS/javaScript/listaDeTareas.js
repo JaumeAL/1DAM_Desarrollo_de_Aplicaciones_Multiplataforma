@@ -1,12 +1,12 @@
-//BOTON PARA AGREGAR TAREAS
+//AGREGAR TAREAS
 function agregar() { 
-    var tarea = document.getElementById("tarea").value;
+    var tarea = document.getElementById("inputTarea").value;
     var lista = document.getElementById("lista");
     var nuevaTarea = document.createElement("li");
 
     nuevaTarea.textContent = tarea;
     lista.appendChild(nuevaTarea);
-    
+
     var check = document.createElement("input");
     check.type = "checkbox";
     nuevaTarea.appendChild(check);
@@ -19,7 +19,6 @@ function agregar() {
             nuevaTarea.style.color = "black";
         }
     }
-    
     var boton = document.createElement("button");
     boton.style.backgroundColor = "#e33131";
     boton.textContent = "X";
@@ -27,10 +26,9 @@ function agregar() {
     boton.onclick = function() {
         lista.removeChild(nuevaTarea);
     }
-
-
+    
 }
-//BOTON PARA ELIMINAR TAREAS COMPLETADAS
+//ELIMINAR TAREAS COMPLETADAS
 function eliminarCompletadas() {
     var lista = document.getElementById("lista");
     var tareas = lista.children;
@@ -41,7 +39,7 @@ function eliminarCompletadas() {
         }
     }
 }
-//BOTONES PARA FILTRAR TODAS LAS TAREAS
+//ILTRAR TODAS LAS TAREAS
 function filtrarTodas() {
     var lista = document.getElementById("lista");
     var tareas = lista.children;
@@ -49,7 +47,7 @@ function filtrarTodas() {
         tareas[i].style.display = "block";
     }
 }
-//BOTON PARA FILTRAR TAREAS COMPLETADAS
+//FILTRAR TAREAS COMPLETADAS
 function filtrarCompletadas() {
     var lista = document.getElementById("lista");
     var tareas = lista.children;
@@ -61,7 +59,7 @@ function filtrarCompletadas() {
         }
     }
 }
-//BOTON PARA FINLTRAR TAREAS SIN COMPLETAR
+//FINLTRAR TAREAS SIN COMPLETAR
 function filtrarSinCompletar() {
     var lista = document.getElementById("lista");
     var tareas = lista.children;
