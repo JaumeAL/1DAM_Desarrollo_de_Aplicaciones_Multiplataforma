@@ -29,3 +29,8 @@ function agregar() {
   }
   nuevaFoto.appendChild(botonBorde);
 }
+
+
+function eliminarTodas() {
+  document.getElementById("galeria").innerHTML = "";
+}
