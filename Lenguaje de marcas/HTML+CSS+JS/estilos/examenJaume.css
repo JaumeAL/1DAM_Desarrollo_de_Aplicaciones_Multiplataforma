@@ -35,7 +35,7 @@ button {
 input {
   width: 80%;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1.5px solid #7d7d7d;
   border-radius: 5px;
 }
 .Eliminar{

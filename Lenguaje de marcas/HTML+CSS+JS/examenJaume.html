@@ -19,14 +19,16 @@
 
   <div class="form">
     <h1>Añadir comentarios</h1>
-    <form id="formulariContacte">
+    <form id="formComentarios">
       <input type="text" id="comentario" name="comentario" placeholder="Escribe un comentario" />
 
-      <button type="submit" onclick="Añadir()">Añadir comentario</button>
-      <button class="Eliminar" onclick="Eliminar()">Eliminar comentario</button>
+      <button onclick="Añadir()">Añadir comentario</button>
+      <button class="Eliminar" onclick="Eliminar()">Eliminar ultimo</button>
     </form>
+    <ul id="lista"></ul>
+
   </div>
-  <div id="contenedor"> </div>
+
 </body>
 
 </html>
