@@ -1,24 +1,22 @@
-//Boton Contar clics
-const contador = 0;
+
+var contador = 0;
 const final = 10;
 function Contar() {
-    contador ++;
- document.getElementById("parrafo").textContent = contador;
+    if (contador < 10) {
+        contador ++;
+        document.getElementById("parrafo").textContent = contador;
+        
+    }else{
+        document.getElementById("reiniciar").style.display ="flex";
+        document.getElementById("contar").style.display ="none";
+    }
     
-
-
 }
 
-//Boton añadir texto
-function afegirParagraf() {
-    var text = InputDeviceInfo;
-    let nuevo = document.createElement("p");
-    nuevo.textContent = text;
-    document.getElementById("contenedor").appendChild(nuevo);
-}
+function Reiniciar() {
+    document.getElementById("parrafo").textContent = "0";
+    contador = 0;
+    document.getElementById("reiniciar").style.display ="none";
+    document.getElementById("contar").style.display ="flex";    
 
-//Boton borrar texto nuevo
-function Eliminar() {
-    let borrar = document.getElementById("contenedor");
-    borrar.removeChild(contenedor.lastChild);
 }

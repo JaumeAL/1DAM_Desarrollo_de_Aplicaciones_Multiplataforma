@@ -4,23 +4,23 @@ body {
 }
 div{ 
     background-color: #fff;
-    margin: 150px auto;
+    margin: 30px auto;
     padding: 30px 20px 20px 20px;
     border-radius: 10px;
-    box-shadow: 0 0 20px #3aa314;
+    box-shadow: 0 0 20px #2c2c2c;
     text-align: center;
     width: 40%;
     
   }
-  .form{
-    margin-top: -9rem;
-    
-  }
+input{
+  margin-bottom: 20px;
+}
+
 button {
   background-color: #43cb11;
   color: white;
   padding: 14px 20px;
-  margin: 10px 5px;
+  margin: 0 auto;
   border: none;
   cursor: pointer;
   border-radius: 50px;
@@ -29,6 +29,8 @@ button {
 .Reiniciar{
   background-color: #e33131;
   display: none;
+
+  
 }
 input {
   width: 80%;
