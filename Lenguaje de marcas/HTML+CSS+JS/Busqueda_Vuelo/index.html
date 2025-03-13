@@ -8,6 +8,46 @@
     <title>Vuelos Jaume</title>
 </head>
 <body>
+    <header>
+        <h1>eSueños</h1>
+    </header>
+
+    <div>
+        <h2>Buscador de vuelos</h2>
+         <form action="">
+            <label for="origen">Origen</label>
+            <select name="origen" id="Origen" required>
+                <option value="PMI">Palma</option>
+                <option value="MAD">Madrid</option>
+                <option value="BCN">Barcelona</option>
+            </select>
+
+            <label for="destino">Origen</label>
+            <select name="destino" id="Destino" required>
+                <option value="MAD">Madrid</option>
+                <option value="PMI">Palma</option>
+                <option value="BCN">Barcelona</option>
+                <option value="LGW">Londres</option>
+                <option value="ORY">Paris</option>
+            </select><br>
+
+
+            <label for="fechaInicio">Fecha Inicio</label>
+            <input type="date" name="fechaInicio" id="FechaInicio" required>
+
+            <label for="fechaFin">Fecha Fin</label>
+            <input type="date" name="fechaFin" id="FechaFin" required><br>
+
+            <label for="numAdultos">Número de adultos</label>
+            <input type="number" name="numAdultos" id="NumAdultos" placeholder="2" required>
+
+            <label for="numNiños">Número de niños</label>
+            <input type="number" name="numNiños" id="NumNiños" placeholder="0" required><br>
+
+            <input type="submit" value="Enviar">
+
+         </form>
+    </div>
     
 </body>
 </html>
