@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/main.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <title>Adivinar numero</title>
+</head>
+<body>
+    <header>
+        <h1>Adiniva el numero aleatorio</h1>
+    </header>
+
+    <div id="inicial" class="inicial">
+        <h2>Selecciona un nivel</h2>
+        <div class="radio-group">
+            <input type="radio" name="nivel" id="facil" value="facil">
+            <label for="facil">Fácil</label>
+            <input type="radio" name="nivel" id="medio" value="medio">
+            <label for="medio">Medio</label>
+            <input type="radio" name="nivel" id="dificil" value="dificil">
+            <label for="dificil">Difícil</label>
+        </div>
+
+        <button onclick="jugar()" id="Jugar">Jugar</button>
+    </div>
+    
+    <div id="juego" class="juego">
+        <h2 id="subtitulo"></h2>
+        <input type="number" id="inputNumero" placeholder="Ingresa un número">
+        <button onclick="comprobar()" id="comprobar">Comprobar</button>
+        <button onclick="reiniciar()" id="reiniciar">Reiniciar</button>
+        <p id="mensaje"></p>
+    </div>
+    
+</body>
+</html>
