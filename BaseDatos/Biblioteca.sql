@@ -42,6 +42,14 @@ CREATE TABLE LLIBRE_GENERE(
     primary key (ID_llibre, nom_genere)
 );
 
+CREATE TABLE VENDA (
+    ID_VENDA NUMBER generated as identity primary key,
+    DNI_Client varchar2(9),
+    ID_llibre number references llibre,
+    DATA timestamp,
+    preu number(38,2)
+);
+
 INSERT INTO EDITORIAL (nom) VALUES ('LaButxaca');
 INSERT INTO EDITORIAL (nom) VALUES ('Letras hispánicas');
 INSERT INTO EDITORIAL (nom) VALUES ('Planeta');
@@ -140,3 +148,10 @@ select titol from llibre l inner join autor_llibre al on l.id = al.id_llibre gro
 select sum(exemplars) from llibre l inner join autor_llibre al on l.id = al.id_llibre inner join autor a on al.id_autor = a.id where a.nom = 'Federico' and a.cognoms = 'García Lorca';
 --9. Llista el nombre d'exemplars totals de cada autor.
 select nom, cognoms, sum(exemplars) from llibre l inner join autor_llibre al on l.id = al.id_llibre inner join autor a on al.id_autor = a.id group by nom, cognoms;
+
+DECLARE
+    DNI_Client varchar2(9) := "AAAAAAAA1" 
+
+BEGIN
+
+END;
