@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
-    <script src="js/main.js" defer></script>
+    <script src="js/index.js" defer></script>
     <title>Vuelos Jaume</title>
 </head>
 <body>
     <header>
-        <h1>eSueños</h1>
+        <h1 class="logo">eSueños</h1>
     </header>
 
     <div>
         <h2>Buscador de vuelos</h2>
-         <form action="">
+
+         <form action="resultado.html" method="post">
             <label for="origen">Origen</label>
             <select name="origen" id="Origen" required>
                 <option value="PMI">Palma</option>
@@ -22,7 +23,7 @@
                 <option value="BCN">Barcelona</option>
             </select>
 
-            <label for="destino">Origen</label>
+            <label for="destino">Destino</label>
             <select name="destino" id="Destino" required>
                 <option value="MAD">Madrid</option>
                 <option value="PMI">Palma</option>
@@ -36,15 +37,22 @@
             <input type="date" name="fechaInicio" id="FechaInicio" required>
 
             <label for="fechaFin">Fecha Fin</label>
-            <input type="date" name="fechaFin" id="FechaFin" required><br>
+            <input type="date" name="fechaFin" id="FechaFin" required ><br>
 
             <label for="numAdultos">Número de adultos</label>
-            <input type="number" name="numAdultos" id="NumAdultos" placeholder="2" required>
+            <input type="number" name="numAdultos" id="NumAdultos" required>
 
             <label for="numNiños">Número de niños</label>
-            <input type="number" name="numNiños" id="NumNiños" placeholder="0" required><br>
+            <input type="number" name="numNiños" id="NumNiños" placeholder="0" min="0"><br>
 
-            <input type="submit" value="Enviar">
+            <label for="desuentos">Descuentos</label>
+            <select name="descuentos" id="Descuentos" required>
+                <option value="Sin descuento">Sin descuento</option>
+                <option value="Descuento residente">Descuento residente</option>
+                <option value="Descuento familia numerosa">Descuento familia numerosa</option>
+            </select>
+
+            <input type="submit" value="Buscar">
 
          </form>
     </div>

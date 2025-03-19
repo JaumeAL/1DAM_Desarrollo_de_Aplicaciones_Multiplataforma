@@ -1,0 +1,19 @@
+.fila {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 30%;
+    margin: 10px auto;
+}
+
+.fila h3 {
+    margin: 0;
+    width: 40%;
+    text-align: left;
+}
+
+.fila p {
+    margin: 0;
+    width: 40%;
+    text-align: right;
+}

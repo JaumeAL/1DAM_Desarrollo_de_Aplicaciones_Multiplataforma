@@ -1,0 +1,57 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
+    font-size: 1.5rem;
+}
+
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    border: 3px solid black; /* Borde negro */
+    border-radius: 20px; /* Esquinas redondeadas */
+    overflow: hidden; /* Para que los bordes redondeados se apliquen correctamente */
+}
+
+th, td {
+    border: 1px solid #000; /* Borde negro para celdas */
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #147b12;
+    color: white;
+}
+
+/* Colores para cada asignatura */
+.base-datos {
+    background-color: #f4a460;
+}
+
+.lenguaje-marcas {
+    background-color: #ffeb3b;
+}
+
+.sistemas-informaticos {
+    background-color: #ee90eb;
+}
+
+.programacion {
+    background-color: #e47171;
+}
+
+.entornos-desenvolupamiento {
+    background-color: #628ddd;
+}
+
+.digitalizacion {
+    background-color: #9d3bff;
+}
+
+.patio {
+    background-color: #c2c2c2;
+}

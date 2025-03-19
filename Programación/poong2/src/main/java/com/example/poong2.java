@@ -54,13 +54,15 @@ public class poong2 extends JPanel implements ActionListener {
         g2d.fillOval(bolaInicialX, bolaInicialY, radioBola, radioBola); // Dibuixa el cercle amb les coordenades i el radi
         g2d.fillRect(20, pala1Y, palaH, palaW);
         g2d.fillRect(560, pala2Y, palaH, palaW);
-        g2d.setFont(new Font("Arial", Font.BOLD, 20)); //Fuente y estilos 
+        g2d.setFont(new Font("Arial", Font.PLAIN, 20)); //Fuente y estilos 
         g2d.drawString("jugador 1: "+contador1, 100, 30); //Marcador jugaror1
         g2d.drawString("jugador 2: "+contador2, 400, 30); //Marcador jugaror2
+        float[] dashPattern = { 10, 10 };  //Patron de la linea
+        Stroke dashed = new BasicStroke(1, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL,  0, dashPattern, 0); // Estilo de la linea
+        g2d.setStroke(dashed); //Linea punteada
+        int midX = getWidth() / 2; //Mitad de la ventana
+        g2d.drawLine(midX, 0, midX, getHeight()); //Linea central
         
-
-
-
     }
 
     // Mètode que s'executa a cada tic del temporitzador per moure el cercle
@@ -74,19 +76,20 @@ public class poong2 extends JPanel implements ActionListener {
             dy = -dy;
         //Rebote de las palas
         if (bolaInicialX <= 25 && bolaInicialY + radioBola >= pala1Y && bolaInicialY <= pala1Y + palaW)
-            dx = Math.abs(dx);//asegura que la pelota rebota en la dirección correcta
+            dx = Math.abs(dx); // Calculo para saber si la bola toca la pala, canvia la direcció
         if (bolaInicialX >= 540 && bolaInicialY + radioBola >= pala2Y && bolaInicialY <= pala2Y + palaW)
-            dx = -Math.abs(dx);
-        //Contadores y posicionar la bola en el centro
+            dx = -Math.abs(dx); 
+
+        // Si la bola surt de la pantalla, es reinicia
         if (bolaInicialX < 0) {
             contador2++;
             reset();
         }
-        if (bolaInicialX > getWidth()) {
+        if (bolaInicialX > getWidth()) { 
             contador1++;
             reset();
         }
-        //Movimiento de las palas
+        // Moviment de les pales
         if (arriba1 && pala1Y > 0)
             pala1Y -= 5;
         if (abajo1 && pala1Y < getHeight() - palaW)
@@ -114,8 +117,11 @@ public class poong2 extends JPanel implements ActionListener {
             frame.setSize(600, 400); // Defineix la mida de la finestra
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Configura el tancament de la finestra
             frame.setLocationRelativeTo(null); // Centra la finestra a la pantalla
+            frame.setResizable(false); // Impedeix redimensionar la finestra
             frame.setVisible(true); // Mostra la finestra
 
         });
     }
+    
+    
 }

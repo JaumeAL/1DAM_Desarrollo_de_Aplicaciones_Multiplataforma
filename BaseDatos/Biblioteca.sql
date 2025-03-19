@@ -44,9 +44,9 @@ CREATE TABLE LLIBRE_GENERE(
 
 CREATE TABLE VENDA (
     ID_VENDA NUMBER generated as identity primary key,
-    DNI_Client varchar2(9),
-    ID_llibre number references llibre,
-    DATA timestamp,
+    DNI_CLIENT varchar2(9),
+    ID_llibre number references llibre(ID),
+    DATA_VENDA timestamp,
     preu number(38,2)
 );
 
@@ -150,8 +150,16 @@ select sum(exemplars) from llibre l inner join autor_llibre al on l.id = al.id_l
 select nom, cognoms, sum(exemplars) from llibre l inner join autor_llibre al on l.id = al.id_llibre inner join autor a on al.id_autor = a.id group by nom, cognoms;
 
 DECLARE
-    DNI_Client varchar2(9) := "AAAAAAAA1" 
+    DNI_Client varchar2(9) := "11111111A" ;
+    ID_llibre number := 1;
+    exemplars number;
 
 BEGIN
+    SELECT exemplars INTO exemplars FROM LLIBRE WHERE ID = ID_llibre
+    for idx in 1..exemplars LOOP
+    INSERT INTO VENDA(DATA_VENDA,DNI_CLIENT,ID_LLIBRE,PREU) VALUES (SYSTIMESTAMP, CLIENT_DNI,LLIBRE_ID, 10);
+    UPDATE LLIBRE SET exemplars = exemplars -1 WHERE ID LLIBRE_ID;
+
+    END LOOP;
 
 END;
