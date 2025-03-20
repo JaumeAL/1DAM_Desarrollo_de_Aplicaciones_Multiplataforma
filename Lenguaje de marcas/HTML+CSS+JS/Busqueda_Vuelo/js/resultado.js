@@ -1,13 +1,18 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const datosVuelo = JSON.parse(localStorage.getItem("datosVuelo"));
+    const origen = sessionStorage.getItem("origen");
+    const destino = sessionStorage.getItem("destino");
+    const fechaInicio = sessionStorage.getItem("fechaInicio");
+    const fechaFin = sessionStorage.getItem("fechaFin");
+    const numAdultos = sessionStorage.getItem("numAdultos");
+    const numNinos = sessionStorage.getItem("numNinos");
 
-    if (datosVuelo) {
+    if (origen && destino && fechaInicio && fechaFin && numAdultos && numNinos) {
         const parrafos = document.querySelectorAll(".fila p");
-        parrafos[0].textContent = datosVuelo.origen;
-        parrafos[1].textContent = datosVuelo.destino;
-        parrafos[2].textContent = datosVuelo.fechaInicio;
-        parrafos[3].textContent = datosVuelo.fechaFin;
-        parrafos[4].textContent = datosVuelo.numAdultos;
-        parrafos[5].textContent = datosVuelo.numNiños;
+        parrafos[0].textContent = origen;
+        parrafos[1].textContent = destino;
+        parrafos[2].textContent = fechaInicio;
+        parrafos[3].textContent = fechaFin;
+        parrafos[4].textContent = numAdultos;
+        parrafos[5].textContent = numNinos;
     }
 });

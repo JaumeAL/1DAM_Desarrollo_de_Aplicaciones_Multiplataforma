@@ -44,7 +44,7 @@ public class inicio extends JFrame {
 
         // NOMBRE JUGADOR 1
         JLabel jugador1Label = new JLabel("Nombre del Jugador 1:");
-        jugador1Label.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        jugador1Label.setFont(new Font("Tahoma", Font.PLAIN, 18));hhg
         jugador1Label.setBounds(35, 190, 300, 28);
         contentPane.add(jugador1Label);
 
