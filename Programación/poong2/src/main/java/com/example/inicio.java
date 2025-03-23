@@ -44,7 +44,7 @@ public class inicio extends JFrame {
 
         // NOMBRE JUGADOR 1
         JLabel jugador1Label = new JLabel("Nombre del Jugador 1:");
-        jugador1Label.setFont(new Font("Tahoma", Font.PLAIN, 18));hhg
+        jugador1Label.setFont(new Font("Tahoma", Font.PLAIN, 18));
         jugador1Label.setBounds(35, 190, 300, 28);
         contentPane.add(jugador1Label);
 
@@ -78,7 +78,7 @@ public class inicio extends JFrame {
         contentPane.add(btnStartGame);
 
         // BOTÓN INSTRUCCIONES
-        JButton btnInstrucciones = new JButton("INSTRUCCIONES");
+        JButton btnInstrucciones = new JButton("AJUDA");
         btnInstrucciones.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 mostrarInstrucciones();
@@ -105,10 +105,11 @@ public class inicio extends JFrame {
     }
 
     private void mostrarInstrucciones() {
-        JOptionPane.showMessageDialog(this, "Instrucciones del juego:\n" +
-                "Jugador 1: Usa las teclas W y S para mover la pala.\n" +
-                "Jugador 2: Usa las teclas de flecha arriba y abajo para mover la pala.\n" +
-                "El objetivo es evitar que la bola pase tu pala.", "Instrucciones", JOptionPane.INFORMATION_MESSAGE);
+        this.setVisible(false);
+		this.dispose();
+		ayuda help = new ayuda();
+		help.setVisible(true);
+		help.setLocationRelativeTo(null);
     }
 
     private void iniciarJuego() {
