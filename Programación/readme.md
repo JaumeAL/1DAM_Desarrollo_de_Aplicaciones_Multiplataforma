@@ -9,7 +9,7 @@ Este repositorio contiene diversos proyectos y ejercicios en JAVA realizados dur
 ## Contenido
 
 - **Proyectos**: 
-  - `apoocalypsis_GAME`: Juego desarrollado en Java.
+  - `apoocalypsis_GAME`: Juego desarrollado en Java simulando un apoocalypsis Zombie.
   - `CideFighter`: Proyecto de juego de lucha.
   - `SWING`: Ejemplos de aplicaciones gráficas con Swing.
   - `animalillos_poo`: Proyecto de programación orientada a objetos con animales.
