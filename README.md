@@ -1,6 +1,6 @@
 # 📚 1º DAM - Desarrollo de Aplicaciones Multiplataforma
 
-¡Bienvenido al repositorio de 1º DAM! Aquí encontrarás todo el material, ejercicios y proyectos de las asignaturas del primer año del ciclo formativo de Desarrollo de Aplicaciones Multiplataforma.
+Aquí encontrarás todo el material, ejercicios y proyectos de las asignaturas del primer año del ciclo formativo de Desarrollo de Aplicaciones Multiplataforma.
 
 ## 📂 Estructura del Repositorio
 
