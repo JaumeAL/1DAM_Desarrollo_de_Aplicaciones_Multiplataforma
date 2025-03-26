@@ -154,7 +154,7 @@ BEGIN
 
     FOR i IN 1..v_nou_exemplars LOOP
         v_exemplars := v_exemplars + 1;
-        DBMS_OUTPUT.PUT_LINE('Afegit exemplar.Exemplars: ' || v_exemplars);
+        DBMS_OUTPUT.PUT_LINE('Exemplat afegit .Exemplars: ' || v_exemplars);
     END LOOP;
 
     UPDATE LLIBRE SET exemplars = v_exemplars WHERE ID = v_id;
@@ -202,11 +202,11 @@ BEGIN
             v_exemplars := v_exemplars - 1;
             DBMS_OUTPUT.PUT_LINE('Eliminat exemplar. Exemplars: ' || v_exemplars);
         ELSE
-            DBMS_OUTPUT.PUT_LINE('No queden més exemplars. ' || v_nou_exemplars - i || ' exemplars han quedat sense eliminar.');
+            DBMS_OUTPUT.PUT_LINE('No hi ha més exemplars. ' || v_nou_exemplars - i || ' exemplars han quedat sense eliminar.');
             EXIT;
         END IF;
     END LOOP;
 
     UPDATE LLIBRE SET exemplars = v_exemplars WHERE ID = v_id;
-    DBMS_OUTPUT.PUT_LINE('Exemplars finals: ' || v_exemplars);
+    DBMS_OUTPUT.PUT_LINE('Exemplars finals:' || v_exemplars);
 END;

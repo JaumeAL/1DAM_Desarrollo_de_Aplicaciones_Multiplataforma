@@ -26,7 +26,7 @@ public class inicio extends JFrame {
     }
 
     public inicio() {
-        setTitle("Poong2");
+        setTitle("PoongJ");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 370, 500);
 
@@ -37,7 +37,7 @@ public class inicio extends JFrame {
         contentPane.setLayout(null);
 
         // IMAGEN
-        ImageIcon icono = new ImageIcon(getClass().getResource("/com/example/logo.png")); // Ruta de la imagen
+        ImageIcon icono = new ImageIcon(getClass().getResource("/com/example/pong.png")); // Ruta de la imagen
         JLabel etiqueta = new JLabel(icono);
         etiqueta.setBounds(50, 5, 250, 190); // UBICACIÓN DE LA IMAGEN
         contentPane.add(etiqueta);
@@ -72,7 +72,7 @@ public class inicio extends JFrame {
             }
         });
         btnStartGame.setForeground(new Color(235, 235, 235));
-        btnStartGame.setBackground(new Color(44, 150, 57));
+        btnStartGame.setBackground(new Color(40, 163, 10));
         btnStartGame.setFont(new Font("Tahoma", Font.BOLD, 28));
         btnStartGame.setBounds(53, 330, 241, 55); // UBICACIÓN DEL BOTÓN
         contentPane.add(btnStartGame);
@@ -85,23 +85,11 @@ public class inicio extends JFrame {
             }
         });
         btnInstrucciones.setForeground(new Color(235, 235, 235));
-        btnInstrucciones.setBackground(new Color(44, 150, 57));
+        btnInstrucciones.setBackground(new Color(40, 163, 10));
         btnInstrucciones.setFont(new Font("Tahoma", Font.BOLD, 28));
         btnInstrucciones.setBounds(53, 400, 241, 55); // UBICACIÓN DEL BOTÓN
         contentPane.add(btnInstrucciones);
 
-        try {
-            Font font = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/com/example/junegull.ttf"));
-            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            ge.registerFont(font);
-            Font buttonFont = font.deriveFont(Font.BOLD, 28f);
-
-            // Set the font for the buttons
-            btnStartGame.setFont(buttonFont);
-            btnInstrucciones.setFont(buttonFont);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     private void mostrarInstrucciones() {
@@ -110,6 +98,7 @@ public class inicio extends JFrame {
 		ayuda help = new ayuda();
 		help.setVisible(true);
 		help.setLocationRelativeTo(null);
+        help.setResizable(false);
     }
 
     private void iniciarJuego() {
@@ -118,8 +107,8 @@ public class inicio extends JFrame {
         if (jugador1.isEmpty() || jugador2.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Por favor, ingrese los nombres de ambos jugadores.", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
-            JFrame frame = new JFrame("Cercle Rebotant");
-            poong2 panel = new poong2(jugador1, jugador2);
+            JFrame frame = new JFrame("POONG ");
+            poongJ panel = new poongJ(jugador1, jugador2);
             frame.add(panel);
             frame.setSize(600, 400);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

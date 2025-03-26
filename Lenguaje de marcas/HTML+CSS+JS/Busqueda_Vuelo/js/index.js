@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
             sessionStorage.setItem("fechaFin", fechaFin);
             sessionStorage.setItem("numAdultos", numAdultos);
             sessionStorage.setItem("numNinos", numNinos);
-
+            
             // Redirigir a resultado.html
             window.location.href = "resultado.html";
         });
