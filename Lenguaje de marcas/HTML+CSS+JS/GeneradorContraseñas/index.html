@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Contraseñas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Generador de Contraseñas Aleatorias</h2>
+
+        <label for="length">Longitud de la Contraseña:</label>
+        <input type="number" id="length" value="12" min="6" max="20">
+
+        <label for="uppercase">Incluir Mayúsculas:</label>
+        <input type="checkbox" id="uppercase">
+
+        <label for="numbers">Incluir Números:</label>
+        <input type="checkbox" id="numbers">
+
+        <label for="symbols">Incluir Símbolos:</label>
+        <input type="checkbox" id="symbols">
+
+        <button id="generate">Generar Contraseña</button>
+
+        <div>
+            <h3>Contraseña Generada:</h3>
+            <input type="text" id="password" readonly>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
