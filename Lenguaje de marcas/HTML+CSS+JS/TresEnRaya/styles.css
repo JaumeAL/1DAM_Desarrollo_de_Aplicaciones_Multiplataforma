@@ -1,0 +1,82 @@
+/* styles.css */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1e1e2f; /* Fondo oscuro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: #fff; /* Texto blanco */
+}
+
+.game-container {
+    text-align: center;
+    background: #2c2c3e; /* Fondo del contenedor */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
+    width: 320px;
+    border: 2px solid #4caf50; /* Borde verde */
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    background-color: #3e3e50; /* Fondo de las celdas */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
+    font-weight: bold;
+    color: #fff; /* Texto blanco */
+    cursor: pointer;
+    border: 2px solid #4caf50; /* Borde verde */
+    border-radius: 10px; /* Bordes redondeados */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transiciones suaves */
+}
+
+.cell:hover {
+    background-color: #4caf50; /* Fondo verde al pasar el ratón */
+    transform: scale(1.1); /* Efecto de zoom */
+}
+
+.cell:active {
+    transform: scale(1); /* Restablece el zoom al hacer clic */
+}
+
+#status {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #4caf50; /* Texto verde */
+}
+
+button {
+    background-color: #4caf50; /* Botón verde */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transiciones suaves */
+}
+
+button:hover {
+    background-color: #45a049; /* Verde más oscuro al pasar el ratón */
+    transform: scale(1.05); /* Efecto de zoom */
+}
+
+button:active {
+    transform: scale(1); /* Restablece el zoom al hacer clic */
+}
