@@ -1,0 +1,72 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    text-align: center;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.memory-board {
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    grid-gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.card {
+    width: 100px;
+    height: 100px;
+    background-color: #4d4b4b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    border-radius: 8px;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    color: transparent; /* Oculta el texto por defecto */
+}
+
+.card.flipped {
+    background-color: #fff;
+    box-shadow: none;
+    color: #000; /* Muestra el texto cuando la carta está volteada */
+}
+
+.card.matched {
+    background-color: #4CAF50;
+    color: white;
+    pointer-events: none;
+}
+
+.card:before {
+    content: ''; /* Si no es necesario, puedes eliminar esta regla */
+    position: absolute;
+    background-color: #f1f1f1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 8px;
+    z-index: 1; /* Asegúrate de que no bloquee el texto */
+    display: none; /* Oculta el pseudo-elemento si no es necesario */
+}
+
+#message {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
