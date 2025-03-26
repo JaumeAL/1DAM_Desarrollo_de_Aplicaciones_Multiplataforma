@@ -37,13 +37,13 @@ public class inicio extends JFrame {
         contentPane.setLayout(null);
 
         // IMAGEN
-        ImageIcon icono = new ImageIcon(getClass().getResource("/com/example/pong.png")); // Ruta de la imagen
+        ImageIcon icono = new ImageIcon(getClass().getResource("/com/example/ping.png")); // Ruta de la imagen
         JLabel etiqueta = new JLabel(icono);
-        etiqueta.setBounds(50, 5, 250, 190); // UBICACIÓN DE LA IMAGEN
+        etiqueta.setBounds(20, -22, 300, 240); // UBICACIÓN DE LA IMAGEN
         contentPane.add(etiqueta);
 
         // NOMBRE JUGADOR 1
-        JLabel jugador1Label = new JLabel("Nombre del Jugador 1:");
+        JLabel jugador1Label = new JLabel("Nom del Jugador 1:");
         jugador1Label.setFont(new Font("Tahoma", Font.PLAIN, 18));
         jugador1Label.setBounds(35, 190, 300, 28);
         contentPane.add(jugador1Label);
@@ -54,7 +54,7 @@ public class inicio extends JFrame {
         jugador1Field.setColumns(10);
 
         // NOMBRE JUGADOR 2
-        JLabel jugador2Label = new JLabel("Nombre del Jugador 2:");
+        JLabel jugador2Label = new JLabel("Nom del Jugador 2:");
         jugador2Label.setFont(new Font("Tahoma", Font.PLAIN, 18));
         jugador2Label.setBounds(35, 250, 300, 28);
         contentPane.add(jugador2Label);

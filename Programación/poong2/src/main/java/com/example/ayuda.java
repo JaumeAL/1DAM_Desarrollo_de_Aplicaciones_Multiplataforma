@@ -14,7 +14,7 @@ public class ayuda extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 501, 447);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(44, 150, 57));
+		contentPane.setBackground(new Color(232, 232, 232));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -31,17 +31,17 @@ public class ayuda extends JFrame {
 		jugador1.setForeground(new Color(49, 47, 47));
 		contentPane.add(jugador1);
 
-		JLabel lblVkupIncrease = new JLabel("Tecla (W) :  Amunt");
-		lblVkupIncrease.setFont(new Font("Tahoma", Font.ITALIC, 18));
-		lblVkupIncrease.setBounds(20, 100, 304, 29);
-		lblVkupIncrease.setForeground(new Color(235, 235, 235));
-		contentPane.add(lblVkupIncrease);
+		JLabel pala1W = new JLabel("Tecla (W) :  Amunt");
+		pala1W.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		pala1W.setBounds(20, 100, 304, 29);
+		pala1W.setForeground(new Color(0,0,0));
+		contentPane.add(pala1W);
 
-		JLabel lblVkrightIncrease = new JLabel("Tecla (S) :  Avall");
-		lblVkrightIncrease.setFont(new Font("Tahoma", Font.ITALIC, 18));
-		lblVkrightIncrease.setBounds(20, 135, 304, 29);
-		lblVkrightIncrease.setForeground(new Color(235, 235, 235));
-		contentPane.add(lblVkrightIncrease);
+		JLabel pala1S = new JLabel("Tecla (S) :  Avall");
+		pala1S.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		pala1S.setBounds(20, 135, 304, 29);
+		pala1S.setForeground(new Color(0,0,0));
+		contentPane.add(pala1S);
 
 
 		JLabel jugador2 = new JLabel("JUGADOR 2");
@@ -50,17 +50,17 @@ public class ayuda extends JFrame {
 		jugador2.setForeground(new Color(49, 47, 47));
 		contentPane.add(jugador2);
 
-		JLabel lblVkupIncrease2 = new JLabel("↑ :  Amunt");
-		lblVkupIncrease2.setFont(new Font("Tahoma", Font.CENTER_BASELINE, 18));
-		lblVkupIncrease2.setBounds(280, 100, 304, 29);
-		lblVkupIncrease2.setForeground(new Color(235, 235, 235));
-		contentPane.add(lblVkupIncrease2);
+		JLabel pala2U = new JLabel("Tecla (↑) :  Amunt");
+		pala2U.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		pala2U.setBounds(280, 100, 304, 29);
+		pala2U.setForeground(new Color(0,0,0));
+		contentPane.add(pala2U);
 
-		JLabel lblVkrightIncrease2 = new JLabel("↓ :  Avall");
-		lblVkrightIncrease2.setFont(new Font("Tahoma", Font.ITALIC, 18));
-		lblVkrightIncrease2.setBounds(280, 135, 304, 29);
-		lblVkrightIncrease2.setForeground(new Color(235, 235, 235));
-		contentPane.add(lblVkrightIncrease2);
+		JLabel pala2D = new JLabel("Tecla (↓) :  Avall");
+		pala2D.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		pala2D.setBounds(280, 135, 304, 29);
+		pala2D.setForeground(new Color(0,0,0));
+		contentPane.add(pala2D);
 
 
 		JButton btnExit = new JButton("SORTIR");
@@ -71,7 +71,7 @@ public class ayuda extends JFrame {
 		});
 
 		btnExit.setFont(new Font("Tahoma", Font.BOLD, 28));
-		btnExit.setBackground(new Color(235, 235, 235));// COLOR FONDO BOTÓN
+		btnExit.setBackground(new Color(232,232,232));// COLOR FONDO BOTÓN
 		btnExit.setForeground(new Color(44, 150, 57));// COLOR LETRA
 		btnExit.setBounds(177, 365, 150, 40);// UBICACIÓN DEL BOTÓN
 		contentPane.add(btnExit);
