@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adivina la Palabra</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <h2>Adivina la Palabra</h2>
+        <p id="word-display">_ _ _ _ _</p>
+        <input type="text" id="guess-input" maxlength="1" placeholder="Letra">
+        <button id="guess-btn">Adivinar</button>
+        <p id="message"></p>
+        <p>Intentos restantes: <span id="attempts-left">10</span></p>
+        <button id="restart-btn" style="display:none;">Reiniciar Juego</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
