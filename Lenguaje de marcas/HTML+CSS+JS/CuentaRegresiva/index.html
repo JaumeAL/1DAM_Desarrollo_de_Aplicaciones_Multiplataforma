@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reloj de Cuenta Regresiva</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="countdown-container">
+        <h2>Reloj de Cuenta Regresiva</h2>
+        <label for="date-input">Ingresa la fecha y hora de destino:</label>
+        <input type="datetime-local" id="date-input">
+        <button id="start-btn">Iniciar Cuenta Regresiva</button>
+
+        <div id="countdown">
+            <p id="time-left">00d 00h 00m 00s</p>
+        </div>
+        
+        <p id="message" style="font-weight: bold; color: green;"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
