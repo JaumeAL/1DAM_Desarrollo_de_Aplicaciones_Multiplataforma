@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Unidades</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Conversor de Unidades</h2>
+        
+        <label for="unitType">Selecciona una conversión:</label>
+        <select id="unitType">
+            <option value="temp">Temperatura (°C ↔ °F)</option>
+            <option value="length">Longitud (Metros ↔ Kilómetros)</option>
+            <option value="currency">Divisas (EUR ↔ USD)</option>
+        </select>
+        
+        <input type="number" id="inputValue" placeholder="Ingrese el valor">
+        <button id="convert">Convertir</button>
+        <p id="result"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
