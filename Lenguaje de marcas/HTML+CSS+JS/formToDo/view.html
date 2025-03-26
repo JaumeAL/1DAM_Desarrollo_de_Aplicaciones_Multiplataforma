@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ver Tareas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Lista de Tareas Guardadas</h1>
+        <ul id="saved-tasks"></ul>
+        <button onclick="window.location.href='index.html'">Volver</button>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
+            const savedTasksList = document.getElementById("saved-tasks");
+            
+            if (savedTasks.length === 0) {
+                savedTasksList.innerHTML = "<p>No hay tareas guardadas.</p>";
+            } else {
+                savedTasks.forEach(task => {
+                    const li = document.createElement("li");
+                    li.classList.toggle("completed", task.completed);
+                    li.textContent = task.text;
+                    savedTasksList.appendChild(li);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

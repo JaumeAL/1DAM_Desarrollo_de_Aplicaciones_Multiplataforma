@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h1>To-Do List</h1>
+        <form id="task-form">
+            <input type="text" id="task-input" placeholder="Nueva tarea" required>
+            <button type="submit">Agregar</button>
+        </form>
+        
+        <div class="filters">
+            <button data-filter="all">Todas</button>
+            <button data-filter="completed">Hechas</button>
+            <button data-filter="pending">No Hechas</button>
+        </div>
+
+        <ul id="task-list"></ul>
+        
+        <button id="view-results">Ver en otra página</button>
+    </div>
+
+</body>
+</html>

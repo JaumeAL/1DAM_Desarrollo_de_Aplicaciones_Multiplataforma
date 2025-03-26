@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (origen && destino && fechaInicio && fechaFin && numAdultos && numNinos) { // Si hay datos en sessionStorage
         const parrafos = document.querySelectorAll(".fila p");
-        parrafos[0].textContent = origen;
+        parrafos[0].textContent = origen; 
         parrafos[1].textContent = destino;
         parrafos[2].textContent = fechaInicio;
         parrafos[3].textContent = fechaFin;
