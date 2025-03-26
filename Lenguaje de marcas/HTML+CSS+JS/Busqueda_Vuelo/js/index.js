@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const origenInput = document.getElementById("Origen");
     const destinoInput = document.getElementById("Destino");
 
-    if (formulario) {
+    if (formulario) { 
         // Establecer la fecha mínima en el campo de fecha de inicio
         const hoy = new Date().toISOString().split("T")[0]; // Obtiene la fecha de hoy en formato YYYY-MM-DD
 
@@ -42,13 +42,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-            // Guardar en localStorage
+ {           // Guardar en localStorage
             localStorage.setItem("origen", origen);
             localStorage.setItem("destino", destino);
             localStorage.setItem("fechaInicio", fechaInicio);
             localStorage.setItem("fechaFin", fechaFin);
             localStorage.setItem("numAdultos", numAdultos);
-            localStorage.setItem("numNinos", numNinos);
+            localStorage.setItem("numNinos", numNinos);}
 
             // Guardar en sessionStorage
             sessionStorage.setItem("origen", origen);
