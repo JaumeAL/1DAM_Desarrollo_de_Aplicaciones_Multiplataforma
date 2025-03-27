@@ -1,11 +1,11 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const unitType = document.getElementById("unitType");
-    const inputValue = document.getElementById("inputValue");
-    const convertButton = document.getElementById("convert");
-    const result = document.getElementById("result");
+document.addEventListener("DOMContentLoaded", () => { // Espera a que el documento esté cargado
+    const unitType = document.getElementById("unitType"); // Obtiene el elemento con id "unitType"
+    const inputValue = document.getElementById("inputValue"); // Obtiene el elemento con id "inputValue"
+    const convertButton = document.getElementById("convert"); // Obtiene el elemento con id "convert"
+    const result = document.getElementById("result"); // Obtiene el elemento con id "result"
 
-    convertButton.addEventListener("click", () => {
-        const value = parseFloat(inputValue.value);
+    convertButton.addEventListener("click", () => { // Agrega un evento al hacer click en el botón
+        const value = parseFloat(inputValue.value); // Obtiene el valor del input y lo convierte a número
         if (isNaN(value)) {
             result.textContent = "Ingrese un número válido.";
             return;

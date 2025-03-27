@@ -1,0 +1,115 @@
+/* estilos.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+ .mainRegistro {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    margin-top: 10px;
+    margin-right: 15px;
+}
+
+ .mainPerfil {    
+    display: flex;
+    flex-direction: row;  
+}
+ 
+section {
+    background: white;
+    padding-top: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 5px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    margin-top: 10px;
+    margin-right: 15px;
+}
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 22px;
+}
+
+form {
+    background: white;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 5px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+label {
+    font-weight: bold;
+    color: #555;
+    font-size: 14px;
+}
+
+input, select {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+input:focus, select:focus {
+    border-color: #1d9031;
+    outline: none;
+}
+
+button {
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    background-color: #1d9031;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 10px;
+    margin-right: 5px;
+}
+
+button:hover {
+    background-color: #166e25;
+}
+
+button#cerrarSesion {
+    background-color: #dc3545;
+}
+
+button#cerrarSesion:hover {
+    background-color: #a71d2a;
+}
+
+#guardar{
+	display:none;
+}
+
+
+/* Estilo para diferenciar los campos editables */
+.editable {
+    background-color: #e0f7e9;
+    border: 1px solid #1d9031;
+}

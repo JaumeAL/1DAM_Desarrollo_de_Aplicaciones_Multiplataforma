@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuario</title>
+    <link rel="stylesheet" href="estilos.css">
+    <script src="perfil.js" defer></script>
+
+</head>
+<body>
+   <main class="mainPerfil">
+        <section class="perfil">
+            <h2>Perfil de Usuario</h2>
+            <form id="perfilForm" action="" method="">
+                <label for="nombrePerfil">Nombre:</label>
+                <input type="text" id="nombrePerfil" readonly disabled>
+
+                <label for="fechaNacimientoPerfil">Fecha de Nacimiento:</label>
+                <input type="date" id="fechaNacimientoPerfil" readonly disabled>
+
+                <label for="emailPerfil">Email:</label>
+                <input type="email" id="emailPerfil" readonly disabled>
+
+                <label for="ciudadPerfil">Ciudad:</label>
+                <input type="text" id="ciudadPerfil" readonly disabled>
+
+                <label for="codigoPostalPerfil">Código Postal:</label>
+                <input type="text" id="codigoPostalPerfil" readonly disabled>
+
+                <label for="categoriaPerfil">Categoría Favorita:</label>
+                <select id="categoriaPerfil" disabled>
+                    <option value="Poesía">Poesía</option>
+                    <option value="Teatro">Teatro</option>
+                    <option value="Narrativa">Narrativa</option>
+                    <option value="Didáctica">Didáctica</option>
+                    <option value="Infantil">Infantil</option>
+                </select>
+
+                <label for="suscripcionPerfil">Suscripción a Newsletter:</label>
+                <input type="checkbox" id="suscripcionPerfil" disabled>
+
+                <button type="button" id="modificar">Modificar</button>
+                <button type="button" id="guardar" >Guardar</button>
+                <button type="button" id="cerrarSesion" onclick="CerrarSesion()">Cerrar Sesión</button>
+            </form>
+        </section>
+        <section class="autores">
+            <h2>Autores/as Favoritos</h2> 
+            <label for="autorInput">Nombre del autor/a:</label>
+            <input type="text" id="autorInput">
+ 
+            <button type="button" id="anadirAutor" onclick="agregar()">Añadir Autor</button>
+            <button type="button" id="eliminarTodosAutores" onclick="eliminarTodas()">Eliminar Todos</button>
+ 
+            <ul id="listaAutores"></ul>
+        </section>
+    </main>
+</body>
+</html>

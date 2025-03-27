@@ -63,6 +63,8 @@ function validateForm(event) {
     const gender = document.getElementById('gender').value;
     const terms = document.getElementById('terms');
 
+    
+
     // Validar nombre
     if (!validateName(firstName)) {
         showError('first-name-error', 'El nombre solo puede contener letras y espacios');

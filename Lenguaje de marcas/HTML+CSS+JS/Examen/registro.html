@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de usuarios</title>
+    <link rel="stylesheet" href="estilos.css">
+    <script src="registro.js" defer></script>
+
+</head>
+<body>
+   <main class="mainRegistro">
+        <h1>Registro de usuarios</h1>
+		<!-- Indica el action y method correctos según el enunciado -->
+        <form id="registroForm" action="perfil.html" method="post">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="fechaNacimiento">Fecha de nacimiento:</label>
+            <input type="date" id="fechaNacimiento" name="fechaNacimiento" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="ciudad">Ciudad:</label>
+            <input type="text" id="ciudad" name="ciudad" required>
+
+            <label for="codigoPostal">Código Postal:</label>
+            <input type="text" id="codigoPostal" name="codigoPostal" required min="5" max="5">
+
+            <label for="categoria">Categoría Favorita:</label>
+            <select id="categoria" name="categoria">
+                <option value="Poesía">Poesía</option>
+                <option value="Teatro">Teatro</option>
+                <option value="Narrativa">Narrativa</option>
+                <option value="Didáctica">Didáctica</option>
+                <option value="Infantil">Infantil</option>
+            </select>
+
+            <label for="newsletter">Suscribirse a la newsletter:</label>
+            <input type="checkbox" id="newsletter" name="newsletter">
+
+            <button type="submit">Registrarse</button>
+        </form>
+    </main>
+</body>
+</html>
