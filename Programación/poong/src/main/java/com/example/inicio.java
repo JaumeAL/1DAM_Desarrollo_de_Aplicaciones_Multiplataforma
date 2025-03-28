@@ -12,9 +12,9 @@ import java.awt.event.*;
 
 public class inicio extends JFrame {
 
-    private JPanel contentPane;
-    private JTextField jugador1Field;
-    private JTextField jugador2Field;
+    private JPanel contentPane; //Declara un panel que contendrá todos los componentes de la ventana
+    private JTextField jugador1Field; //Campo de texto para el nombre del jugador 1
+    private JTextField jugador2Field; //Campo de texto para el nombre del jugador 2
 
     public static void main(String[] args) {  //Metodo main para ejecutar la aplicacion
         EventQueue.invokeLater(new Runnable() {  
@@ -31,8 +31,8 @@ public class inicio extends JFrame {
         });
     }
 
-    public inicio() {
-        setTitle("Poong by Jaume"); //Titulo de la ventana
+    public inicio() { //Constructor de la clase inicio
+        setTitle("POONG by Jaume"); //Titulo de la ventana
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Cierra la ventana al pulsar la X
         setBounds(100, 100, 370, 500); //Tamaño de la ventana
         setResizable(false); //No permite cambiar el tamaño de la ventana

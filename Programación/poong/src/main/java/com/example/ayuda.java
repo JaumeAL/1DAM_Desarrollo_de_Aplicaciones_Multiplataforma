@@ -25,42 +25,42 @@ public class ayuda extends JFrame { // Declara la clase ayuda que extiende JFram
         JLabel lblInstructions = new JLabel("INSTRUCCIONS"); // Crea una etiqueta con el texto "INSTRUCCIONS"
         lblInstructions.setForeground(Color.black); // Establece el color del texto de la etiqueta a negro
         lblInstructions.setFont(new Font("Tahoma", Font.BOLD, 25)); // Define la fuente, estilo y tamaño del texto
-        lblInstructions.setBounds(157, 20, 200, 46); // Posiciona la etiqueta en el panel
+        lblInstructions.setBounds(145, 20, 200, 46); // Posiciona la etiqueta en el panel
         contentPane.add(lblInstructions); // Añade la etiqueta al panel
 
         JLabel jugador1 = new JLabel("JUGADOR 1"); // Crea una etiqueta para el nombre del jugador 1
         jugador1.setFont(new Font("Tahoma", Font.BOLD, 19)); // Establece la fuente, estilo y tamaño del texto
-        jugador1.setBounds(20, 75, 304, 29); // Posiciona la etiqueta en el panel
+        jugador1.setBounds(55, 125, 304, 29); // Posiciona la etiqueta en el panel
         jugador1.setForeground(new Color(24, 25, 26)); // Establece el color del texto
         contentPane.add(jugador1); // Añade la etiqueta al panel
 
         JLabel pala1W = new JLabel("Tecla (W) :  Amunt"); // Crea una etiqueta para la tecla W del jugador 1
         pala1W.setFont(new Font("Tahoma", Font.PLAIN, 18)); // Establece la fuente y tamaño del texto
-        pala1W.setBounds(20, 100, 304, 29); // Posiciona la etiqueta en el panel
+        pala1W.setBounds(55, 170, 304, 29); // Posiciona la etiqueta en el panel
         pala1W.setForeground(new Color(0,0,0)); // Establece el color del texto
         contentPane.add(pala1W); // Añade la etiqueta al panel
 
         JLabel pala1S = new JLabel("Tecla (S) :  Avall"); // Crea una etiqueta para la tecla S del jugador 1
         pala1S.setFont(new Font("Tahoma", Font.PLAIN, 18)); // Establece la fuente y tamaño del texto
-        pala1S.setBounds(20, 135, 304, 29); // Posiciona la etiqueta en el pane
+        pala1S.setBounds(55, 205, 304, 29); // Posiciona la etiqueta en el pane
         pala1S.setForeground(new Color(0,0,0)); // Establece el color del texto
         contentPane.add(pala1S); // Añade la etiqueta al panel
 
         JLabel jugador2 = new JLabel("JUGADOR 2"); // Crea una etiqueta para el nombre del jugador 2
         jugador2.setFont(new Font("Tahoma", Font.BOLD, 19)); // Establece la fuente, estilo y tamaño del texto
-        jugador2.setBounds(280, 75, 304, 29); // Posiciona la etiqueta en el panel
-        jugador2.setForeground(new Color(49, 47, 47)); // Establece el color del texto
+        jugador2.setBounds(280, 125, 304, 29); // Posiciona la etiqueta en el panel
+        jugador2.setForeground(new Color(24, 25, 26)); // Establece el color del texto
         contentPane.add(jugador2); // Añade la etiqueta al panel
 
         JLabel pala2U = new JLabel("Tecla (↑) :  Amunt"); // Crea una etiqueta para la tecla de flecha arriba del jugador 2
         pala2U.setFont(new Font("Tahoma", Font.PLAIN, 18)); // Establece la fuente y tamaño del texto
-        pala2U.setBounds(280, 100, 304, 29); // Posiciona la etiqueta en el panel
+        pala2U.setBounds(280, 170, 304, 29); // Posiciona la etiqueta en el panel
         pala2U.setForeground(new Color(0,0,0)); // Establece el color del texto
         contentPane.add(pala2U); // Añade la etiqueta al panel
 
         JLabel pala2D = new JLabel("Tecla (↓) :  Avall"); // Crea una etiqueta para la tecla de flecha abajo del jugador 2
         pala2D.setFont(new Font("Tahoma", Font.PLAIN, 18)); // Establece la fuente y tamaño del texto
-        pala2D.setBounds(280, 135, 304, 29); // Posiciona la etiqueta en el panel
+        pala2D.setBounds(280, 205, 304, 29); // Posiciona la etiqueta en el panel
         pala2D.setForeground(new Color(0,0,0)); // Establece el color del texto
         contentPane.add(pala2D); // Añade la etiqueta al panel
 
@@ -74,7 +74,7 @@ public class ayuda extends JFrame { // Declara la clase ayuda que extiende JFram
         btnExit.setForeground(new Color(235, 235, 235)); // Establece el color del texto del botón
         btnExit.setBackground(new Color(24,25,26)); // Establece el color de fondo del botón
         btnExit.setFont(new Font("Tahoma", Font.BOLD, 28)); // Define la fuente, estilo y tamaño del texto del botón.
-        btnExit.setBounds(177, 365, 150, 40); // Posiciona el botón en el panel
+        btnExit.setBounds(160, 365, 150, 40); // Posiciona el botón en el panel
         contentPane.add(btnExit); // Añade el botón al panel
     }
     
@@ -83,6 +83,6 @@ public class ayuda extends JFrame { // Declara la clase ayuda que extiende JFram
         inici.setVisible(true); // Hace visible la ventana de inicio
         this.dispose(); // Cierra la ventana actual
         inici.setLocationRelativeTo(null); // Centra la ventana de inicio en la pantalla
-            inici.setResizable(false); // Establece que la ventana de inicio no sea redimensionable
+        inici.setResizable(false); // Establece que la ventana de inicio no sea redimensionable
         }
     }

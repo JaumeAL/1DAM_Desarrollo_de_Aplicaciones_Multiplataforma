@@ -21,10 +21,10 @@ public class poong extends JPanel implements ActionListener { //Declara la clase
     private String jugador1, jugador2; //Nombres de los jugadores
 
     public poong(String jugador1, String jugador2) { //Constructor de la clase poong
-        this.jugador1 = jugador1;
-        this.jugador2 = jugador2;
-        setBackground(Color.WHITE);
-        setFocusable(true);
+        this.jugador1 = jugador1; //Inicializa el nombre del jugador1
+        this.jugador2 = jugador2; //Inicializa el nombre del jugador2
+        setBackground(Color.WHITE); //Color de fondo del panel
+        setFocusable(true); //Permite que el panel reciba eventos de teclado
 
         addKeyListener(new KeyAdapter() { //Sirve para detectar las teclas presionadas
             @Override
