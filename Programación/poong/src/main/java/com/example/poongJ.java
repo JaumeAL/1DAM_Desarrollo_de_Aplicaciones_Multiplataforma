@@ -1,3 +1,8 @@
+// {
+//   "name": "Jaume",
+//   "surname": "Salas",
+//   "age": 18
+// }
 package com.example;
 
 import javax.swing.*;
@@ -6,7 +11,7 @@ import java.awt.event.*;
 
 public class poongJ extends JPanel implements ActionListener {
     private int bolaInicialX = 290, bolaInicialY = 190, radioBola = 20;
-    private int dx = 2, dy = 2;
+    private int dx = 3, dy = 3;
     private final int DELAY = 10;
     private Timer timer;
     private int pala1Y = 150, pala2Y = 150, palaH = 10, palaW = 80;
@@ -35,10 +40,10 @@ public class poongJ extends JPanel implements ActionListener {
             @Override
             public void keyReleased(KeyEvent e) {  //Detecta si una tecla ya no se pulsa porque sino se quedaria subiendo o bajando
                 switch (e.getKeyCode()) {
-                    case KeyEvent.VK_W -> arriba1 = false; 
-                    case KeyEvent.VK_S -> abajo1 = false;
-                    case KeyEvent.VK_UP -> arriba2 = false;
-                    case KeyEvent.VK_DOWN -> abajo2 = false;
+                    case KeyEvent.VK_W -> arriba1 = false; //Si soltamos W pala1 dejara de subir
+                    case KeyEvent.VK_S -> abajo1 = false; //Si soltamos S pala1 dejara de bajar
+                    case KeyEvent.VK_UP -> arriba2 = false; //Si soltamos ↑ pala2 dejara de subir
+                    case KeyEvent.VK_DOWN -> abajo2 = false; //Si soltamos ↓ pala2 dejara de bajar
                 }
             }
         });
@@ -66,39 +71,40 @@ public class poongJ extends JPanel implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-        bolaInicialX += dx;
-        bolaInicialY += dy;
+    public void actionPerformed(ActionEvent e) { //Cada vez que se llama al temporizador
+        bolaInicialX += dx; //Actualiza la posición de la bola
+        bolaInicialY += dy; //Actualiza la posición de la bola
 
-        if (bolaInicialY <= 0 || bolaInicialY >= getHeight() - radioBola)
-            dy = -dy;
-        if (bolaInicialX <= 25 && bolaInicialY + radioBola >= pala1Y && bolaInicialY <= pala1Y + palaW)
-            dx = Math.abs(dx);
-        if (bolaInicialX >= 540 && bolaInicialY + radioBola >= pala2Y && bolaInicialY <= pala2Y + palaW)
-            dx = -Math.abs(dx);
+        if (bolaInicialY <= 0 || bolaInicialY >= getHeight() - radioBola) //Si la bola toca el borde superior o inferior de la pantalla
+            dy = -dy; //Cambia la dirección de la bola para arriba o abajo
+        if (bolaInicialX <= 25 && bolaInicialY + radioBola >= pala1Y && bolaInicialY <= pala1Y + palaW) //Si la bola toca la pala1
+            dx = Math.abs(dx); //Cambia la dirección de la bola para la derecha 
+        if (bolaInicialX >= 540 && bolaInicialY + radioBola >= pala2Y && bolaInicialY <= pala2Y + palaW) //Si la bola toca la pala2
+            dx = -Math.abs(dx); //Cambia la dirección de la bola para la izquierda
+        
+        if (bolaInicialX < 0) { //Si la bola sale por la izquierda
+            contador2++; //Aumenta el contador del jugador2
+            reset(); //Reinicia la bola en el centro
+        }
+        if (bolaInicialX > getWidth()) { //Si la bola sale por la derecha
+            contador1++; //Aumenta el contador del jugador1
+            reset(); //Reinicia la bola
+        }
 
-        if (bolaInicialX < 0) {
-            contador2++;
-            reset();
-        }
-        if (bolaInicialX > getWidth()) {
-            contador1++;
-            reset();
-        }
-        if (arriba1 && pala1Y > 0)
-            pala1Y -= 5;
-        if (abajo1 && pala1Y < getHeight() - palaW)
-            pala1Y += 5;
-        if (arriba2 && pala2Y > 0)
-            pala2Y -= 5;
-        if (abajo2 && pala2Y < getHeight() - palaW)
-            pala2Y += 5;
-        repaint();
+        if (arriba1 && pala1Y > 0) //Si la pala1 no toca el borde de arriba
+            pala1Y -= 5; //Sube la pala1
+        if (abajo1 && pala1Y < getHeight() - palaW) //Si la pala1 no toca el borde de abajo
+            pala1Y += 5; //Baja la pala1
+        if (arriba2 && pala2Y > 0) //Si la pala2 no toca el borde de arriba
+            pala2Y -= 5; //Sube la pala2
+        if (abajo2 && pala2Y < getHeight() - palaW) //Si la pala2 no toca el borde de abajo
+            pala2Y += 5; //Baja la pala2
+        repaint(); //Vuelve a dibujar el panel
     }
 
-    public void reset() {
-        bolaInicialX = 290;
-        bolaInicialY = 190;
-        dx = -dx;
+    public void reset() { //Reinicia la bola en el centro
+        bolaInicialX = getWidth() / 2 - radioBola / 2; //Reinicia la posición de la bola
+        bolaInicialY = getHeight() / 2 - radioBola / 2; //Reinicia la posición de la bola
+        dx = -dx; //Cambia la dirección de la bola
     }
 }
