@@ -44,9 +44,9 @@ public class inicio extends JFrame {
         contentPane.setLayout(null); //Layout nulo para poder colocar los componentes donde queramos
 
         // IMAGEN
-        ImageIcon icono = new ImageIcon(getClass().getResource("/com/example/ping.png")); // Ruta de la imagen
+        ImageIcon icono = new ImageIcon(getClass().getResource("/com/example/poong.png")); // Ruta de la imagen
         JLabel etiqueta = new JLabel(icono); //Crea un nuevo objeto de la clase JLabel con la imagen
-        etiqueta.setBounds(20, -22, 300, 240); // UBICACIÓN DE LA IMAGEN
+        etiqueta.setBounds(30, -22, 290, 200); // UBICACIÓN DE LA IMAGEN
         contentPane.add(etiqueta);
 
         // NOMBRE JUGADOR 1
