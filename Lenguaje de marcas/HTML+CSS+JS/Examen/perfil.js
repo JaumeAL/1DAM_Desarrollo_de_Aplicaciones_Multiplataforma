@@ -79,7 +79,6 @@ function eliminarTodas() {
     var tareas = Array.from(lista.children); // Convierte el HTMLCollection en un array
     tareas.forEach(function (tarea) { // Recorre el array de tareas
         lista.removeChild(tarea); // Elimina la tarea
-      
     });
   }
   
