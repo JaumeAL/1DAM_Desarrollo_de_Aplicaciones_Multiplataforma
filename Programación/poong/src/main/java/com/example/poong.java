@@ -71,38 +71,84 @@ public class poong extends JPanel implements ActionListener { //Declara la clase
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) { //Cada vez que se llama al temporizador
-        bolaInicialX += dx; //Actualiza la posición de la bola
-        bolaInicialY += dy; //Actualiza la posición de la bola
-
-        if (bolaInicialY <= 0 || bolaInicialY >= getHeight() - radioBola) //Si la bola toca el borde superior o inferior de la pantalla
-            dy = -dy; //Cambia la dirección de la bola para arriba o abajo
-        if (bolaInicialX <= 25 && bolaInicialY + radioBola >= pala1Y && bolaInicialY <= pala1Y + palaW) //Si la bola toca la pala1
-            dx = Math.abs(dx); //Cambia la dirección de la bola para la derecha 
-        if (bolaInicialX >= 540 && bolaInicialY + radioBola >= pala2Y && bolaInicialY <= pala2Y + palaW) //Si la bola toca la pala2
-            dx = -Math.abs(dx); //Cambia la dirección de la bola para la izquierda
-        
-        if (bolaInicialX < 0) { //Si la bola sale por la izquierda
-            contador2++; //Aumenta el contador del jugador2
-            reset(); //Reinicia la bola en el centro
+    public void actionPerformed(ActionEvent e) { // Cada vez que se llama al temporizador
+        bolaInicialX += dx; // Actualiza la posición de la bola
+        bolaInicialY += dy; // Actualiza la posición de la bola
+    
+        if (bolaInicialY <= 0 || bolaInicialY >= getHeight() - radioBola) // Si la bola toca el borde superior o inferior de la pantalla
+            dy = -dy; // Cambia la dirección de la bola para arriba o abajo
+        if (bolaInicialX <= 25 && bolaInicialY + radioBola >= pala1Y && bolaInicialY <= pala1Y + palaW) // Si la bola toca la pala1
+            dx = Math.abs(dx); // Cambia la dirección de la bola para la derecha 
+        if (bolaInicialX >= 540 && bolaInicialY + radioBola >= pala2Y && bolaInicialY <= pala2Y + palaW) // Si la bola toca la pala2
+            dx = -Math.abs(dx); // Cambia la dirección de la bola para la izquierda
+    
+        if (bolaInicialX < 0) { // Si la bola sale por la izquierda
+            contador2++; // Aumenta el contador del jugador2
+            reset(); // Reinicia la bola en el centro
         }
-        if (bolaInicialX > getWidth()) { //Si la bola sale por la derecha
-            contador1++; //Aumenta el contador del jugador1
-            reset(); //Reinicia la bola
+        if (bolaInicialX > getWidth()) { // Si la bola sale por la derecha
+            contador1++; // Aumenta el contador del jugador1
+            reset(); // Reinicia la bola
         }
+        //EXTRA
+        // Verifica si alguno de los jugadores ha alcanzado 7 puntos
+        if (contador1 == 7 || contador2 == 7) {
+            timer.stop(); // Detiene el temporizador
+            String ganador;
+            int puntuacionGanador;
+            int puntuacionPerdedor;
 
-        if (arriba1 && pala1Y > 0) //Si la pala1 no toca el borde de arriba
-            pala1Y -= 5; //Sube la pala1
-        if (abajo1 && pala1Y < getHeight() - palaW) //Si la pala1 no toca el borde de abajo
-            pala1Y += 5; //Baja la pala1
-        if (arriba2 && pala2Y > 0) //Si la pala2 no toca el borde de arriba
-            pala2Y -= 5; //Sube la pala2
-        if (abajo2 && pala2Y < getHeight() - palaW) //Si la pala2 no toca el borde de abajo
-            pala2Y += 5; //Baja la pala2
-            
-        
-       
-        repaint(); //Vuelve a dibujar el panel
+            if (contador1 == 7) { // Si el jugador1 ha ganado
+                ganador = jugador1; // El jugador1 es el ganador
+                puntuacionGanador = contador1; // Puntuación del jugador1
+                puntuacionPerdedor = contador2; // Puntuación del jugador2
+            } else { // Si el jugador2 ha ganado
+                ganador = jugador2; // El jugador2 es el ganador
+                puntuacionGanador = contador2; // Puntuación del jugador2
+                puntuacionPerdedor = contador1; // Puntuación del jugador1
+            }
+    
+            // Muestra un cuadro de diálogo con el resultado
+            int opcion = JOptionPane.showOptionDialog(  
+                this,"¡" + ganador + " ha guanyat!\n" +
+                "Puntuació: " + puntuacionGanador + " - " + puntuacionPerdedor + "\n" ,
+                "Fin del joc",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.INFORMATION_MESSAGE,
+                null,
+                new String[]{"Tornar a Jugar", "Inici"},
+                "Tornar a Jugar"
+            );
+    
+            if (opcion == JOptionPane.YES_OPTION) {
+                // Reinicia el juego
+                contador1 = 0;
+                contador2 = 0;
+                reset();
+                timer.start();
+            } else {
+                //Vuelvo a la pantalla de inicio
+                this.setVisible(false); //Oculta la ventana actual
+                SwingUtilities.getWindowAncestor(this).dispose(); //Cierra la ventana actual al abrir la nueva ventana
+                inicio inici = new inicio(); //Crea un nuevo objeto de la clase inicio
+                inici.setVisible(true); //Muestra la ventana de inicio
+                inici.setLocationRelativeTo(null); //Centra la ventana en la pantalla
+                inici.setResizable(false); //Pantalla no redimensionable
+                return; // Sale del método para evitar seguir actualizando el juego
+            }
+            return; // Sale del método para evitar seguir actualizando el juego
+        }
+    
+        if (arriba1 && pala1Y > 0) // Si la pala1 no toca el borde de arriba
+            pala1Y -= 5; // Sube la pala1
+        if (abajo1 && pala1Y < getHeight() - palaW) // Si la pala1 no toca el borde de abajo
+            pala1Y += 5; // Baja la pala1
+        if (arriba2 && pala2Y > 0) // Si la pala2 no toca el borde de arriba
+            pala2Y -= 5; // Sube la pala2
+        if (abajo2 && pala2Y < getHeight() - palaW) // Si la pala2 no toca el borde de abajo
+            pala2Y += 5; // Baja la pala2
+    
+        repaint(); // Vuelve a dibujar el panel
     }
 
     public void reset() { //Reinicia la bola en el centro
