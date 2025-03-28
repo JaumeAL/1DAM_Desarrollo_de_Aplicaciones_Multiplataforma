@@ -118,7 +118,7 @@ public class inicio extends JFrame {
             JOptionPane.showMessageDialog(this, "Por favor, ingrese los nombres de ambos jugadores.", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             JFrame frame = new JFrame("POONG "); //Crea un nuevo objeto de la clase JFrame
-            poongJ panel = new poongJ(jugador1, jugador2); //Crea un nuevo objeto de la clase poongJ
+            poong panel = new poong(jugador1, jugador2); //Crea un nuevo objeto de la clase poong
             frame.add(panel); //Agrega el panel al JFrame
             frame.setSize(600, 400); //Tamaño del JFrame
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Cierra el JFrame al cerrar la ventana

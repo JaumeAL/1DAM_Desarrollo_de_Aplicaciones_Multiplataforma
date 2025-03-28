@@ -9,18 +9,18 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class poongJ extends JPanel implements ActionListener {
-    private int bolaInicialX = 290, bolaInicialY = 190, radioBola = 20;
-    private int dx = 3, dy = 3;
-    private final int DELAY = 10;
-    private Timer timer;
-    private int pala1Y = 150, pala2Y = 150, palaH = 10, palaW = 80;
-    private boolean arriba1 = false, abajo1 = false;
-    private boolean arriba2 = false, abajo2 = false;
-    private int contador1 = 0, contador2 = 0;
-    private String jugador1, jugador2;
+public class poong extends JPanel implements ActionListener { //Declara la clase poong que extiende JPanel y implementa ActionListener
+    private int bolaInicialX = 290, bolaInicialY = 190, radioBola = 20; //Posicion inicial de la bola
+    private int dx = 3, dy = 3; //Velocidad de la bola
+    private final int DELAY = 10; //Delay del temporizador
+    private Timer timer; //Temporizador
+    private int pala1Y = 150, pala2Y = 150, palaH = 10, palaW = 80; //Posicion inicial de las palas
+    private boolean arriba1 = false, abajo1 = false; //Variables para saber si la pala1 esta subiendo o bajando
+    private boolean arriba2 = false, abajo2 = false; //Variables para saber si la pala2 esta subiendo o bajando
+    private int contador1 = 0, contador2 = 0; //Contadores de los jugadores
+    private String jugador1, jugador2; //Nombres de los jugadores
 
-    public poongJ(String jugador1, String jugador2) {
+    public poong(String jugador1, String jugador2) { //Constructor de la clase poong
         this.jugador1 = jugador1;
         this.jugador2 = jugador2;
         setBackground(Color.WHITE);
