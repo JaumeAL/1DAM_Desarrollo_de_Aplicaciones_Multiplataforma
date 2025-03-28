@@ -52,22 +52,22 @@ public class inicio extends JFrame {
         // NOMBRE JUGADOR 1
         JLabel jugador1Label = new JLabel("Nom del Jugador 1:"); //Etiqueta para el nombre del jugador 1
         jugador1Label.setFont(new Font("Tahoma", Font.PLAIN, 18)); //Fuente de la etiqueta
-        jugador1Label.setBounds(35, 190, 300, 28); //Ubicación de la etiqueta
+        jugador1Label.setBounds(35, 170, 300, 28); //Ubicación de la etiqueta
         contentPane.add(jugador1Label); //Agrega la etiqueta al panel
 
         jugador1Field = new JTextField();  //Campo de texto para el nombre del jugador 1
-        jugador1Field.setBounds(35, 220, 278, 28); //Ubicación del campo de texto
+        jugador1Field.setBounds(35, 200, 278, 28); //Ubicación del campo de texto
         contentPane.add(jugador1Field); //Agrega el campo de texto al panel
         jugador1Field.setColumns(10); //Campo de texto para el nombre del jugador 1
 
         // NOMBRE JUGADOR 2
         JLabel jugador2Label = new JLabel("Nom del Jugador 2:"); //Etiqueta para el nombre del jugador 2
         jugador2Label.setFont(new Font("Tahoma", Font.PLAIN, 18)); //Fuente de la etiqueta
-        jugador2Label.setBounds(35, 250, 300, 28); //Ubicación de la etiqueta
+        jugador2Label.setBounds(35, 240, 300, 28); //Ubicación de la etiqueta
         contentPane.add(jugador2Label); //Agrega la etiqueta al panel
 
         jugador2Field = new JTextField(); //Campo de texto para el nombre del jugador 2
-        jugador2Field.setBounds(35, 280, 278, 28); //Ubicación del campo de texto
+        jugador2Field.setBounds(35, 270, 278, 28); //Ubicación del campo de texto
         contentPane.add(jugador2Field); //Agrega el campo de texto al panel
         jugador2Field.setColumns(10); //Campo de texto para el nombre del jugador 2
 

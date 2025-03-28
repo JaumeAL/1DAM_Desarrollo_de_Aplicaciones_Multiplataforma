@@ -11,7 +11,7 @@ import java.awt.event.*;
 
 public class poong extends JPanel implements ActionListener { //Declara la clase poong que extiende JPanel y implementa ActionListener
     private int bolaInicialX = 290, bolaInicialY = 190, radioBola = 20; //Posicion inicial de la bola
-    private int dx = 3, dy = 3; //Velocidad de la bola
+    private int dx = 4, dy = 4; //Velocidad de la bola
     private final int DELAY = 10; //Delay del temporizador
     private Timer timer; //Temporizador
     private int pala1Y = 150, pala2Y = 150, palaH = 10, palaW = 80; //Posicion inicial de las palas
@@ -99,6 +99,9 @@ public class poong extends JPanel implements ActionListener { //Declara la clase
             pala2Y -= 5; //Sube la pala2
         if (abajo2 && pala2Y < getHeight() - palaW) //Si la pala2 no toca el borde de abajo
             pala2Y += 5; //Baja la pala2
+            
+        
+       
         repaint(); //Vuelve a dibujar el panel
     }
 
