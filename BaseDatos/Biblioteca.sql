@@ -280,11 +280,28 @@ BEGIN
 END;
 
 
-/*1. Crea una funció GET_LLIBRES_BY_AUTOR_ID que, donat un ID d'autor, retorni una NESTED
+/*1. Crea una funció GET_LLIBREsS_BY_AUTOR_ID que, donat un ID d'autor, retorni una NESTED
 TABLE amb records dels llibres d'aquest autor.
 Crida aquesta funció des d'un bloc anonim passant-li com a parametre un ID d'autor que tengui
 llibres i mostra (DBMS_OUTPUT) els seus títols utilitzant alguna estructura iterativa.
 */
+
+DECLARE
+    TYPE t_llibres IS TABLE OF LLIBRE%ROWTYPE;
+    llibres t_llibres;
+    v_id_llibre number;
+
+    FUNTION GET_LLIBREsS_BY_AUTOR_ID(mi_ID_Autor number) RETURN t_llibres
+    IS
+        SELECT llibres BULK COLLECT INTO v_id_llibre FROM AUTOR_LLIBRE WHERE id_autor = mi_ID_Autor
+        
+BEGIN
+
+    
+
+
+END;
+
 
 
 

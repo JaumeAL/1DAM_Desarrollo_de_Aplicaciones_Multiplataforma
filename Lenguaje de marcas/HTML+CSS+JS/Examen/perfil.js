@@ -23,9 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
         sexto.value = categoria; 
         const septimo = document.getElementById("suscripcionPerfil");
         septimo.value = newsletter; 
-
     }
-
 });
 
 function CerrarSesion() {
@@ -43,6 +41,9 @@ function CerrarSesion() {
     window.location.href = "registro.html";
     
 }
+
+
+
 
 //AGREGAR autorS
 function agregar() {
