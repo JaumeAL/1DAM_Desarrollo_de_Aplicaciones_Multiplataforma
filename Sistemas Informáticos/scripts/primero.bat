@@ -4,6 +4,14 @@ set hola= Hola, bienvenido
 echo %hola% %name%
 
 
+
+
+
+
+
+
+
+
 :: /P para esperar valor del usuario
 :: /A valor numerico del usuario
 :: :loop --> inicio bucle
