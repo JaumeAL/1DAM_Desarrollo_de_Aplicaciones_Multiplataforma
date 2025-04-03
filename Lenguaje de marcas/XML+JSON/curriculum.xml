@@ -1,0 +1,60 @@
+<!-- Com seria l'XML? Com seria l'XML? Què podem fer com a fills o com a atributs?
+● Nom i cognoms
+● Any de naixement
+● Residència
+    ○ Ciutat
+    ○ País
+● Dades de contacte
+    ○ Telèfon
+    ○ Correu electrònic
+
+● Perfil LinkedIn
+● Breu descripció general
+● Llistat de competències, indicant el nom i el nivell
+● Formació acadèmica, amb la titulació, el centre de formació i l'any de titulació
+● Experiència professional, especificant el lloc a l'empresa, l'any d'inici i l'any de finalització -->
+<?xml version="1.0" encoding="UTF-8"?>
+<curriculum>
+    <nombreCompleto>Jaume Salas Pastor</nombreCompleto>
+    <anioNacimiento>2006</anioNacimiento>
+    <residencia>
+        <ciudad>Palma</ciudad>
+        <pais>España</pais>
+    </residencia>
+    <datosContacto>
+        <telefono>+34 611 409 389</telefono>
+        <correoElectronico>jaumealsp@example.com</correoElectronico>
+    </datosContacto>
+    <perfilLinkedIn>https://www.instagram.com/jaumesalass</perfilLinkedIn>
+    <breveDescripcion>
+        Muy majo y buen chico.
+    </breveDescripcion>
+    <competencias>
+        <competencia nom="HTML" nivell="Experto"/> <!-- Opcion1 ATRIBUTOS para valores que no cambian (siempre sera ese valor) -->
+        <competencia>                              <!-- Opcion2 ELEMENTOS HIJOS-->
+            <nombre>Gestión de proyectos</nombre> 
+            <nivel>Intermedio</nivel>
+        </competencia>
+    </competencias>
+    <formacionAcademica>
+        <formacion>
+            <titulacion>Tecnico Informatico</titulacion>
+            <centro>IES Politecnic</centro>
+            <anioTitulacion>2024</anioTitulacion>
+        </formacion>
+    </formacionAcademica>
+    <experienciaProfesional>
+        <experiencia>
+            <puesto>Desarrollador de Software</puesto>
+            <empresa>Tech Solutions S.L.</empresa>
+            <anioInicio>2013</anioInicio>
+            <anioFin>2018</anioFin>
+        </experiencia>
+        <experiencia>
+            <puesto>Jefe de Proyecto</puesto>
+            <empresa>Innovatech</empresa>
+            <anioInicio>2018</anioInicio>
+            <anioFin>2023</anioFin>
+        </experiencia>
+    </experienciaProfesional>
+</curriculum>

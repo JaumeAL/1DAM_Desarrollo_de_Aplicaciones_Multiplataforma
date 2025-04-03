@@ -2,13 +2,7 @@
 set /p name=Introduce tu nombre:
 set hola= Hola, bienvenido
 echo %hola% %name%
-
-
-
-
-
-
-
+pause
 
 
 

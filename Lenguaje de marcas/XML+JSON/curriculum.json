@@ -1,0 +1,47 @@
+{
+    "curriculum": {
+        "nombreCompleto": "Jaume Salas Pastor",
+        "anioNacimiento": 2006,
+        "residencia": {
+            "ciudad": "Palma",
+            "pais": "España"
+        },
+        "datosContacto": {
+            "telefono": "+34 611 409 389",
+            "correoElectronico": "jaumealsp@example.com"
+        },
+        "perfilLinkedIn": "https://www.instagram.com/jaumesalass",
+        "breveDescripcion": "Muy majo y buen chico.",
+        "competencias": [
+            {
+                "nombre": "HTML",
+                "nivel": "Experto"
+            },
+            {
+                "nombre": "Gestión de proyectos",
+                "nivel": "Intermedio"
+            }
+        ],
+        "formacionAcademica": [
+            {
+                "titulacion": "Tecnico Informatico",
+                "centro": "IES Politecnic",
+                "anioTitulacion": 2024
+            }
+        ],
+        "experienciaProfesional": [
+            {
+                "puesto": "Desarrollador de Software",
+                "empresa": "Tech Solutions S.L.",
+                "anioInicio": 2013,
+                "anioFin": 2018
+            },
+            {
+                "puesto": "Jefe de Proyecto",
+                "empresa": "Innovatech",
+                "anioInicio": 2018,
+                "anioFin": 2023
+            }
+        ]
+    }
+}
