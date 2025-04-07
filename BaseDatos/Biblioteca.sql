@@ -315,22 +315,23 @@ OUTPUT d'exemple:
 Rang IDs: 3, 6
 Recompte total: 20
 */
-DECLARE
-    v_min_id PLS_INTEGER := 3;
-    v_max_id PLS_INTEGER := 6;
-    v_recompte_total NUMBER := 0;
+DECLARE 
+    min CONSTANT NUMBER := 3;
+    max CONSTANT NUMBER := 9;
+    v_Exemplars NUMBER := 0;
+    v_Aux NUMBER;
 BEGIN
-    FOR i IN v_min_id..v_max_id LOOP
-        SELECT exemplars INTO v_recompte_total FROM LLIBRE WHERE ID = i;
-        v_recompte_total := v_recompte_total + v_recompte_total;
+    FOR i IN min..max LOOP
+        SELECT exemplars INTO v_Aux FROM LLIBRE WHERE ID = i;
+        v_Exemplars := v_Exemplars + v_Aux;
     END LOOP;
 
-    DBMS_OUTPUT.PUT_LINE('Rang IDs: ' || v_min_id || ', ' || v_max_id);
-    DBMS_OUTPUT.PUT_LINE('Recompte total: ' || v_recompte_total);
+    DBMS_OUTPUT.PUT_LINE('Rang: ' || min || ', ' || max);
+    DBMS_OUTPUT.PUT_LINE('Total: ' || v_Exemplars);
 END;
 
 /*2. Fes el mateix que a l'activitat anterior però havent guardat els exemplars de cada llibre dins un associative array.
-Declara un associative array de NUMBER indexat per un PLS_INTEGER i introduieix els exemplars de cada llibre a l'índex que coincideixi amb la seva ID (només dels llibres demanats o de tots). Utilitza un bucle per fer-ho.
+Declara un associative array de NUMBER indexat per un NUMBER i introduieix els exemplars de cada llibre a l'índex que coincideixi amb la seva ID (només dels llibres demanats o de tots). Utilitza un bucle per fer-ho.
 Utilitza un FOR LOOP per iterar sobre el rang d'IDs demanat (mínim i màxim), però aquesta vegada. En lloc de fer SELECT per fer el recompte, agafa la informació de l'associative array emplenat anteriorment.
 Al final de les iteracions, mostra el nombre d'exemplars total.
 OUTPUT d'exemple:
@@ -339,7 +340,7 @@ Recompte total: 17
 */
 
 /*3. Utilitzant el mateix mètode que a l'activitat anterior, crea un bloc anònim que, donat un rang d'IDs de llibres, mostri en pantalla els seus títols separats per comes.
-Declara un associative array de VARCHAR2 indexat per un PLS_INTEGER i introdueix el titol de cada llibre a l'índex que coincideixi amb la seva ID.
+Declara un associative array de VARCHAR2 indexat per un NUMBER i introdueix el titol de cada llibre a l'índex que coincideixi amb la seva ID.
 Després, itera sobre l'associative array, només pel rang d'IDs demanat, i concatena els VARCHAR2 (títols dels llibres), separant-los per comes.
 OUTPUT d'exemple:
 Rang IDs: 2, 4
