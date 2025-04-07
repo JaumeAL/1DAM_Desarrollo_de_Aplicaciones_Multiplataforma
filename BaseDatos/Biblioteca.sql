@@ -242,19 +242,19 @@ nombre d'exemplars del llibre.
 Si no s'han pogut decrementar les vegades previstes per haver arribat a 0, indica-ho.
 
 OUTPUT d'exemple (No s'arriba a 0 exemplars):
-El llibre amb ID 9 té 6 exemplars. S'ha sol·licitat eliminar 4 exemplars.
-Eliminat exemplar. Exemplars: 5
-Eliminat exemplar. Exemplars: 4
-Eliminat exemplar. Exemplars: 3
-Eliminat exemplar. Exemplars: 2
+El llibre amb ID 9 té 6 exemplars. S'ha sol·licitat elic_minar 4 exemplars.
+Elic_minat exemplar. Exemplars: 5
+Elic_minat exemplar. Exemplars: 4
+Elic_minat exemplar. Exemplars: 3
+Elic_minat exemplar. Exemplars: 2
 Exemplars finals: 2
 
 OUTPUT d'exemple (S'arriba a 0 exemplars):
-El llibre amb ID 7 té 3 exemplars. S'ha sol·licitat eliminar 5 exemplars.
-Eliminat exemplar. Exemplars: 2
-Eliminat exemplar. Exemplars: 1
-Eliminat exemplar. Exemplars: 0
-No queden més exemplars. 2 exemplars han quedat sense eliminar.
+El llibre amb ID 7 té 3 exemplars. S'ha sol·licitat elic_minar 5 exemplars.
+Elic_minat exemplar. Exemplars: 2
+Elic_minat exemplar. Exemplars: 1
+Elic_minat exemplar. Exemplars: 0
+No queden més exemplars. 2 exemplars han quedat sense elic_minar.
 Exemplars finals: 0
 */
 DECLARE
@@ -263,14 +263,14 @@ DECLARE
     v_nou_exemplars number := 5;
 BEGIN
     SELECT exemplars INTO v_exemplars FROM LLIBRE WHERE ID = v_id;
-    DBMS_OUTPUT.PUT_LINE('El llibre amb ID ' || v_id || ' té ' || v_exemplars || ' exemplars. S ha sol·licitat eliminar ' || v_nou_exemplars || ' exemplars.');
+    DBMS_OUTPUT.PUT_LINE('El llibre amb ID ' || v_id || ' té ' || v_exemplars || ' exemplars. S ha sol·licitat elic_minar ' || v_nou_exemplars || ' exemplars.');
 
     FOR i IN 1..v_nou_exemplars LOOP
         IF v_exemplars > 0 THEN
             v_exemplars := v_exemplars - 1;
-            DBMS_OUTPUT.PUT_LINE('Eliminat exemplar. Exemplars: ' || v_exemplars);
+            DBMS_OUTPUT.PUT_LINE('Elic_minat exemplar. Exemplars: ' || v_exemplars);
         ELSE
-            DBMS_OUTPUT.PUT_LINE('No hi ha més exemplars. ' || v_nou_exemplars - i || ' exemplars han quedat sense eliminar.');
+            DBMS_OUTPUT.PUT_LINE('No hi ha més exemplars. ' || v_nou_exemplars - i || ' exemplars han quedat sense elic_minar.');
             EXIT;
         END IF;
     END LOOP;
@@ -280,18 +280,18 @@ BEGIN
 END;
 
 
-/*1. Crea una funció GET_LLIBREsS_BY_AUTOR_ID que, donat un ID d'autor, retorni una NESTED
+/*1. Crea una funció GET_LLIBREsExempS_BY_AUTOR_ID que, donat un ID d'autor, retorni una NESTED
 TABLE amb records dels llibres d'aquest autor.
 Crida aquesta funció des d'un bloc anonim passant-li com a parametre un ID d'autor que tengui
 llibres i mostra (DBMS_OUTPUT) els seus títols utilitzant alguna estructura iterativa.
 */
 
 DECLARE
-    TYPE t_llibres IS TABLE OF LLIBRE%ROWTYPE;
-    llibres t_llibres;
+    TYPE t_llibresExemp IS TABLE OF LLIBRE%ROWTYPE;
+    llibres t_llibresExemp;
     v_id_llibre number;
 
-    FUNTION GET_LLIBREsS_BY_AUTOR_ID(mi_ID_Autor number) RETURN t_llibres
+    FUNTION GET_LLIBREsExempS_BY_AUTOR_ID(mi_ID_Autor number) RETURN t_llibresExemp
     IS
         SELECT llibres BULK COLLECT INTO v_id_llibre FROM AUTOR_LLIBRE WHERE id_autor = mi_ID_Autor
         
@@ -308,7 +308,7 @@ END;
 --ITERACIONS I COL·LECCIONS
 
 /*1.Compta els exemplars totals d'un conjunt de llibres.
-Utilitza un FOR LOOP per iterar sobre un rang d'IDs de llibres determinat. El mínim i el màxim del rang han de venir donats per dues constants.
+Utilitza un FOR LOOP per iterar sobre un rang d'IDs de llibres deterc_minat. El mínim i el màxim del rang han de venir donats per dues constants.
 Comença a 0. Per cada iteració, agafa el nombre d'exemplars del llibre corresponent i suma-ho al recompte.
 Al final de les iteracions, mostra el nombre d'exemplars total.
 OUTPUT d'exemple:
@@ -316,17 +316,17 @@ Rang IDs: 3, 6
 Recompte total: 20
 */
 DECLARE 
-    min CONSTANT NUMBER := 3;
-    max CONSTANT NUMBER := 9;
+    c_min CONSTANT NUMBER := 3;
+    c_max CONSTANT NUMBER := 9;
     v_Exemplars NUMBER := 0;
     v_Aux NUMBER;
 BEGIN
-    FOR i IN min..max LOOP
+    FOR i IN c_min..c_max LOOP
         SELECT exemplars INTO v_Aux FROM LLIBRE WHERE ID = i;
         v_Exemplars := v_Exemplars + v_Aux;
     END LOOP;
 
-    DBMS_OUTPUT.PUT_LINE('Rang: ' || min || ', ' || max);
+    DBMS_OUTPUT.PUT_LINE('Rang: ' || c_min || ', ' || c_max);
     DBMS_OUTPUT.PUT_LINE('Total: ' || v_Exemplars);
 END;
 
@@ -338,6 +338,22 @@ OUTPUT d'exemple:
 Rang IDs: 2, 4
 Recompte total: 17
 */
+DECLARE /* iterar sobre varray y sobre nasted table tambien se haria así */
+    TYPE t_LlibresExemp IS TABLE OF LLIBRE%ROWTYPE INDEX BY PLS_INTEGER;
+    llibres_array t_LlibresExemp;
+    v_Exemplars NUMBER := 0;
+    c_min CONSTANT NUMBER := 2;
+    c_max CONSTANT NUMBER := 4;
+    v_i PLS_INTEGER;
+BEGIN
+    FOR i IN c_min..c_max LOOP
+        SELECT exemplars INTO llibres_array(i) FROM LLIBRE WHERE ID = i;
+    END LOOP;
+
+    WHILE v_i IS NOT NULL LOOP
+    v_Exemplars := v_Exemplars + llibres_array(v_i)
+    v_i := llibres_array.NEXT(v_i)
+END;
 
 /*3. Utilitzant el mateix mètode que a l'activitat anterior, crea un bloc anònim que, donat un rang d'IDs de llibres, mostri en pantalla els seus títols separats per comes.
 Declara un associative array de VARCHAR2 indexat per un NUMBER i introdueix el titol de cada llibre a l'índex que coincideixi amb la seva ID.
