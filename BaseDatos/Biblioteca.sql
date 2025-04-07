@@ -305,20 +305,6 @@ END;
 
 
 
-/*2. Crea un procedure nested ACTUALITZA_LLIBRE_TITOL que, donat l'ID d'un llibre i un VARCHAR2, 
-actualitzi el títol del llibre que té l'ID indicat al varchar2 passat.
-Si el llibre no existeix, el procediment ha de mostrar al DBMS_OUTPUT un missatge indicant que no hi
-ha cap llibre amb l'ID passat. OBLIGATORI mostrar el missatge utilitzant control d'errors (excepció
-NO_DATA_FOUND).
-*/
-
-/*3. Defineix una excepció nova LLIBRE_ID_DESCONEGUT i modifica el procedure anterior perquè, en lloc de
-mostrar un missatge al DBMS_OUTPUT quan el llibre no existeix, aixequi l'excepció LLIBRE_ID_DESCONEGUT.
-Crida la funció des del bloc anònim utilitzant l'ID d'un llibre inexistent i mostra un missatge al
-DBMS_OUTPUT quan ocorri l'excepció que has declarat anteriorment.
-.*/
-
-
 --ITERACIONS I COL·LECCIONS
 
 /*1.Compta els exemplars totals d'un conjunt de llibres.
@@ -329,6 +315,19 @@ OUTPUT d'exemple:
 Rang IDs: 3, 6
 Recompte total: 20
 */
+DECLARE
+    v_min_id PLS_INTEGER := 3;
+    v_max_id PLS_INTEGER := 6;
+    v_recompte_total NUMBER := 0;
+BEGIN
+    FOR i IN v_min_id..v_max_id LOOP
+        SELECT exemplars INTO v_recompte_total FROM LLIBRE WHERE ID = i;
+        v_recompte_total := v_recompte_total + v_recompte_total;
+    END LOOP;
+
+    DBMS_OUTPUT.PUT_LINE('Rang IDs: ' || v_min_id || ', ' || v_max_id);
+    DBMS_OUTPUT.PUT_LINE('Recompte total: ' || v_recompte_total);
+END;
 
 /*2. Fes el mateix que a l'activitat anterior però havent guardat els exemplars de cada llibre dins un associative array.
 Declara un associative array de NUMBER indexat per un PLS_INTEGER i introduieix els exemplars de cada llibre a l'índex que coincideixi amb la seva ID (només dels llibres demanats o de tots). Utilitza un bucle per fer-ho.
