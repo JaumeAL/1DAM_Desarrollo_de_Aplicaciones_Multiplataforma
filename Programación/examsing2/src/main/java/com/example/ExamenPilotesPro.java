@@ -18,7 +18,7 @@ class Pelota {
         this.dx = 0;
         this.dy = 0;
 
-        URL imatgeURL = getClass().getResource(rutaImatge);
+        URL imatgeURL = getClass().getResource(rutaImatge); 
         if (imatgeURL != null) {
             this.imatge = new ImageIcon(imatgeURL).getImage();
         } else {
@@ -26,18 +26,19 @@ class Pelota {
         }
     }
 
-    public void moure(int ample, int alt) {
+    public void moure(int ample, int alt) { // Moure la pilota
+        // Actualitzar la posició de la pilota
         x += dx;
         y += dy;
 
-        if (x <= 0 || x + (radi * 2) >= ample)
+        if (x <= 0 || x + (radi * 2) >= ample) //Si toca els costats
             dx = -dx;
-        if (y <= 0 || y + (radi * 2) >= alt)
+        if (y <= 0 || y + (radi * 2) >= alt) //Si toca el sostre o el terra
             dy = -dy;
     }
 }
 
-class Triangle {
+class Triangle { // Classe Triangle
     int x, y, dx, dy, size;
     double angle;
     double rotationSpeed;
