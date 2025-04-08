@@ -86,10 +86,10 @@ class Triangle { // Classe Triangle
     }
 }
 
-class Obstaculo {
-    int x, y, width, height, dx;
+class Obstaculo { // Classe Obstaculo
+    int x, y, width, height, dx; // Posició i dimensions del rectangle
 
-    public Obstaculo(int x, int y, int width, int height) {
+    public Obstaculo(int x, int y, int width, int height) { 
         this.x = x;
         this.y = y;
         this.width = width;
@@ -97,11 +97,11 @@ class Obstaculo {
         this.dx = 5; // Velocidad inicial del obstáculo
     }
 
-    public void moure(int ample) {
+    public void moure(int ample) { // Moure l'obstacle
         x += dx;
 
         // Rebotar en los bordes del panel
-        if (x <= 0 || x + width >= ample) {
+        if (x <= 0 || x + width >= ample) { 
             dx = -dx;
         }
     }
@@ -111,13 +111,14 @@ class Obstaculo {
         g2d.fillRect(x, y, width, height);
     }
 
-    public boolean colisionaCon(int figuraX, int figuraY, int figuraWidth, int figuraHeight) {
-        return figuraX < x + width && figuraX + figuraWidth > x &&
-               figuraY < y + height && figuraY + figuraHeight > y;
+    public boolean colisionaCon(int figuraX, int figuraY, int figuraWidth, int figuraHeight) { //si el rectangle colisiona amb la figura
+        // Comprovar si la figura colisiona amb l'obstacle
+        return figuraX < x + width && figuraX + figuraWidth > x && 
+               figuraY < y + height && figuraY + figuraHeight > y; 
     }
 }
-class PanellPilotes extends JPanel implements ActionListener {
-    private final ArrayList<Pelota> pilotes = new ArrayList<>();
+class PanellPilotes extends JPanel implements ActionListener { // Classe PanellPilotes serveix per dibuixar les pilotes i triangles
+    private final ArrayList<Pelota> pilotes = new ArrayList<>(); // ArrayList de pilotes
     private final ArrayList<Triangle> triangles = new ArrayList<>();
     private final Timer timer;
     private final JComboBox<String> comboBox;
