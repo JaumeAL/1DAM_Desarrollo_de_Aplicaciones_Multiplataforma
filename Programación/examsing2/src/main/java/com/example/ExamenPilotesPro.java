@@ -62,21 +62,22 @@ class Triangle {
             dy = -dy;
 
         angle += rotationSpeed;
-        if (angle >= 360) angle -= 360;
+        if (angle >= 360)
+            angle -= 360;
     }
 
     public void dibuixar(Graphics2D g2d) {
         int halfSize = size / 2;
 
         int[] xPoints = {
-            x + (int) (halfSize * Math.cos(Math.toRadians(angle))),
-            x + (int) (halfSize * Math.cos(Math.toRadians(angle + 120))),
-            x + (int) (halfSize * Math.cos(Math.toRadians(angle + 240)))
+                x + (int) (halfSize * Math.cos(Math.toRadians(angle))),
+                x + (int) (halfSize * Math.cos(Math.toRadians(angle + 120))),
+                x + (int) (halfSize * Math.cos(Math.toRadians(angle + 240)))
         };
         int[] yPoints = {
-            y + (int) (halfSize * Math.sin(Math.toRadians(angle))),
-            y + (int) (halfSize * Math.sin(Math.toRadians(angle + 120))),
-            y + (int) (halfSize * Math.sin(Math.toRadians(angle + 240)))
+                y + (int) (halfSize * Math.sin(Math.toRadians(angle))),
+                y + (int) (halfSize * Math.sin(Math.toRadians(angle + 120))),
+                y + (int) (halfSize * Math.sin(Math.toRadians(angle + 240)))
         };
 
         g2d.setColor(Color.RED);
@@ -84,6 +85,36 @@ class Triangle {
     }
 }
 
+class Obstaculo {
+    int x, y, width, height, dx;
+
+    public Obstaculo(int x, int y, int width, int height) {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+        this.dx = 5; // Velocidad inicial del obstáculo
+    }
+
+    public void moure(int ample) {
+        x += dx;
+
+        // Rebotar en los bordes del panel
+        if (x <= 0 || x + width >= ample) {
+            dx = -dx;
+        }
+    }
+
+    public void dibuixar(Graphics2D g2d) {
+        g2d.setColor(Color.BLACK);
+        g2d.fillRect(x, y, width, height);
+    }
+
+    public boolean colisionaCon(int figuraX, int figuraY, int figuraWidth, int figuraHeight) {
+        return figuraX < x + width && figuraX + figuraWidth > x &&
+               figuraY < y + height && figuraY + figuraHeight > y;
+    }
+}
 class PanellPilotes extends JPanel implements ActionListener {
     private final ArrayList<Pelota> pilotes = new ArrayList<>();
     private final ArrayList<Triangle> triangles = new ArrayList<>();
@@ -93,12 +124,14 @@ class PanellPilotes extends JPanel implements ActionListener {
     private final JLabel lblCount;
     private final int velMin;
     private final int velMax;
+    private final Obstaculo obstaculo;
     private boolean enMarxa = true;
     private long lastTime = System.nanoTime();
 
     private final int maxFigures;
 
-    public PanellPilotes(JComboBox<String> comboBox, JLabel lblFPS, JLabel lblCount, int maxFigures, int velMin, int velMax) {
+    public PanellPilotes(JComboBox<String> comboBox, JLabel lblFPS, JLabel lblCount, int maxFigures, int velMin,
+            int velMax) {
         this.comboBox = comboBox;
         this.lblFPS = lblFPS;
         this.lblCount = lblCount;
@@ -109,11 +142,15 @@ class PanellPilotes extends JPanel implements ActionListener {
         timer.start();
         setDoubleBuffered(true);
         setBackground(Color.gray);
+
+        // Inicializamos el obstáculo en el centro del panel
+        obstaculo = new Obstaculo(300, 200, 100, 50);
     }
 
     public void afegirPilota() {
         if (pilotes.size() + triangles.size() >= maxFigures) {
-            JOptionPane.showMessageDialog(this, "Has alcanzado el número máximo de figuras.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Has alcanzado el número máximo de figuras.", "Aviso",
+                    JOptionPane.WARNING_MESSAGE);
             return;
         }
 
@@ -152,7 +189,8 @@ class PanellPilotes extends JPanel implements ActionListener {
 
     public void afegirTriangle() {
         if (pilotes.size() + triangles.size() >= maxFigures) {
-            JOptionPane.showMessageDialog(this, "Has alcanzado el número máximo de figuras.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Has alcanzado el número máximo de figuras.", "Aviso",
+                    JOptionPane.WARNING_MESSAGE);
             return;
         }
 
@@ -208,21 +246,38 @@ class PanellPilotes extends JPanel implements ActionListener {
         for (Triangle t : triangles) {
             t.dibuixar(g2d);
         }
+        // Dibujar el obstáculo
+        obstaculo.dibuixar(g2d);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (!enMarxa)
             return;
-
+    
         for (Pelota p : pilotes) {
             p.moure(getWidth(), getHeight());
+    
+            // Detectar colisión con el obstáculo
+            if (obstaculo.colisionaCon(p.x, p.y, p.radi * 2, p.radi * 2)) {
+                p.dx = -p.dx;
+                p.dy = -p.dy;
+            }
         }
-
+    
         for (Triangle t : triangles) {
             t.moure(getWidth(), getHeight());
+    
+            // Detectar colisión con el obstáculo
+            if (obstaculo.colisionaCon(t.x, t.y, t.size, t.size)) {
+                t.dx = -t.dx;
+                t.dy = -t.dy;
+            }
         }
-
+    
+        // Mover el obstáculo
+        obstaculo.moure(getWidth());
+    
         long now = System.nanoTime();
         double fps = 1_000_000_000.0 / (now - lastTime);
         lastTime = now;
@@ -230,7 +285,6 @@ class PanellPilotes extends JPanel implements ActionListener {
         repaint();
     }
 }
-
 class MenuInicial extends JFrame {
     public MenuInicial() {
         setTitle("Configuració del Joc");
@@ -256,12 +310,18 @@ class MenuInicial extends JFrame {
 
         JButton btnIniciar = new JButton("Iniciar Joc");
 
-        add(lblMaxFigures); add(spnMax);
-        add(lblColor); add(colorBox);
-        add(lblVelMin); add(spnVelMin);
-        add(lblVelMax); add(spnVelMax);
-        add(new JLabel()); add(chkInicial);
-        add(new JLabel()); add(btnIniciar);
+        add(lblMaxFigures);
+        add(spnMax);
+        add(lblColor);
+        add(colorBox);
+        add(lblVelMin);
+        add(spnVelMin);
+        add(lblVelMax);
+        add(spnVelMax);
+        add(new JLabel());
+        add(chkInicial);
+        add(new JLabel());
+        add(btnIniciar);
 
         btnIniciar.addActionListener(e -> {
             int maxFigures = (int) spnMax.getValue();
@@ -290,7 +350,7 @@ class JocConfigurat extends JFrame {
 
         JLabel lblFPS = new JLabel("FPS: ");
         JLabel lblCount = new JLabel("Figures: 0");
-        JComboBox<String> tipusBox = new JComboBox<>(new String[] {"Futbol", "Bàsquet", "Tennis"});
+        JComboBox<String> tipusBox = new JComboBox<>(new String[] { "Futbol", "Bàsquet", "Tennis" });
 
         PanellPilotes panell = new PanellPilotes(tipusBox, lblFPS, lblCount, maxFigures, velMin, velMax);
         canviarColorFons(panell, colorFons);
@@ -329,10 +389,18 @@ class JocConfigurat extends JFrame {
 
     private void canviarColorFons(JPanel panell, String colorFons) {
         switch (colorFons) {
-            case "Blanc": panell.setBackground(Color.WHITE); break;
-            case "Negre": panell.setBackground(Color.BLACK); break;
-            case "Blau":  panell.setBackground(Color.BLUE); break;
-            default:      panell.setBackground(Color.GRAY); break;
+            case "Blanc":
+                panell.setBackground(Color.WHITE);
+                break;
+            case "Negre":
+                panell.setBackground(Color.BLACK);
+                break;
+            case "Blau":
+                panell.setBackground(Color.BLUE);
+                break;
+            default:
+                panell.setBackground(Color.GRAY);
+                break;
         }
     }
 }
