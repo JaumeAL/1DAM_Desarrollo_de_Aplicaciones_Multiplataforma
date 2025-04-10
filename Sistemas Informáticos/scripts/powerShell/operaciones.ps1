@@ -1,4 +1,4 @@
-#Declare two numbers and calculate sum, product, and remainder.
+#2.Declare two numbers and calculate sum, product, and remainder.
 
 $number1 = Read-Host "Introduce el primer numero"
 $number2 = Read-Host "Introduce el segundo numero"
