@@ -18,7 +18,7 @@ class Pelota {
         this.dx = 0;
         this.dy = 0;
 
-        URL imatgeURL = getClass().getResource(rutaImatge); 
+        URL imatgeURL = getClass().getResource(rutaImatge);
         if (imatgeURL != null) {
             this.imatge = new ImageIcon(imatgeURL).getImage();
         } else {
@@ -31,10 +31,39 @@ class Pelota {
         x += dx;
         y += dy;
 
-        if (x <= 0 || x + (radi * 2) >= ample) //Si toca els costats
+        if (x <= 0 || x + (radi * 2) >= ample) // Si toca els costats
             dx = -dx;
-        if (y <= 0 || y + (radi * 2) >= alt) //Si toca el sostre o el terra
+        if (y <= 0 || y + (radi * 2) >= alt) // Si toca el sostre o el terra
             dy = -dy;
+    }
+}
+
+class Cuadrado {
+    int x, y, size, dx, dy;
+    Color color;
+
+    public Cuadrado(int x, int y, int size, Color color) {
+        this.x = x;
+        this.y = y;
+        this.size = size;
+        this.dx = 0;
+        this.dy = 0;
+        this.color = color;
+    }
+
+    public void moure(int ample, int alt) {
+        x += dx;
+        y += dy;
+
+        if (x <= 0 || x + size >= ample)
+            dx = -dx;
+        if (y <= 0 || y + size >= alt)
+            dy = -dy;
+    }
+
+    public void dibuixar(Graphics2D g2d) {
+        g2d.setColor(color);
+        g2d.fillRect(x, y, size, size);
     }
 }
 
@@ -89,7 +118,7 @@ class Triangle { // Classe Triangle
 class Obstaculo { // Classe Obstaculo
     int x, y, width, height, dx; // Posició i dimensions del rectangle
 
-    public Obstaculo(int x, int y, int width, int height) { 
+    public Obstaculo(int x, int y, int width, int height) {
         this.x = x;
         this.y = y;
         this.width = width;
@@ -101,7 +130,7 @@ class Obstaculo { // Classe Obstaculo
         x += dx;
 
         // Rebotar en los bordes del panel
-        if (x <= 0 || x + width >= ample) { 
+        if (x <= 0 || x + width >= ample) {
             dx = -dx;
         }
     }
@@ -111,15 +140,20 @@ class Obstaculo { // Classe Obstaculo
         g2d.fillRect(x, y, width, height);
     }
 
-    public boolean colisionaCon(int figuraX, int figuraY, int figuraWidth, int figuraHeight) { //si el rectangle colisiona amb la figura
+    public boolean colisionaCon(int figuraX, int figuraY, int figuraWidth, int figuraHeight) { // si el rectangle
+                                                                                               // colisiona amb la
+                                                                                               // figura
         // Comprovar si la figura colisiona amb l'obstacle
-        return figuraX < x + width && figuraX + figuraWidth > x && 
-               figuraY < y + height && figuraY + figuraHeight > y; 
+        return figuraX < x + width && figuraX + figuraWidth > x &&
+                figuraY < y + height && figuraY + figuraHeight > y;
     }
 }
-class PanellPilotes extends JPanel implements ActionListener { // Classe PanellPilotes serveix per dibuixar les pilotes i triangles
+
+class PanellPilotes extends JPanel implements ActionListener { // Classe PanellPilotes serveix per dibuixar les pilotes
+                                                               // i triangles
     private final ArrayList<Pelota> pilotes = new ArrayList<>(); // ArrayList de pilotes
     private final ArrayList<Triangle> triangles = new ArrayList<>();
+    private final ArrayList<Cuadrado> cuadrats = new ArrayList<>();
     private final Timer timer;
     private final JComboBox<String> comboBox;
     private final JLabel lblFPS;
@@ -131,6 +165,29 @@ class PanellPilotes extends JPanel implements ActionListener { // Classe PanellP
     private long lastTime = System.nanoTime();
 
     private final int maxFigures;
+
+    public void afegirCuadrado() {
+        if (pilotes.size() + triangles.size() + cuadrats.size() >= maxFigures) {
+            JOptionPane.showMessageDialog(this, "Has alcanzado el número máximo de figuras.", "Aviso",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        Random rand = new Random();
+        int size = rand.nextInt(30) + 20;
+        int x = rand.nextInt(Math.max(1, getWidth() - size));
+        int y = rand.nextInt(Math.max(1, getHeight() - size));
+        int dx = rand.nextInt(velMax - velMin + 1) + velMin;
+        int dy = rand.nextInt(velMax - velMin + 1) + velMin;
+        Color color = new Color(rand.nextInt(256), rand.nextInt(256), rand.nextInt(256));
+
+        Cuadrado c = new Cuadrado(x, y, size, color);
+        c.dx = dx;
+        c.dy = dy;
+        cuadrats.add(c);
+        actualitzarLabel();
+        repaint();
+    }
 
     public PanellPilotes(JComboBox<String> comboBox, JLabel lblFPS, JLabel lblCount, int maxFigures, int velMin,
             int velMax) {
@@ -248,6 +305,9 @@ class PanellPilotes extends JPanel implements ActionListener { // Classe PanellP
         for (Triangle t : triangles) {
             t.dibuixar(g2d);
         }
+        for (Cuadrado c : cuadrats) {
+            c.dibuixar(g2d);
+        }
         // Dibujar el obstáculo
         obstaculo.dibuixar(g2d);
     }
@@ -256,30 +316,39 @@ class PanellPilotes extends JPanel implements ActionListener { // Classe PanellP
     public void actionPerformed(ActionEvent e) {
         if (!enMarxa)
             return;
-    
+
         for (Pelota p : pilotes) {
             p.moure(getWidth(), getHeight());
-    
+
             // Detectar colisión con el obstáculo
             if (obstaculo.colisionaCon(p.x, p.y, p.radi * 2, p.radi * 2)) {
                 p.dx = -p.dx;
                 p.dy = -p.dy;
             }
         }
-    
+
         for (Triangle t : triangles) {
             t.moure(getWidth(), getHeight());
-    
+
             // Detectar colisión con el obstáculo
             if (obstaculo.colisionaCon(t.x, t.y, t.size, t.size)) {
                 t.dx = -t.dx;
                 t.dy = -t.dy;
             }
         }
-    
+        for (Cuadrado c : cuadrats) {
+            c.moure(getWidth(), getHeight());
+
+            // Detectar colisión con el obstáculo
+            if (obstaculo.colisionaCon(c.x, c.y, c.size, c.size)) {
+                c.dx = -c.dx;
+                c.dy = -c.dy;
+            }
+        }
+
         // Mover el obstáculo
         obstaculo.moure(getWidth());
-    
+
         long now = System.nanoTime();
         double fps = 1_000_000_000.0 / (now - lastTime);
         lastTime = now;
@@ -287,6 +356,7 @@ class PanellPilotes extends JPanel implements ActionListener { // Classe PanellP
         repaint();
     }
 }
+
 class MenuInicial extends JFrame {
     public MenuInicial() {
         setTitle("Configuració del Joc");
@@ -362,6 +432,7 @@ class JocConfigurat extends JFrame {
         JButton btnBorrar = new JButton("Borrar");
         JButton btnReiniciar = new JButton("Reiniciar");
         JButton btnStartStop = new JButton("Start/Stop");
+        JButton btnAfegirCuadrado = new JButton("Afegir Cuadrado");
 
         JPanel controls = new JPanel();
         controls.add(lblFPS);
@@ -372,12 +443,14 @@ class JocConfigurat extends JFrame {
         controls.add(btnBorrar);
         controls.add(btnReiniciar);
         controls.add(btnStartStop);
+        controls.add(btnAfegirCuadrado);
 
         btnAfegirPilota.addActionListener(e -> panell.afegirPilota());
         btnAfegirTriangle.addActionListener(e -> panell.afegirTriangle());
         btnBorrar.addActionListener(e -> panell.borrarUltimaPilota());
         btnReiniciar.addActionListener(e -> panell.reiniciar());
         btnStartStop.addActionListener(e -> panell.toggleMarxa());
+        btnAfegirCuadrado.addActionListener(e -> panell.afegirCuadrado());
 
         add(panell, BorderLayout.CENTER);
         add(controls, BorderLayout.SOUTH);
