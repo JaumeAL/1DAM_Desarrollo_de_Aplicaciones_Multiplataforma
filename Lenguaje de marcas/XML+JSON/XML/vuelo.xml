@@ -1,0 +1,14 @@
+<vuelo>
+        <vueloIda>
+            <origen>Palma De Mallorca</origen>
+            <destino>Roma</destino>
+            <fecha_vuelo>14/07/2025</fecha_vuelo>
+            <precio>70</precio>
+        </vueloIda>
+        <vueloVuelta>
+            <origen>Roma</origen>
+            <destino>Palma De Mallorca</destino>
+            <fecha_vuelo>20/07/2025</fecha_vuelo>
+            <precio>80</precio>
+        </vueloVuelta>
+    </vuelo>
