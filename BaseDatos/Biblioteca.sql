@@ -386,38 +386,62 @@ BEGIN
 
 END;
 
---SUBPROGRAMES I EXCEPCIONS
-
-/*1. Declara una funció que agafi com a paràmetre un col·lecció de noms de gènere ("Misteri", "Poesia",...)
-i retorni el total d'exemplars dels llibres d'aquests gèneres.
-Si algun dels gèneres passats com a paràmetre no existeix o no té cap llibre,
-l'execució ha de seguir i comptar la resta de gèneres.
-Executa la funció i mostra el total d'exemplars.
-EXEMPLE D'OUTPUT:
-S'han demanat els exemplars totals dels gèneres: Misteri, Aventura
-Total exemplars: 14
-*/
-
-/*2.Declara una funció que agafi com a paràmetre una col·lecció de noms d'autor i retorni
-un col·lecció d'un tipus record propi amb l'ID de l'autor, el nombre de llibres registrats que ha escrit,
-i el nombre d'exemplars guardats en base de dades dels llibres d'aquest autor.
-Executa la funció i mostra el contingut dels records que retorna.
-Si un autor no existeix la funció ha de seguir i retornar la informació de la resta.
-EXEMPLE:
-Autors: Federico, Manuel
-	ID	LLIBRES	EXEMPLARS
-1: 	1	5		39
-2: 	2	5		19
-*/
-
---SUBPROGRAMES I COL·LECCIONS
-/*1. Crea una funció NESTED que retorni, dins una nested table de (records de) LLIBRE, 
-els llibres amb un nombre d'exemplars igual o inferior al passat per paràmetre.
-Crida aquesta funció dins el bloc anònim i utilitza un FOR per mostrar el títol
-dels llibres que hagi retornat la funció.*/
+--1. Crea un paquet LLIBRES_API que contengui (6 punts):
+--• Un procediment “alta_llibre” per donar d’alta un llibre, donat, com a mínim, el seu
+--títol, any, número d’exemplars i ID d’editorial. L’ID del llibre del que és seqüela
+--també s’ha de poder indicar, però ha de ser un paràmetre opcional (amb valor per
+--defecte NULL) i, si s’indica, el procediment ha de comprovar que hi ha un llibre amb
+--aquell ID i aixecar una excepció si no és així. A més, si s’indica un número
+--d’exemplars negatiu o una editorial que no existeix, també s’ha d’aixecar una
+--excepció (diferent en cada cas).
+--• Una funció “get_llibre_by_id” per obtenir la informació d’un llibre (record), donat el
+--seu ID.
+--• Una funció “get_llibres_by_genere” per obtenir tots els llibres (records) d’un gènere,
+--donat l’ID del gènere. Els llibres han d’estar ordenats per títol.
+--• Una funció “search_by_titol” per obtenir tots els llibres (records) que al títol tinguin
+--el text indicat per paràmetre.
+--Les funcions, procediments, tipus i excepcions necessaris han de formar part del mateix
+--paquet.
 
 
-/*2. Converteix la funció anterior a un procediment, que fiqui els llibres amb un
-nombre d'exemplars igual o inferior al del paràmetre dins un paràmetre OUT.
-Crida aquest procediment dins el bloc anònim i utilitza un FOR per mostrar el títol
-dels llibres que el procediment hagi guardat dins el paràmetre OUT./*
+CREATE OR REPLACE PACKAGE LLIBRES_API AS
+    -- TIPOS
+    TYPE llibre_record IS RECORD (
+        id LLIBRE.ID%TYPE,
+        titol LLIBRE.TITOL%TYPE,
+        an LLIBRE.AN%TYPE,
+        exemplars LLIBRE.EXEMPLARS%TYPE,
+        id_editorial LLIBRE.ID_EDITORIAL%TYPE,
+        id_sequela_de LLIBRE.ID_SEQUELA_DE%TYPE
+    );
+    TYPE llibre_table IS TABLE OF llibre_record;
+
+
+    -- SUBPROGRAMES
+    PROCEDURE alta_llibre(
+        v_titol LLIBRE.TITOL%TYPE,
+        v_any LLIBRE.AN%TYPE,
+        v_n_exemplars LLIBRE.EXEMPLARS%TYPE,
+        v_id_editorial LLIBRE.ID_EDITORIAL%TYPE,
+        v_id_sequela_de LLIBRE.ID_SEQUELA_DE%TYPE DEFAULT NULL
+    );
+
+
+    FUNCTION get_llibre_by_id(v_id LLIBRE.ID%TYPE) RETURN llibre_record;
+
+
+    FUNCTION get_llibres_by_genere(v_genere_id GENERE.NOM%TYPE) RETURN llibre_table;
+
+
+    FUNCTION search_by_titol(v_text VARCHAR2) RETURN llibre_table;
+   
+END LLIBRES_API;
+
+
+
+
+
+--2. Crea un trigger que guardi, a una taula LLIBRES_LOG, l’històric d’exemplars d’un llibre.
+--Quan un llibre canvia de nombre d’exemplars, s’ha de guardar el nombre d’exemplars
+--que tenia abans del canvi, dins aquesta nova taula, amb la data del moment en què es
+--fa el canvi (és a dir, quan el llibre deixa de tenir aquell nombre d’exemplars) i l’ID del llibre.
