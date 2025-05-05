@@ -386,6 +386,8 @@ BEGIN
 
 END;
 
+
+
 --1. Crea un paquet LLIBRES_API que contengui (6 punts):
 --• Un procediment “alta_llibre” per donar d’alta un llibre, donat, com a mínim, el seu
 --títol, any, número d’exemplars i ID d’editorial. L’ID del llibre del que és seqüela
@@ -402,42 +404,93 @@ END;
 --el text indicat per paràmetre.
 --Les funcions, procediments, tipus i excepcions necessaris han de formar part del mateix
 --paquet.
-
-
 CREATE OR REPLACE PACKAGE LLIBRES_API AS
-    -- TIPOS
-    TYPE llibre_record IS RECORD (
-        id LLIBRE.ID%TYPE,
-        titol LLIBRE.TITOL%TYPE,
-        an LLIBRE.AN%TYPE,
-        exemplars LLIBRE.EXEMPLARS%TYPE,
-        id_editorial LLIBRE.ID_EDITORIAL%TYPE,
-        id_sequela_de LLIBRE.ID_SEQUELA_DE%TYPE
-    );
-    TYPE llibre_table IS TABLE OF llibre_record;
+    -- Excepcions
+    ex_editorial_no_existeix EXCEPTION;
+    ex_llibre_no_existeix EXCEPTION;
+    ex_exemplars_negatius EXCEPTION;
 
-
-    -- SUBPROGRAMES
+    -- Procediments i funcions
     PROCEDURE alta_llibre(
-        v_titol LLIBRE.TITOL%TYPE,
-        v_any LLIBRE.AN%TYPE,
-        v_n_exemplars LLIBRE.EXEMPLARS%TYPE,
-        v_id_editorial LLIBRE.ID_EDITORIAL%TYPE,
-        v_id_sequela_de LLIBRE.ID_SEQUELA_DE%TYPE DEFAULT NULL
+        p_titol IN VARCHAR2,
+        p_any IN NUMBER,
+        p_exemplars IN NUMBER,
+        p_id_editorial IN NUMBER,
+        p_id_sequela_de IN NUMBER DEFAULT NULL
     );
 
+    FUNCTION get_llibre_by_id(p_id IN NUMBER) RETURN LLIBRE%ROWTYPE;
 
-    FUNCTION get_llibre_by_id(v_id LLIBRE.ID%TYPE) RETURN llibre_record;
+    FUNCTION get_llibres_by_genere(p_genere IN VARCHAR2) RETURN SYS_REFCURSOR;
 
-
-    FUNCTION get_llibres_by_genere(v_genere_id GENERE.NOM%TYPE) RETURN llibre_table;
-
-
-    FUNCTION search_by_titol(v_text VARCHAR2) RETURN llibre_table;
-   
+    FUNCTION search_by_titol(p_text IN VARCHAR2) RETURN SYS_REFCURSOR;
 END LLIBRES_API;
+/
 
+CREATE OR REPLACE PACKAGE BODY LLIBRES_API AS
+    PROCEDURE alta_llibre(
+        p_titol IN VARCHAR2,
+        p_any IN NUMBER,
+        p_exemplars IN NUMBER,
+        p_id_editorial IN NUMBER,
+        p_id_sequela_de IN NUMBER DEFAULT NULL
+    ) IS
+        v_count NUMBER;
+    BEGIN
+        -- Comprovar si l'editorial existeix
+        SELECT COUNT(*) INTO v_count FROM EDITORIAL WHERE ID = p_id_editorial;
+        IF v_count = 0 THEN
+            RAISE ex_editorial_no_existeix;
+        END IF;
 
+        -- Comprovar si el llibre seqüela existeix (si s'ha indicat)
+        IF p_id_sequela_de IS NOT NULL THEN
+            SELECT COUNT(*) INTO v_count FROM LLIBRE WHERE ID = p_id_sequela_de;
+            IF v_count = 0 THEN
+                RAISE ex_llibre_no_existeix;
+            END IF;
+        END IF;
+
+        -- Comprovar si el número d'exemplars és negatiu
+        IF p_exemplars < 0 THEN
+            RAISE ex_exemplars_negatius;
+        END IF;
+
+        -- Inserir el llibre
+        INSERT INTO LLIBRE (titol, an, exemplars, id_editorial, id_sequela_de)
+        VALUES (p_titol, p_any, p_exemplars, p_id_editorial, p_id_sequela_de);
+    END alta_llibre;
+
+    FUNCTION get_llibre_by_id(p_id IN NUMBER) RETURN LLIBRE%ROWTYPE IS
+        v_llibre LLIBRE%ROWTYPE;
+    BEGIN
+        SELECT * INTO v_llibre FROM LLIBRE WHERE ID = p_id;
+        RETURN v_llibre;
+    EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+            RAISE ex_llibre_no_existeix;
+    END get_llibre_by_id;
+
+    FUNCTION get_llibres_by_genere(p_genere IN VARCHAR2) RETURN SYS_REFCURSOR IS
+        v_cursor SYS_REFCURSOR;
+    BEGIN
+        OPEN v_cursor FOR
+        SELECT * FROM LLIBRE l
+        JOIN LLIBRE_GENERE lg ON l.ID = lg.ID_LLIBRE
+        WHERE lg.NOM_GENERE = p_genere
+        ORDER BY l.TITOL;
+        RETURN v_cursor;
+    END get_llibres_by_genere;
+
+    FUNCTION search_by_titol(p_text IN VARCHAR2) RETURN SYS_REFCURSOR IS
+        v_cursor SYS_REFCURSOR;
+    BEGIN
+        OPEN v_cursor FOR
+        SELECT * FROM LLIBRE WHERE LOWER(TITOL) LIKE '%' || LOWER(p_text) || '%';
+        RETURN v_cursor;
+    END search_by_titol;
+END LLIBRES_API;
+/
 
 
 
