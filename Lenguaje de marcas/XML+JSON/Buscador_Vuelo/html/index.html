@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Agència de Viatges</title>
+  <link rel="stylesheet" href="../css/estils.css" />
+  <script src="disponibilitat.js" defer></script>
+</head>
+<body>
+  <h1>Cercador de Vols i Hotels</h1>
+
+  <div class="controls">
+    <select id="origen">
+      <option value="">-- Origen --</option>
+      <option value="Madrid">Madrid</option>
+      <option value="Barcelona">Barcelona</option>
+      <option value="Mallorca">Mallorca</option>
+    </select>
+
+    <select id="desti">
+      <option value="">-- Destinació --</option>
+      <option value="Madrid">Madrid</option>
+      <option value="Barcelona">Barcelona</option>
+      <option value="Mallorca">Mallorca</option>
+    </select>
+
+    <input type="text" id="adults" placeholder="Nombre d'adults" />
+    <input type="text" id="infants" placeholder="Nombre d'infants" />
+    <input type="date" id="dataInici" placeholder="Data inici" />
+    <input type="date" id="dataFi" placeholder="Data fi" />
+    <button onclick="cercarDisponibilitat()">Cercar</button>
+    <button onclick="convertir()">Convertir</button>
+  </div>
+
+  <span>XML creat</span>
+  <pre id="disponibilitat"></pre>
+
+  <span>Resultats Hotels</span>
+  <pre id="resultatsHotels"></pre>
+
+  <span>Resultats Vols</span>
+  <pre id="resultatsVols"></pre>
+
+  <span>Conversió</span>
+  <pre id="conversio"></pre>
+
+
+</body>
+</html>

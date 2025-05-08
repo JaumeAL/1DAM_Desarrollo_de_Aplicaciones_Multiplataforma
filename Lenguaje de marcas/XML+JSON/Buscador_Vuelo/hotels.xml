@@ -1,0 +1,22 @@
+<hotels>
+    <hotel>
+        <nom>Hotel Gran vía</nom>
+        <desti>Madrid</desti>
+        <preu>120.50</preu>
+    </hotel>
+    <hotel>
+        <nom>Vista Mar Hotel</nom>
+        <desti>Barcelona</desti>
+        <preu>98.00</preu>
+    </hotel>
+    <hotel>
+        <nom>Albergue Rural Montanya</nom>
+        <desti>Barcelona</desti>
+        <preu>75.30</preu>
+    </hotel>
+    <hotel>
+        <nom>Hotel Sol Mediterráneo</nom>
+        <desti>Mallorca</desti>
+        <preu>140.00</preu>
+    </hotel>
+</hotels>

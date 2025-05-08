@@ -1,0 +1,84 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 20px;
+    padding: 20px;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+  
+  .controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  button {
+    background-color: #008575;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    margin: 5px 0;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #00695c;
+  }
+  
+  input[type="text"] {
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 180px;
+    font-size: 14px;
+  }
+
+  /* Inputs de tipus text i date */
+input[type="text"],
+input[type="date"],
+select {
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 180px;
+  font-size: 14px;
+  background-color: #fff;
+}
+
+/* Estil per select quan s'obre */
+select:focus,
+input[type="date"]:focus,
+input[type="text"]:focus {
+  outline: none;
+  border-color: #008575;
+  box-shadow: 0 0 4px rgba(0, 133, 117, 0.5);
+}
+
+p {
+background-color: #ffffff;
+border: 1px solid #ddd;
+padding: 15px;
+border-radius: 5px;
+margin-top: 20px;
+}
+
+span {
+font-weight: bold;
+display: block;
+margin-bottom: 10px;
+}
+
+pre {
+background-color: #eee;
+padding: 10px;
+border-radius: 4px;
+overflow-x: auto;
+}

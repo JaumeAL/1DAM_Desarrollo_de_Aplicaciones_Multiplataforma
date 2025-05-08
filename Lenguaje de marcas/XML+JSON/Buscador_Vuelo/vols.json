@@ -1,0 +1,32 @@
+[
+    {
+      "origen": "Mallorca",
+      "desti": "Madrid",
+      "preu": 55.20
+    },
+    {
+      "origen": "Mallorca",
+      "desti": "Barcelona",
+      "preu": 89.99
+    },
+    {
+        "origen": "Madrid",
+        "desti": "Barcelona",
+        "preu": 49.99
+    },
+    {
+      "origen": "Madrid",
+      "desti": "Mallorca",
+      "preu": 72.00
+    },
+    {
+        "origen": "Barcelona",
+        "desti": "Madrid",
+        "preu": 69.99
+    },
+    {
+      "origen": "Barcelona",
+      "desti": "Mallorca",
+      "preu": 83.00
+    }
+  ]
