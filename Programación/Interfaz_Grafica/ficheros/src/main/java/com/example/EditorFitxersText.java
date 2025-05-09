@@ -12,6 +12,17 @@ public class EditorFitxersText extends JFrame {
     private JButton btnLlegir, btnEscriure;
 
     public EditorFitxersText() {
+        // Establecer el LookAndFeel
+        try {
+            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         setTitle("Editor de fitxers de text");
         setSize(500, 400);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -19,13 +30,16 @@ public class EditorFitxersText extends JFrame {
         setLayout(new BorderLayout(10, 10));
 
         // Panell superior amb el camp per al nom del fitxer
-        JPanel panellNom = new JPanel(new BorderLayout(5, 5));
-        panellNom.setBorder(BorderFactory.createEmptyBorder(10, 10, 80, 10));
-        panellNom.add(new JLabel("Nom del fitxer:"), BorderLayout.WEST);
-        panellNom.setPreferredSize(new Dimension(getWidth(), 30)); 
+        JPanel panellNom = new JPanel(new BorderLayout(5, 5)); // Panell per al nom del fitxer
+        panellNom.setBorder(BorderFactory.createEmptyBorder());
+        JLabel etiquetaNomFitxer = new JLabel("Nom del fitxer:");
+        etiquetaNomFitxer.setFont(new Font("Arial", Font.BOLD, 14)); // Tipografía chill
+        panellNom.add(etiquetaNomFitxer, BorderLayout.WEST);
+        panellNom.setPreferredSize(new Dimension(getWidth(), 40)); 
         txtNomFitxer = new JTextField();
         panellNom.add(txtNomFitxer, BorderLayout.CENTER);
         panellNom.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        panellNom.setBackground(new Color(255, 180, 68));
         add(panellNom, BorderLayout.NORTH);
 
         // Àrea central per al contingut del fitxer
@@ -41,6 +55,10 @@ public class EditorFitxersText extends JFrame {
         btnLlegir = new JButton("Llegir");
         btnEscriure = new JButton("Escriure");
         chkAfegir = new JCheckBox("Afegir");
+        Font fontBotons = new Font("Arial", Font.BOLD, 14);
+        btnLlegir.setFont(fontBotons);
+        btnEscriure.setFont(fontBotons);
+        chkAfegir.setFont(fontBotons);
         panellBotons.setBackground(new Color(255, 180, 68));
 
         //borde negro
