@@ -8,7 +8,6 @@ package com.example;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 import java.io.*;
 
 public class EditorFitxersText extends JFrame {
@@ -147,7 +146,6 @@ public class EditorFitxersText extends JFrame {
             JOptionPane.showMessageDialog(this, "Error al escriure al fitxer:\n" + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(EditorFitxersText::new);
