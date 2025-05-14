@@ -4,7 +4,7 @@
 
 ## Descripción
 
-El **Buscador de Vuelos** es una aplicación diseñada para facilitar la búsqueda de vuelos mediante el uso de tecnologías como XML y JSON. Este proyecto es parte del curso de **1º DAM** en la asignatura de **Lenguaje de Marcas**.
+El **Buscador de Vuelos** es una aplicación diseñada para facilitar la búsqueda de vuelos mediante el uso de tecnologías como XML y JSON. 
 
 ## Características
 
