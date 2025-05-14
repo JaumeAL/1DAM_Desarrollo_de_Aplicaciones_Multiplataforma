@@ -20,13 +20,14 @@ function cercarDisponibilitat() {
   const dataInici = document.getElementById("dataInici").value;
   const dataFi = document.getElementById("dataFi").value;
 
+  // Camps obligatoris
   if (!origen || !desti || !adults || !infants || !dataInici || !dataFi) {
     alert("Tots els camps son obligatoris");
     return;
   }
 
-  // Crear XML dinàmicament
-  const parser = new DOMParser();
+  // XML
+  const miParser = new DOMParser();
   const xmlString = `
     <disponibilitat>
       <origen>${origen}</origen>
@@ -37,7 +38,7 @@ function cercarDisponibilitat() {
       <dataFi>${dataFi}</dataFi>
     </disponibilitat>
   `;
-  disponibilitatXML = parser.parseFromString(xmlString, "application/xml");
+  disponibilitatXML = miParser.parseFromString(xmlString, "application/xml");
 
   document.getElementById("disponibilitat").textContent = formatXML(xmlString);
 
@@ -69,11 +70,11 @@ function convertir() {
   const conversio = document.getElementById("conversio");
 
   if (!disponibilitatXML) {
-    conversio.textContent = "No hi ha disponibilitat.xml creat encara.";
+    conversio.textContent = "No hi ha cap disponibilitat.xml creat...";
     return;
   }
 
-  // Si no hem convertit a JSON encara, ho fem
+  // Si no hem convertit a jsom:
   if (!jsonConvertit) {
     const obj = {};
     const root = disponibilitatXML.documentElement;
@@ -83,7 +84,7 @@ function convertir() {
     jsonConvertit = obj;
     conversio.textContent = JSON.stringify(jsonConvertit, null, 2);
   } else {
-    // Convertim JSON a XML
+    // De JSON a XML
     var xml = "<disponibilitat>\n";
     for (const clau in jsonConvertit) {
       xml += `  <${clau}>${jsonConvertit[clau]}</${clau}>\n`;
@@ -94,21 +95,21 @@ function convertir() {
   }
 }
 
-// Format XML amb indentació bonica per mostrar a pantalla
+// Format XML amb indentacio
 function formatXML(xmlStr) {
-  const PADDING = "  ";
+  const CON = "  ";
   const reg = /(>)(<)(\/*)/g;
-  var formatted = "";
+  var sin = "";
   var pad = 0;
 
   xmlStr = xmlStr.replace(reg, "$1\r\n$2$3");
   xmlStr.split("\r\n").forEach(node => {
     var indent = 0;
     if (node.match(/^<\/\w/)) pad -= 1;
-    indent = PADDING.repeat(pad);
-    formatted += indent + node + "\r\n";
+    indent = CON.repeat(pad);
+    sin += indent + node + "\r\n";
     if (node.match(/^<\w[^>]*[^/]>/)) pad += 1;
   });
 
-  return formatted.trim();
+  return sin.trim();
 }
