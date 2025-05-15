@@ -20,91 +20,100 @@ function cercarDisponibilitat() {
   const dataInici = document.getElementById("dataInici").value;
   const dataFi = document.getElementById("dataFi").value;
 
-  // Camps obligatoris
+  // Validació bàsica
   if (!origen || !desti || !adults || !infants || !dataInici || !dataFi) {
-    alert("Tots els camps son obligatoris");
+    alert("Tots els camps són obligatoris.");
     return;
   }
 
-  // XML
-  const miParser = new DOMParser();
+  // Crear XML amb DOMParser
   const xmlString = `
-    <disponibilitat>
-      <origen>${origen}</origen>
-      <desti>${desti}</desti>
-      <adults>${adults}</adults>
-      <infants>${infants}</infants>
-      <dataInici>${dataInici}</dataInici>
-      <dataFi>${dataFi}</dataFi>
-    </disponibilitat>
-  `;
-  disponibilitatXML = miParser.parseFromString(xmlString, "application/xml");
+  <disponibilitat>
+    <origen>${origen}</origen>
+    <desti>${desti}</desti>
+    <adults>${adults}</adults>
+    <infants>${infants}</infants>
+    <dataInici>${dataInici}</dataInici>
+    <dataFi>${dataFi}</dataFi>
+  </disponibilitat>
+  `.trim();
 
+  const parser = new DOMParser();
+  disponibilitatXML = parser.parseFromString(xmlString, "application/xml");
+
+  // Mostrar XML
   document.getElementById("disponibilitat").textContent = formatXML(xmlString);
 
-  // Carregar i filtrar hotels.xml
+  // Llegir hotels.xml i filtrar per destí
   fetch("hotels.xml")
-    .then(response => response.text())
-    .then(str => {
-      const xml = new window.DOMParser().parseFromString(str, "application/xml");
-      const hotels = Array.from(xml.getElementsByTagName("hotel"));
-      const resultats = hotels.filter(h => h.getElementsByTagName("desti")[0].textContent === desti);
-      const text = resultats.map(hotel => {
-        return `Nom: ${hotel.getElementsByTagName("nom")[0].textContent}, Preu: ${hotel.getElementsByTagName("preu")[0].textContent}`;
-      }).join("\n");
+    .then(res => res.text())
+    .then(xmlText => {
+      const xml = parser.parseFromString(xmlText, "application/xml");
+      const hotels = xml.getElementsByTagName("hotel");
+      let resultats = "";
 
-      document.getElementById("resultatsHotels").textContent = text || "No s'han trobat hotels.";
+      for (let hotel of hotels) {
+        let hotelDesti = hotel.getElementsByTagName("desti")[0].textContent;
+        if (hotelDesti === desti) {
+          let nom = hotel.getElementsByTagName("nom")[0].textContent;
+          let preu = hotel.getElementsByTagName("preu")[0].textContent;
+          resultats += `Nom: ${nom}, Preu: ${preu}€\n`;
+        }
+      }
+
+      document.getElementById("resultatsHotels").textContent = resultats || "No s'han trobat hotels.";
     });
 
-  // Carregar i filtrar vols.json
+  // Llegir vols.json i filtrar per origen i destí
   fetch("vols.json")
-    .then(response => response.json())
+    .then(res => res.json())
     .then(vols => {
-      const resultats = vols.filter(v => v.origen === origen && v.desti === desti);
-      const text = resultats.map(v => `Origen: ${v.origen}, Destí: ${v.desti}, Preu: ${v.preu}`).join("\n");
+      let resultats = vols.filter(v => v.origen === origen && v.desti === desti);
+      let text = resultats.map(v => `Origen: ${v.origen}, Destí: ${v.desti}, Preu: ${v.preu}€`).join("\n");
       document.getElementById("resultatsVols").textContent = text || "No s'han trobat vols.";
     });
 }
 
 function convertir() {
-  const conversio = document.getElementById("conversio");
+  const output = document.getElementById("conversio");
 
   if (!disponibilitatXML) {
-    conversio.textContent = "No hi ha cap disponibilitat.xml creat...";
+    output.textContent = "No hi ha cap disponibilitat.xml creat...";
     return;
   }
 
-  // Si no hem convertit a jsom:
   if (!jsonConvertit) {
-    const obj = {};
+    // Convertim de XML a JSON
     const root = disponibilitatXML.documentElement;
-    Array.from(root.children).forEach(node => {
-      obj[node.tagName] = node.textContent;
-    });
+    const obj = {};
+    for (let i = 0; i < root.children.length; i++) {
+      const etiqueta = root.children[i].tagName;
+      const valor = root.children[i].textContent;
+      obj[etiqueta] = valor;
+    }
     jsonConvertit = obj;
-    conversio.textContent = JSON.stringify(jsonConvertit, null, 2);
+    output.textContent = JSON.stringify(obj, null, 2);
   } else {
-    // De JSON a XML
-    var xml = "<disponibilitat>\n";
-    for (const clau in jsonConvertit) {
+    // Convertim de JSON a XML
+    let xml = "<disponibilitat>\n";
+    for (let clau in jsonConvertit) {
       xml += `  <${clau}>${jsonConvertit[clau]}</${clau}>\n`;
     }
     xml += "</disponibilitat>";
-    conversio.textContent = formatXML(xml);
+    output.textContent = formatXML(xml);
     jsonConvertit = null;
   }
 }
 
-// Format XML amb indentacio
 function formatXML(xmlStr) {
   const CON = "  ";
   const reg = /(>)(<)(\/*)/g;
-  var sin = "";
-  var pad = 0;
+  let sin = "";
+  let pad = 0;
 
   xmlStr = xmlStr.replace(reg, "$1\r\n$2$3");
   xmlStr.split("\r\n").forEach(node => {
-    var indent = 0;
+    let indent = 0;
     if (node.match(/^<\/\w/)) pad -= 1;
     indent = CON.repeat(pad);
     sin += indent + node + "\r\n";
