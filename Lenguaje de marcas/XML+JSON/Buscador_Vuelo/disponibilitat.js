@@ -20,7 +20,7 @@ function cercarDisponibilitat() {
   const dataInici = document.getElementById("dataInici").value;
   const dataFi = document.getElementById("dataFi").value;
 
-  // Validació bàsica
+  // Validacions
   if (!origen || !desti || !adults || !infants || !dataInici || !dataFi) {
     alert("Tots els camps són obligatoris.");
     return;
@@ -37,7 +37,7 @@ function cercarDisponibilitat() {
     <dataFi>${dataFi}</dataFi>
   </disponibilitat>
   `.trim();
-
+  
   const parser = new DOMParser();
   disponibilitatXML = parser.parseFromString(xmlString, "application/xml");
 
@@ -64,7 +64,7 @@ function cercarDisponibilitat() {
       document.getElementById("resultatsHotels").textContent = resultats || "No s'han trobat hotels.";
     });
 
-  // Llegir vols.json i filtrar per origen i destí
+  // Llegir vols.json i filtrar per origen i destino
   fetch("vols.json")
     .then(res => res.json())
     .then(vols => {
@@ -83,7 +83,7 @@ function convertir() {
   }
 
   if (!jsonConvertit) {
-    // Convertim de XML a JSON
+    // XML a JSON
     const root = disponibilitatXML.documentElement;
     const obj = {};
     for (let i = 0; i < root.children.length; i++) {
@@ -94,7 +94,7 @@ function convertir() {
     jsonConvertit = obj;
     output.textContent = JSON.stringify(obj, null, 2);
   } else {
-    // Convertim de JSON a XML
+    // JSON a XML
     let xml = "<disponibilitat>\n";
     for (let clau in jsonConvertit) {
       xml += `  <${clau}>${jsonConvertit[clau]}</${clau}>\n`;
@@ -105,20 +105,18 @@ function convertir() {
   }
 }
 
+
 function formatXML(xmlStr) {
-  const CON = "  ";
-  const reg = /(>)(<)(\/*)/g;
-  let sin = "";
-  let pad = 0;
+  try {
+    const parser = new DOMParser();
+    const xmlDoc = parser.parseFromString(xmlStr, "application/xml");
+    const serializer = new XMLSerializer();
+    let pretty = serializer.serializeToString(xmlDoc);
 
-  xmlStr = xmlStr.replace(reg, "$1\r\n$2$3");
-  xmlStr.split("\r\n").forEach(node => {
-    let indent = 0;
-    if (node.match(/^<\/\w/)) pad -= 1;
-    indent = CON.repeat(pad);
-    sin += indent + node + "\r\n";
-    if (node.match(/^<\w[^>]*[^/]>/)) pad += 1;
-  });
-
-  return sin.trim();
+    // Saltos de lineas
+    pretty = pretty.replace(/></g, ">\n<");
+    return pretty.trim();
+  } catch (e) {
+    return xmlStr; 
+  }
 }
