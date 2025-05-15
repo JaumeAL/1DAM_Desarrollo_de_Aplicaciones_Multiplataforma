@@ -1,7 +1,7 @@
 var disponibilitatXML = null;
 var jsonConvertit = null;
 
-function netejarResultats() {
+function reset() {
   document.getElementById("disponibilitat").textContent = "";
   document.getElementById("resultatsHotels").textContent = "";
   document.getElementById("resultatsVols").textContent = "";
@@ -11,7 +11,7 @@ function netejarResultats() {
 }
 
 function cercarDisponibilitat() {
-  netejarResultats();
+  reset();
 
   const origen = document.getElementById("origen").value;
   const desti = document.getElementById("desti").value;
@@ -22,7 +22,7 @@ function cercarDisponibilitat() {
 
   // Validacions
   if (!origen || !desti || !adults || !infants || !dataInici || !dataFi) {
-    alert("Tots els camps són obligatoris.");
+    alert("Tots els camps són obligatoris");
     return;
   }
 
@@ -42,7 +42,7 @@ function cercarDisponibilitat() {
   disponibilitatXML = parser.parseFromString(xmlString, "application/xml");
 
   // Mostrar XML
-  document.getElementById("disponibilitat").textContent = formatXML(xmlString);
+  document.getElementById("disponibilitat").textContent = xmlString;
 
   // Llegir hotels.xml i filtrar per destí
   fetch("hotels.xml")
@@ -75,10 +75,10 @@ function cercarDisponibilitat() {
 }
 
 function convertir() {
-  const output = document.getElementById("conversio");
+  const conversio = document.getElementById("conversio");
 
   if (!disponibilitatXML) {
-    output.textContent = "No hi ha cap disponibilitat.xml creat...";
+    conversio.textContent = "No hi ha cap disponibilitat.xml creat...";
     return;
   }
 
@@ -92,7 +92,7 @@ function convertir() {
       obj[etiqueta] = valor;
     }
     jsonConvertit = obj;
-    output.textContent = JSON.stringify(obj, null, 2);
+    conversio.textContent = JSON.stringify(obj, null, 2);
   } else {
     // JSON a XML
     let xml = "<disponibilitat>\n";
@@ -100,23 +100,7 @@ function convertir() {
       xml += `  <${clau}>${jsonConvertit[clau]}</${clau}>\n`;
     }
     xml += "</disponibilitat>";
-    output.textContent = formatXML(xml);
+    conversio.textContent = xml;
     jsonConvertit = null;
-  }
-}
-
-
-function formatXML(xmlStr) {
-  try {
-    const parser = new DOMParser();
-    const xmlDoc = parser.parseFromString(xmlStr, "application/xml");
-    const serializer = new XMLSerializer();
-    let pretty = serializer.serializeToString(xmlDoc);
-
-    // Saltos de lineas
-    pretty = pretty.replace(/></g, ">\n<");
-    return pretty.trim();
-  } catch (e) {
-    return xmlStr; 
   }
 }
